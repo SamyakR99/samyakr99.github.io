@@ -5,8 +5,8 @@
     <meta charset="UTF-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
 
-    <title>Prior-Aware Multilabel Food Recognition using Graph
-        Convolutional Networks</title>
+    <title>Rethinking Prompting Strategies for Multi-Label Recognition with Partial
+Annotations</title>
 
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -15,12 +15,12 @@
 
     <meta property="og:type" content="website" />
 
-    <meta property="og:title" content="Prior-Aware Multilabel Food Recognition using Graph
-    Convolutional Networks" />
+    <meta property="og:title" content="Rethinking Prompting Strategies for Multi-Label Recognition with Partial
+Annotations" />
 
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="Prior-Aware Multilabel Food Recognition using Graph
-    Convolutional Networks" />
+    <meta name="twitter:title" content="Rethinking Prompting Strategies for Multi-Label Recognition with Partial
+Annotations" />
 
 
 <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>👍</text></svg>">
@@ -45,10 +45,10 @@
     <div class="container" id="main">
         <div class="row">
             <h2 class="col-md-12 text-center">
-                <b>Prior-Aware Multilabel Food Recognition using Graph
-                    Convolutional Networks</b></br> 
+                <b>Rethinking Prompting Strategies for Multi-Label Recognition with Partial
+Annotations</b></br> 
                 
-                Meta Food Workshop CVPR 2024 
+                IEEE/CVF Winter Conference on Applications of Computer Vision (WACV)  
                 
             </h2>
         </div>
@@ -56,18 +56,13 @@
             <div class="col-md-12 text-center">
                 <ul class="list-inline">
                     <li>
-                        <a href="https://shubhangb97.github.io/">
-                            <strong> Shubhang Bhatnagar*</strong> <sup>1</sup> 
-                        </a>
-                    </li>
-                    <li>
                         <a href="https://samyakr99.github.io/">
-                            Samyak Rawlekar*<sup>1</sup> 
+                            Samyak Rawlekar<sup>1</sup> 
                         </a>
                     </li>
                     <li>
-                        <a href="https://sites.google.com/site/liurenshomepage/">
-                            Vishnuvardhan Pogunulu Srinivasulu<sup>2</sup>
+                        <a href="https://shubhangb97.github.io/">
+                             Shubhang Bhatnagar <sup>1</sup> 
                         </a>
                     </li>
                     <li>
@@ -81,11 +76,6 @@
                     <li>
                         <sup>1</sup><a href="https://illinois.edu/">
                             University of Illinois at Urbana-Champaign
-                        </a>
-                    </li>
-                    <li>
-                        <sup>2</sup><a href="https://vizzhy.com/">
-                            Vizzhy.com
                         </a>
                     </li>
                 </ul>
@@ -157,15 +147,7 @@
                     Abstract
                 </h3>
                 <p class="text-justify">
-                    Multi-label Recognition (MLR) involves the identification of multiple objects within an image. 
-                    To address the additional complexity of this problem, recent works have leveraged information from vision-language models (VLMs) trained on large text-images datasets for the task. These methods learn an independent classifier for each object (class),
-                     overlooking correlations in their occurrences. Such co-occurrences can be captured from the training data as
-                      conditional probabilities between a pair of classes. We propose a framework to extend the independent
-                       classifiers by incorporating the co-occurrence information for object pairs to improve the performance
-                        of independent classifiers. We use a Graph Convolutional Network (GCN) to enforce the conditional
-                         probabilities between classes, by refining the initial estimates derived from image and text
-                          sources obtained using VLMs. We validate our method on four MLR datasets, where our approach
-                           outperforms all state-of-the-art methods.
+                    Vision-language models (VLMs) like CLIP have been adapted for Multi-Label Recognition (MLR) with partial annotations by leveraging prompt-learning, where positive and negative prompts are learned for each class to associate their embeddings with class presence or absence in the shared vision-text feature space. While this approach improves MLR performance by relying on VLM priors, we hypothesize that learning negative prompts may be suboptimal, as the datasets used to train VLMs lack image-caption pairs explicitly focusing on class absence. To analyze the impact of positive and negative prompt learning on MLR, we introduce PositiveCoOp and NegativeCoOp, where only one prompt is learned with VLM guidance while the other is replaced by an embedding vector learned directly in the shared feature space without relying on the text encoder. Through empirical analysis, we observe that negative prompts degrade MLR performance, and learning only positive prompts, combined with learned negative embeddings (PositiveCoOp), outperforms dual prompt learning approaches. Moreover, we quantify the performance benefits that prompt-learning offers over a simple vision-features-only baseline, observing that the baseline displays strong performance comparable to dual prompt learning approach (DualCoOp), when the proportion of missing labels is low, while requiring half the training compute and 16 times fewer parameters.
                 </p>
             </div>
         </div>
