@@ -210,45 +210,37 @@ To this end, we conduct a thorough empirical study to evaluate the contribution 
         <div class="row">
             <div class="col-md-8 col-md-offset-2">
                 <h3>
-                    Results
+                    Results and Analysis
                 </h3>
             
             <div class="text-justify">
-                Our method outperforms all state-of-the-art
-                baselines, on four MLR datasets in the low data regime: FoodSeg103, UNIMIB
-                2016, COCO-small (5% of COCO’s training data) and VOC-2007. Our approach
-                achieves the best performance on all metrics: per-class and overall average precisions
-                (CP and OP), recalls (CR and OR), F1 scores (CF1 and OF1), and mean
-                average precision (mAP).
+                The results of MLR with partial annotations on COCO and VOC2007 demonstrate that the performance of the prompting-based approaches follows the order: Positive CoOp > DualCoOp ≈ Baseline > NegativeCoOp.
                 <br><br>
                 <div class="text-center">
-                    <img src="./img/results.png" width="75%">
+                    <img src="./img/result1.png" width="75%">
                 </div>
                 
 			</div>
 
             <div class="text-justify">
-                A comparison of the average performance of our approach with the
-                previous state-of-the-art VLM-based method DualCoOp[41] on classes that are
-                difficult to recognize using only visual features (having 10 lowest CF1 values
-                on the FoodSeg103[44] and UNIMIB[10]). Our approach significantly improves
-                MLR performance on such classes due to its use of information derived from
-                class conditional probabilities.
+                The comparison of training parameters and GPU hours for the exsiting methods with the Baseline, PostitiveCoOp and NegativeCoOp reveal that the Baseline uses significantly fewer parameters and
+GPU hours than all other setups, while PositiveCoOp and NegativeCoOp require about half the parameters compared to DualCoOp.
                 <br><br>
                 <div class="text-center">
-                    <img src="./img/results2.png" width="50%">
+                    <img src="./img/result2_compute.png" width="75%">
                 </div>
                 
 			</div>
 
             <div class="text-justify">
-                Improvement in average precision (ΔAP) of a class obtained by refining
-                VLM-based initial logits to incorporate the information provided by conditional
-                probabilities, shown as a function of the mean conditional probability of most
-                co-occurring three classes.
+                We compare the average similarity between pairs of positive features and
+pairs of positive and negative on 80 classes of COCO dataset for
+two scenarios a) When we use a only one prompt and b) Using 85 default prompt templates for ImageNet. We observe that
+the similarity score between positive-positive prompt is close to
+positive-negative, implying that CLIP projects positive and negative prompts very closely in the feature space..
                 <br><br>
                 <div class="text-center">
-                    <img src="./img/results3.png" width="50%">
+                    <img src="./img/result3_prompt_sim.png" width="75%">
                 </div>
                 
 			</div>
