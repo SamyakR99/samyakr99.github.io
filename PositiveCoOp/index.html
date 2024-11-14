@@ -214,7 +214,7 @@ To this end, we conduct a thorough empirical study to evaluate the contribution 
                 </h3>
             
             <div class="text-justify">
-                The results of MLR with partial annotations on COCO and VOC2007 demonstrate that the performance of the prompting-based approaches follows the order: Positive CoOp > DualCoOp ≈ Baseline > NegativeCoOp.
+                A. The results of MLR with partial annotations on COCO and VOC2007 demonstrate that the performance of the prompting-based approaches follows the order: Positive CoOp > DualCoOp ≈ Baseline > NegativeCoOp.
                 <br><br>
                 <div class="text-center">
                     <img src="./img/result1.png" width="95%">
@@ -223,7 +223,8 @@ To this end, we conduct a thorough empirical study to evaluate the contribution 
 			</div>
 
             <div class="text-justify">
-                The comparison of training parameters and GPU hours for the exsiting methods with the Baseline, PostitiveCoOp and NegativeCoOp reveal that the Baseline uses significantly fewer parameters and
+                
+		    B. The comparison of training parameters and GPU hours for the exsiting methods with the Baseline, PostitiveCoOp and NegativeCoOp reveal that the Baseline uses significantly fewer parameters and
 GPU hours than all other setups, while PositiveCoOp and NegativeCoOp require about half the parameters compared to DualCoOp.
                 <br><br>
                 <div class="text-center">
@@ -233,7 +234,8 @@ GPU hours than all other setups, while PositiveCoOp and NegativeCoOp require abo
 			</div>
 
             <div class="text-justify">
-                We compare the average similarity between pairs of positive features and
+               
+		    C. We compare the average similarity between pairs of positive features and
 pairs of positive and negative on 80 classes of COCO dataset for
 two scenarios a) When we use a only one prompt and b) Using 85 default prompt templates for ImageNet. We observe that
 the similarity score between positive-positive prompt is close to
