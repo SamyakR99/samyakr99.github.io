@@ -188,7 +188,7 @@ To this end, we conduct a thorough empirical study to evaluate the contribution 
 		    In PositiveCoOp (NegativeCoOp), for a given class <i>j</i>, only the positive (negative) prompt <b>t<sub>j,+</sub></b> (<b>t<sub>j,-</sub></b>) is learned through CLIP, 
 		    while the negative (positive) prompt is replaced by a learned text embedding <b>r<sub>j,-</sub></b> (<b>r<sub>j,+</sub></b>) in the feature space, independent of CLIP's text encoder.
 		    For both PositiveCoOp and NegativeCoOp, we obtain the final predictions <b>p<sub>i,j,+</sub></b> and <b>p<sub>i,j,-</sub></b> by calculating the cosine similarity of the image features with the embedding of the positive text prompt <b>r<sub>j,+</sub></b> and learned text embedding <b>r<sub>j,-</sub></b>. 
-		    This is then aggregated using the class-specific feature aggregation strategy following<sup>[1]</sup>. Only the text embeddings and the prompts are trained using the widely used Asymmetric Loss.
+		    This is then aggregated using the class-specific feature aggregation strategy following DualCoOp. Only the text embeddings and the prompts are trained using the widely used Asymmetric Loss.
                 <br><br>
                 <div class="text-center">
                     <img src="./img/main.pdf" width="50%">
