@@ -162,13 +162,12 @@ Annotations</b></br>
                 </div>-->
                 <br><br>
                 <div class="text-justify">
-                    To mitigate the paucity of labeled data in Multi-label recognition (MLR),
-                    recent approaches have focused on adapting large Vision Language Models (VLMs) with a common approach being learning 
-                    pair of positive/negative prompts forming a binary classifier for each class. 
-                    However, these methods learn independent prompts (classifiers) for each class. In practice,
-                    many objects are in sets, making their occurrences interdependent. Using independent
-                    classifiers neglects the mutual information present, which, if used, could
-                    enhance the performance of individual classifiers.
+                    Prompt learning is a popular approach for recognition task with vision-language models (VLMs), as it helps take advantage of 
+the latent knowledge in the text encoder to learn prompts whose embeddings in the shared vision-language embedding space correspond to the presence of a class. 
+Several works have extended prompt learning to multi-label recognition by learning dual prompts: a positive and a negative prompt,
+to detect the presence and absence of a class in the image, respectively. However, a closer analysis of VLMs reveals that they have been trained on paired image-caption datasets where captions 
+correspond to the presence of objects rather than their absence. This raises questions about the guidance from VLMs for learning negative prompts in such approaches. 
+To this end, we conduct a thorough empirical study to evaluate the contribution of VLM guidance in learning both positive and negative prompts.
                 
                 
                 
