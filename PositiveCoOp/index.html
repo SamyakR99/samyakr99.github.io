@@ -184,11 +184,11 @@ To this end, we conduct a thorough empirical study to evaluate the contribution 
                 </h3>
             
             <div class="text-justify">
-                VLM-based MLR approaches like DualCoOp propose learning both positive and negative prompts using CLIP's guidance: one for class presence and one for class absence.
-
-In PositiveCoOp (NegativeCoOp), for a given class \( j \), only the positive (negative) prompt \( \mathbf{t}_{j,+} \) ( \( \mathbf{t}_{j,-} \)) is learned through CLIP, while the negative (positive) prompt is replaced by a learned text embedding \( \mathbf{r}_{j,-} \) ( \( \mathbf{r}_{j,+} \)) in the feature space, independent of CLIP's text encoder.
-
-For both PositiveCoOp and NegativeCoOp, we obtain the final predictions \( \mathbf{\hat{p}_i^{j,+}} \) and \( \mathbf{\hat{p}_i^{j,-}} \) by calculating the cosine similarity of the image features with the embedding of the positive text prompt \( \mathbf{r}_{j,+} \) and learned text embedding \( \mathbf{r}_{j,-} \). This is then aggregated using the class-specific feature aggregation strategy following [^1]. Only the text embeddings and the prompts are trained using the widely used Asymmetric Loss.
+		    VLM-based MLR approaches like DualCoOp propose learning both positive and negative prompts using CLIP's guidance: one for class presence and one for class absence. 
+		    In PositiveCoOp (NegativeCoOp), for a given class <i>j</i>, only the positive (negative) prompt <b>t<sub>j,+</sub></b> (<b>t<sub>j,-</sub></b>) is learned through CLIP, 
+		    while the negative (positive) prompt is replaced by a learned text embedding <b>r<sub>j,-</sub></b> (<b>r<sub>j,+</sub></b>) in the feature space, independent of CLIP's text encoder.
+		    For both PositiveCoOp and NegativeCoOp, we obtain the final predictions <b>p<sub>i,j,+</sub></b> and <b>p<sub>i,j,-</sub></b> by calculating the cosine similarity of the image features with the embedding of the positive text prompt <b>r<sub>j,+</sub></b> and learned text embedding <b>r<sub>j,-</sub></b>. 
+		    This is then aggregated using the class-specific feature aggregation strategy following<sup>[1]</sup>. Only the text embeddings and the prompts are trained using the widely used Asymmetric Loss.
                 <br><br>
                 <div class="text-center">
                     <img src="./img/overview.png" width="50%">
