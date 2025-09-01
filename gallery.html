@@ -27,7 +27,8 @@
       margin: auto;
     }
 
-    .gallery img {
+    .gallery img,
+    .gallery video {
       width: 100%;
       height: auto;
       cursor: pointer;
@@ -35,7 +36,8 @@
       transition: transform 0.2s, box-shadow 0.2s;
     }
 
-    .gallery img:hover {
+    .gallery img:hover,
+    .gallery video:hover {
       transform: scale(1.05);
       box-shadow: 0 6px 15px rgba(0,0,0,0.3);
     }
@@ -54,11 +56,16 @@
       animation: fadeIn 0.3s ease;
     }
 
-    .lightbox img {
+    .lightbox img,
+    .lightbox video {
       max-width: 90%;
       max-height: 80%;
       border-radius: 12px;
       box-shadow: 0 6px 20px rgba(0,0,0,0.6);
+    }
+
+    .lightbox video {
+      background: black;
     }
 
     /* Navigation arrows */
@@ -99,26 +106,36 @@
 </head>
 <body>
 
-  <h1>Photo Gallery</h1>
+  <h1>Photo & Video Gallery</h1>
   <div class="gallery">
-    <img src="images/photo1.jpg" alt="Photo 1">
-    <img src="images/photo2.jpg" alt="Photo 2">
-    <img src="images/photo3.jpg" alt="Photo 3">
-    <img src="images/photo4.jpg" alt="Photo 4">
+    <!-- Images -->
+    <img src="images/images/1.JPG" alt="Photo 1">
+    <img src="images/images/2.JPG" alt="Photo 2">
+    <img src="images/images/3.jpg" alt="Photo 3">
+    <img src="images/images/4.JPG" alt="Photo 4">
+    <img src="images/images/5.jpg" alt="Photo 5">
+    <img src="images/images/6.JPG" alt="Photo 6">
+    <img src="images/images/7.jpg" alt="Photo 7">
+    <img src="images/images/9.jpg" alt="Photo 8">
+    <img src="images/images/10.jpg" alt="Photo 9">
+
+    <!-- Videos -->
+    <video src="videos/1.MOV" muted></video>
+    <video src="videos/2.MP4" muted></video>
   </div>
 
   <!-- Lightbox -->
   <div id="lightbox" class="lightbox">
     <span class="close">&times;</span>
     <span class="nav prev">&#10094;</span>
-    <img id="lightbox-img" src="">
+    <div id="lightbox-content"></div>
     <span class="nav next">&#10095;</span>
   </div>
 
   <script>
-    const images = document.querySelectorAll('.gallery img');
+    const items = document.querySelectorAll('.gallery img, .gallery video');
     const lightbox = document.getElementById('lightbox');
-    const lightboxImg = document.getElementById('lightbox-img');
+    const content = document.getElementById('lightbox-content');
     const close = document.querySelector('.close');
     const prev = document.querySelector('.prev');
     const next = document.querySelector('.next');
@@ -128,29 +145,48 @@
     function showLightbox(index) {
       currentIndex = index;
       lightbox.style.display = 'flex';
-      lightboxImg.src = images[currentIndex].src;
+
+      // Clear old content
+      content.innerHTML = "";
+
+      let el = items[currentIndex].cloneNode(true);
+      el.removeAttribute("width");
+      el.removeAttribute("height");
+
+      if (el.tagName.toLowerCase() === "video") {
+        el.controls = true;
+        el.autoplay = true;
+      }
+
+      content.appendChild(el);
     }
 
-    images.forEach((img, index) => {
-      img.addEventListener('click', () => showLightbox(index));
+    items.forEach((el, index) => {
+      el.addEventListener('click', () => showLightbox(index));
     });
 
-    close.addEventListener('click', () => lightbox.style.display = 'none');
+    close.addEventListener('click', () => {
+      lightbox.style.display = 'none';
+      content.innerHTML = "";
+    });
 
     prev.addEventListener('click', () => {
-      currentIndex = (currentIndex - 1 + images.length) % images.length;
+      currentIndex = (currentIndex - 1 + items.length) % items.length;
       showLightbox(currentIndex);
     });
 
     next.addEventListener('click', () => {
-      currentIndex = (currentIndex + 1) % images.length;
+      currentIndex = (currentIndex + 1) % items.length;
       showLightbox(currentIndex);
     });
 
     // Keyboard navigation
     document.addEventListener('keydown', (e) => {
       if (lightbox.style.display === 'flex') {
-        if (e.key === 'Escape') lightbox.style.display = 'none';
+        if (e.key === 'Escape') {
+          lightbox.style.display = 'none';
+          content.innerHTML = "";
+        }
         if (e.key === 'ArrowLeft') prev.click();
         if (e.key === 'ArrowRight') next.click();
       }
