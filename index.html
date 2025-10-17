@@ -166,55 +166,49 @@
         </tr>
 
     <tr>
-          <td style="padding:2.5%;width:40%;vertical-align:top;min-width:120px">
-            <img src="images/S30.png" alt="project image" style="width:auto; height:auto; max-width:100%;" />
-          </td>
-          <td style="padding:2.5%;width:60%;vertical-align:top">
-            <h3>S3O: A Dual‑Phase Approach for Reconstructing Dynamic Shape and Skeleton</h3>
-            <br>
-            <a href="https://haoz19.github.io/">Hao Zhang </a>, <a href="https://fangli333.github.io/">Fang Li </a><strong>Samyak Rawlekar</strong>, <a href="https://en.wikipedia.org/wiki/Narendra_Ahuja"> Narendra Ahuja </a>
+        <td style="padding:2.5%;width:40%;vertical-align:top;min-width:120px">
+          <img src="images/S30.png" alt="project image" style="width:auto; height:auto; max-width:100%;" />
+        </td>
+        <td style="padding:2.5%;width:60%;vertical-align:top">
+          <h3>S3O: A Dual‑Phase Approach for Reconstructing Dynamic Shape and Skeleton</h3>
+          <br>
+          <a href="https://haoz19.github.io/">Hao Zhang</a>, <a href="https://fangli333.github.io/">Fang Li</a><strong> Samyak Rawlekar</strong>, <a href="https://en.wikipedia.org/wiki/Narendra_Ahuja"> Narendra Ahuja </a>
+          <br>
+          <em> <a href="https://icml.cc/Conferences/2024">ICML </a></em> 2024
+          <br>
+          <a href="javascript:toggleblock('S30 Abs')">abstract</a> / 
+          <a href="https://arxiv.org/abs/2405.12607">paper</a>
+          <br>
+      
+          <!-- Abstract wrapped with a unique ID 'S30 Abs' for toggle functionality -->
+          <p align="justify" id="S30 Abs">
+            <i>Reconstructing dynamic articulated objects from a singular monocular video is challenging, requiring joint estimation of shape, motion, and camera parameters from limited views...</i>
+          </p>
+        </td>
+      </tr>
 
-            <br>
-            <em> <a href="https://icml.cc/Conferences/2024">ICML </a></em> 2024
-            <br>
-            
-            <a href="javascript:toggleblock('S30 Abs')">abstract</a> /
-            <a href="https://arxiv.org/abs/2405.12607">paper</a>
-
-            <!-- <a href="coming soon">video</a> / 
-             -->
-            <br>
-
-              <p align="justify"> <i id="S30 Abs">Reconstructing dynamic articulated objects from a singular monocular video is challenging, requiring joint estimation of shape, motion, and camera parameters from limited views. Current methods typically demand extensive computational resources and training time, and require additional human annotations such as predefined parametric models, camera poses, and key points, limiting their generalizability. We propose Synergistic Shape and Skeleton Optimization (S3O), a novel two-phase method that forgoes these prerequisites and efficiently learns parametric models including visible shapes and underlying skeletons. Conventional strategies typically learn all parameters simultaneously, leading to interdependencies where a single incorrect prediction can result in significant errors. In contrast, S3O adopts a phased approach: it first focuses on learning coarse parametric models, then progresses to motion learning and detail addition. This method substantially lowers computational complexity and enhances robustness in reconstruction from limited viewpoints, all without requiring additional annotations. To address the current inadequacies in 3D reconstruction from monocular video benchmarks, we collected the PlanetZoo dataset. Our experimental evaluations on standard benchmarks and the PlanetZoo dataset affirm that S3O provides more accurate 3D reconstruction, and plausible skeletons, and reduces the training time by approximately 60% compared to the state-of-the-art, thus advancing the state of the art in dynamic object reconstruction..</i></p>
-          </td>
-        </tr>
 
         <tr>
-          <td style="padding:2.5%;width:40%;vertical-align:top;min-width:120px">
-            <img src="images/LIMR.png" alt="project image" style="width:auto; height:auto; max-width:100%;" />
-          </td>
-          <td style="padding:2.5%;width:60%;vertical-align:top">
-            <h3>LIMR: Learning Implicit Representation for Reconstructing Articulated Objects</h3>
-            <br>
-            <a href="https://haoz19.github.io/">Hao Zhang </a>, <a href="https://fangli333.github.io/">Fang Li </a><strong>Samyak Rawlekar</strong>, <a href="https://en.wikipedia.org/wiki/Narendra_Ahuja"> Narendra Ahuja </a>
+  <td style="padding:2.5%;width:40%;vertical-align:top;min-width:120px">
+    <img src="images/LIMR.png" alt="project image" style="width:auto; height:auto; max-width:100%;" />
+  </td>
+  <td style="padding:2.5%;width:60%;vertical-align:top">
+    <h3>LIMR: Learning Implicit Representation for Reconstructing Articulated Objects</h3>
+    <br>
+    <a href="https://haoz19.github.io/">Hao Zhang</a>, <a href="https://fangli333.github.io/">Fang Li</a><strong> Samyak Rawlekar</strong>, <a href="https://en.wikipedia.org/wiki/Narendra_Ahuja"> Narendra Ahuja </a>
+    <br>
+    <em> <a href="https://iclr.cc/Conferences/2024">ICLR </a></em> 2024
+    <br>
+    <a href="javascript:toggleblock('LIMR Abs')">abstract</a> / 
+    <a href="https://arxiv.org/abs/2401.08809">paper</a>
+    <br>
 
-            <br>
-            <em> <a href="https://iclr.cc/Conferences/2024">ICLR </a></em> 2024
-            <br>
-            
-            <a href="javascript:toggleblock('LIMR Abs')">abstract</a> /
-            <a href="https://arxiv.org/abs/2401.08809">paper</a>
-
-            <!-- <a href="coming soon">video</a> / 
-             -->
-            <br>
-
-              <p align="justify"> <i id="LIMR Abs">3D Reconstruction of moving articulated objects without additional information about object structure is a challenging problem. Current methods overcome such challenges by employing category-specific skeletal models. Consequently, they do not generalize well to articulated objects in the wild. We treat an articulated object as an unknown, semi-rigid skeletal structure surrounded by nonrigid material (e.g., skin). Our method simultaneously estimates the visible (explicit) representation (3D shapes, colors, camera parameters) and the implicit skeletal representation, from motion cues in the object video without 3D supervision. Our implicit representation consists of four parts. (1) Skeleton, which specifies how semi-rigid parts are connected. (2) \textcolor{black}{Skinning Weights}, which associates each surface vertex with semi-rigid parts with probability. (3) Rigidity Coefficients, specifying the articulation of the local surface. (4) Time-Varying Transformations, which specify the skeletal motion and surface deformation parameters. We introduce an algorithm that uses physical constraints as regularization terms and iteratively estimates both implicit and explicit representations. Our method is category-agnostic, thus eliminating the need for category-specific skeletons, we show that our method outperforms state-of-the-art across standard video datasets.</i></p>
-          </td>
-        </tr>
-
-
-    
+    <!-- Abstract wrapped with a unique ID 'LIMR Abs' for toggle functionality -->
+    <p align="justify" id="LIMR Abs">
+      <i>3D Reconstruction of moving articulated objects without additional information about object structure is a challenging problem...</i>
+    </p>
+  </td>
+</tr>
 
 
 
@@ -326,6 +320,7 @@
 </body>
 
 </html>
+
 
 
 
