@@ -1,164 +1,391 @@
-<!DOCTYPE HTML>
+<!DOCTYPE HTML "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html lang="en">
+  <head>
+    <meta name="generator" content="HTML Tidy for Linux/x86 (vers 11 February 2007), see www.w3.org">
+    <style type="text/css">
+      /* Design Credits: Jon Barron, Deepak Pathak, Saurabh Gupta and Aditya Kusupati*/
+      a {
+        color: #1772d0;
+        text-decoration: none;
+      }
+  
+      a:focus,
+      a:hover {
+        color: #f09228;
+        text-decoration: none;
+      }
+  
+      body,
+      td,
+      th {
+        font-family: 'Titillium Web', Verdana, Helvetica, sans-serif;
+        font-size: 16px;
+        font-weight: 400
+      }
+  
+      heading {
+        font-family: 'Titillium Web', Verdana, Helvetica, sans-serif;
+        font-size: 19px;
+        font-weight: 1000
+      }
+  
+      strong {
+        font-family: 'Titillium Web', Verdana, Helvetica, sans-serif;
+        font-size: 16px;
+        font-weight: 800
+      }
+  
+      strongred {
+        font-family: 'Titillium Web', Verdana, Helvetica, sans-serif;
+        color: 'red';
+        font-size: 16px
+      }
+  
+      sectionheading {
+        font-family: 'Titillium Web', Verdana, Helvetica, sans-serif;
+        font-size: 22px;
+        font-weight: 600
+      }
+  
+      pageheading {
+        font-family: 'Titillium Web', Verdana, Helvetica, sans-serif;
+        font-size: 38px;
+        font-weight: 400
+      }
+    </style>
+    <!-- <link rel="icon" type="image/png" href="images/W.png"> -->
+    <script type="text/javascript" src="js/hidebib.js"></script>
+    <title>Samyak Rawlekar</title>
 
-<head>
-  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-  <title>Samyak Rawlekar</title>
-  <meta name="author" content="Samyak Rawlekar">
+    <meta name="author" content="Samyak Rawlekar">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-
-  <link rel="stylesheet" type="text/css" href="stylesheet.css">
-  <link rel="icon" type="image/png" href="images/seal_icon.png">
-
-  <style>
-    .publications-table td {
-      padding-bottom: 50px;
-      vertical-align: top;
-    }
-
-    .abstract {
-      display: none;
-      line-height: 1.4;
-      margin-top: 10px;
-    }
-
-    .toggle-btn {
-      color: #0366d6;
-      cursor: pointer;
-      font-size: 14px;
-      padding: 4px 0;
-      display: inline-block;
-    }
-
-    /* Image modal overlay */
-    #overlay {
-      display: none;
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: rgba(0, 0, 0, 0.8);
-      justify-content: center;
-      align-items: center;
-      z-index: 1000;
-    }
-
-    #overlay img {
-      max-width: 90%;
-      max-height: 90%;
-      border: 2px solid white;
-      border-radius: 8px;
-    }
-
-    .pub-img {
-      width: 200px;
-      cursor: pointer;
-      border-radius: 6px;
-    }
-  </style>
-
-  <script>
-    function toggleAbstract(id) {
-      var abs = document.getElementById(id);
-      abs.style.display = abs.style.display === "none" ? "block" : "none";
-    }
-
-    function enlarge(imgSrc) {
-      let overlay = document.getElementById("overlay");
-      document.getElementById("overlay-img").src = imgSrc;
-      overlay.style.display = "flex";
-    }
-
-    function closeOverlay() {
-      document.getElementById("overlay").style.display = "none";
-    }
-  </script>
-</head>
-
+    <link rel="stylesheet" type="text/css" href="stylesheet.css">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🔥</text></svg>">
+  </head>
 
 <body>
-  <div id="overlay" onclick="closeOverlay()">
-    <img id="overlay-img">
-  </div>
+  <table style="width:100%;max-width:800px;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;">
+    <tr style="padding:0px">
+      <td style="padding:0px">
+        <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;">
+          <tr style="padding:0px">
+            <td style="padding:2.5%;width:60%;vertical-align:middle">
+              <p class="name" style="text-align: center;">
+                Samyak Rawlekar
+              </p>
+              <p>I am a PhD student in the <a href="https://vision.ai.illinois.edu/">Computer Vision and Robotics Laboratory</a> at the <a href="https://illinois.edu/">University of Illinois Urbana-Champaign</a>. 
+                I am advised by <a href="https://ece.illinois.edu/about/directory/faculty/n-ahuja"> Prof. Narendra Ahuja </a>. 
+          </p>
+              <p>I love pixels and have recently been integrating them with text to solve intricate and exciting problems in Computer Vision. Particularly, I focus on using large multi-modal (vision-language) models for multi-task learning. 
+          </p>
+              <p>Previously, I obtained MS in Computer Engineering from <a href="https://www.nyu.edu/"> New York University </a>, and B.Tech in Electrical Engineering from <a href="https://www.iitdh.ac.in/"> IIT Dharwad </a>.
+              </p>
+              
+              <p style="text-align:center">
+                <a target="_blank" href="mailto:samyakrawlekar@gmail.com">E-mail</a> &nbsp;/&nbsp;
+                 <a target="_blank" href="https://samyakr99.github.io/files/Samyak_CV.pdf">Resume</a> &nbsp;/&nbsp;
+                <a href="https://github.com/SamyakR99">GitHub</a> &nbsp;/&nbsp;
+                <a href=https://scholar.google.com/citations?hl=en&user=4Jp_SN4AAAAJ&view_op=list_works&sortby=pubdate">Scholar</a> &nbsp;/&nbsp;
+                <a href="https://twitter.com/SamyakR23">X</a> &nbsp;/&nbsp;
+                <a href="https://bsky.app/profile/samyakr.bsky.social">Bsky</a> &nbsp;/&nbsp;
+                <a href="gallery.html">Gallery</a>
+              </p>
+            </td>
+            <td style="padding:2.5%;width:40%;max-width:40%">
+              <img style="width:100%;max-width:100%" alt="profile photo" src="images/Web_img1.jpg">
+            </td>
+          </tr>
+        </table>
+        
+        <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;">
+          <tr>
+            <td style="padding:20px;width:100%;vertical-align:middle">
+              <h2>Selected Publications</h2>
+              
+            </td>
+          </tr>
+        </tbody></table>
+      
+      <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;">
 
-  <table style="width:100%;max-width:800px;border:0;margin-left:auto;margin-right:auto;">
+        <tr>
+  <td style="padding:2.5%;width:40%;vertical-align:top;min-width:120px">
+    <img src="images/DCLIP.png" alt="project image" style="width:auto; height:auto; max-width:100%;" />
+  </td>
+
+  <td style="padding:2.5%;width:60%;vertical-align:top">
+    <h3>Efficiently Disentangling CLIP for Multi-Object Perception
+</h3>
+    <br>
+    <strong>Samyak Rawlekar</strong>, 
+    <a href="https://vanoracai.github.io/">Yujun Cai</a>, 
+    <a href="https://wangywust.github.io/">Yiwei Wanf</a>, 
+    <a href="https://faculty.ucmerced.edu/mhyang/">Ming-Hsuan Yang
+</a>, 
+    <a href="https://en.wikipedia.org/wiki/Narendra_Ahuja">Narendra Ahuja</a>
+    <br>
+    <em>Under Review</em>
+    <br>
+
+    <a href="javascript:toggleblock('DCLIP_abs')">abstract</a>
+    <a href="https://arxiv.org/pdf/2502.02977?">paper</a>
+    <!-- Add links here later: / project page / paper -->
+
+    <br>
+
+    <p align="justify"><i id="DCLIP_abs">
+      Vision-language models like CLIP excel at recognizing the single, prominent object
+      in a scene. However, they struggle in complex scenes containing multiple objects.
+      We identify a fundamental reason for this limitation: VLM feature space exhibits
+      excessive mutual feature information (MFI), where the features of one class contain
+      substantial information about other, unrelated classes. This high MFI becomes
+      evident during class-specific queries, as unrelated objects are activated alongside
+      the queried class. To address this limitation, we propose DCLIP, an efficient
+      framework that learns an optimal level of mutual information while adding only
+      minimal learnable parameters to a frozen VLM. DCLIP uses two complementary
+      losses: a novel MFI Loss that regulates class feature similarity to prevent excessive
+      overlap while preserving necessary shared information, and the Asymmetric Loss
+      (ASL) that aligns image features with the disentangled text features. Through
+      this disentanglement, DCLIP reduces excessive inter-class similarity by 30%. On
+      multi-label recognition, DCLIP performs favorably over SOTA approaches on
+      VOC2007 and COCO-14 while using 75% fewer training parameters. For zero-shot
+      semantic segmentation, it shows improved performance across six benchmark
+      datasets. These results highlight the importance of feature disentanglement for
+      multi-object perception in VLMs.
+    </i></p>
+  </td>
+</tr>
+
+<script xml:space="preserve" language="JavaScript">
+  hideblock('DCLIP_abs');
+</script>
+
+        <tr>
+          <td style="padding:2.5%;width:40%;vertical-align:top;min-width:120px">
+            <img src="images/PosCoOp.png" alt="project image" style="width:auto; height:auto; max-width:100%;" />
+          </td>
+          <td style="padding:2.5%;width:60%;vertical-align:top">
+            <h3>PositiveCoOp: Rethinking Prompting Strategies for Multi-Label Recognition with Partial Annotations</h3>
+            <br>
+            <strong>Samyak Rawlekar</strong>, <a href="https://shubhangb97.github.io/">Shubhang Bhatnagar </a>, <a href="https://en.wikipedia.org/wiki/Narendra_Ahuja"> Narendra Ahuja </a>
+
+            <br>
+            <em> <a href="https://wacv2025.thecvf.com/">WACV </a></em> 2025</em>
+            <br>
+            
+            <a href="javascript:toggleblock('PosCoOp_abs')">abstract</a> /
+             <a href="https://samyakr99.github.io/PositiveCoOp">project page</a> /
+            <a href="https://arxiv.org/pdf/2409.08381">paper</a>
+
+            <!-- <a href="coming soon">video</a> / 
+             -->
+            <br>
+
+              <p align="justify"> <i id="PosCoOp_abs">Vision-language models (VLMs) like CLIP have been adapted for Multi-Label Recognition (MLR) with partial annotations by leveraging prompt-learning, where positive and negative prompts are learned for each class to associate their embeddings with class presence or absence in the shared vision-text feature space. While this approach improves MLR performance by relying on VLM priors, we hypothesize that learning negative prompts may be suboptimal, as the datasets used to train VLMs lack image-caption pairs explicitly focusing on class absence. To analyze the impact of positive and negative prompt learning on MLR, we introduce PositiveCoOp and NegativeCoOp, where only one prompt is learned with VLM guidance while the other is replaced by an embedding vector learned directly in the shared feature space without relying on the text encoder. Through empirical analysis, we observe that negative prompts degrade MLR performance, and learning only positive prompts, combined with learned negative embeddings (PositiveCoOp), outperforms dual prompt learning approaches. Moreover, we quantify the performance benefits that prompt-learning offers over a simple vision-features-only baseline, observing that the baseline displays strong performance comparable to dual prompt learning approach (DualCoOp), when the proportion of missing labels is low, while requiring half the training compute and 16 times fewer parameters.</i></p>
+          </td>
+        </tr>
+
+        <tr>
+          <td style="padding:2.5%;width:40%;vertical-align:top;min-width:120px">
+            <img src="images/MLR_GCN.png" alt="project image" style="width:auto; height:auto; max-width:100%;" />
+          </td>
+          <td style="padding:2.5%;width:60%;vertical-align:top">
+            <h3>Improving Multi-label Recognition using Class Co-Occurrence Probabilities</h3>
+            <br>
+            <strong>Samyak Rawlekar*</strong>, <a href="https://shubhangb97.github.io/">Shubhang Bhatnagar* </a>,  Vishnuvardhan Pogunulu Srinivasulu, <a href="https://en.wikipedia.org/wiki/Narendra_Ahuja"> Narendra Ahuja </a>
+
+            <br>
+            <em> <a href="https://sites.google.com/view/cvpr-metafood-2024">CVPRW </a></em> 2024,<em> <a href="https://icpr2024.org/">ICPR </a> 2024 (Oral Top-5%)</em>
+            <br>
+            
+            <a href="javascript:toggleblock('MLR1_abs')">abstract</a> /
+             <a href="https://shubhangb97.github.io/MLR_gcn">project page</a> /
+            <a href="https://arxiv.org/abs/2404.16193">paper</a>
+
+            <!-- <a href="coming soon">video</a> / 
+             -->
+            <br>
+
+              <p align="justify"> <i id="MLR1_abs">Multi-label Recognition (MLR) involves the identification of multiple objects within an image. 
+                To address the additional complexity of this problem, recent works have leveraged information from vision-language models (VLMs) trained on large text-images datasets for 
+                the task. These methods learn an independent classifier for each object (class), overlooking correlations in their occurrences. Such co-occurrences can be captured from the
+                 training data as conditional probabilities between a pair of classes. We propose a framework to extend the independent classifiers by incorporating the 
+                 co-occurrence information for object pairs to improve the performance of independent classifiers. We use a Graph Convolutional Network (GCN) to enforce the 
+                 conditional probabilities between classes, by refining the initial estimates derived from image and text sources obtained using VLMs. We validate our method on four MLR
+                  datasets, where our approach outperforms all state-of-the-art methods.</i></p>
+          </td>
+        </tr>
+
     <tr>
-      <td width="35%">
-        <img src="images/Samyak.png" width="250">
-      </td>
+  <td style="padding:2.5%;width:40%;vertical-align:top;min-width:120px">
+    <img src="images/S30.png" alt="project image" style="width:auto; height:auto; max-width:100%;" />
+  </td>
+  <td style="padding:2.5%;width:60%;vertical-align:top">
+    <h3>S3O: A Dual-Phase Approach for Reconstructing Dynamic Shape and Skeleton</h3>
+    <br>
+    <a href="https://haoz19.github.io/">Hao Zhang</a>, 
+    <a href="https://fangli333.github.io/">Fang Li</a>, 
+    <strong>Samyak Rawlekar</strong>, 
+    <a href="https://en.wikipedia.org/wiki/Narendra_Ahuja">Narendra Ahuja</a>
+    <br>
+    <em><a href="https://icml.cc/Conferences/2024">ICML</a></em> 2024
+    <br>
+    <a href="javascript:toggleblock('S30_abs')">abstract</a> / 
+    <a href="https://arxiv.org/abs/2405.12607">paper</a>
+    <br>
 
-      <td style="padding:2.5%;">
-        <p style="text-align:center">
-          <name>Samyak Rawlekar</name>
-        </p>
+    <p align="justify"><i id="S30_abs">
+      Reconstructing dynamic articulated objects from a singular monocular video is challenging, requiring joint estimation of shape, motion, and camera parameters from limited views...
+    </i></p>
+  </td>
+</tr>
 
-        <p>I am a PhD student in the <a href="https://ece.illinois.edu/">Department of Electrical and Computer Engineering</a> at UIUC, advised by <a href="https://hningolab.github.io/">Prof. Heng Ji and Prof. Minh Do</a>. </p>
+<tr>
+  <td style="padding:2.5%;width:40%;vertical-align:top;min-width:120px">
+    <img src="images/LIMR.png" alt="project image" style="width:auto; height:auto; max-width:100%;" />
+  </td>
+  <td style="padding:2.5%;width:60%;vertical-align:top">
+    <h3>LIMR: Learning Implicit Representation for Reconstructing Articulated Objects</h3>
+    <br>
+    <a href="https://haoz19.github.io/">Hao Zhang</a>, 
+    <a href="https://fangli333.github.io/">Fang Li</a>,
+    <strong>Samyak Rawlekar</strong>, 
+    <a href="https://en.wikipedia.org/wiki/Narendra_Ahuja">Narendra Ahuja</a>
+    <br>
+    <em><a href="https://iclr.cc/Conferences/2024">ICLR</a></em> 2024
+    <br>
+    <a href="javascript:toggleblock('LIMR_abs')">abstract</a> / 
+    <a href="https://arxiv.org/abs/2401.08809">paper</a>
+    <br>
 
-        <p>My research focuses on <b>vision-language models (VLMs)</b>, with an emphasis on <b>discriminative tasks</b> such as multi-label recognition and zero-shot semantic segmentation. </p>
+    <p align="justify"><i id="LIMR_abs">
+      3D Reconstruction of moving articulated objects without additional information about object structure is a challenging problem...
+    </i></p>
+  </td>
+</tr>
 
-        <p style="text-align:center">
-          <a href="mailto:samyak.r99@gmail.com">Email</a> &nbsp;/&nbsp;
-          <a href="https://github.com/Samyakr99">Github</a> &nbsp;/&nbsp;
-          <a href="https://scholar.google.com/citations?user=xqIVotcAAAAJ&hl=en">Google Scholar</a>
-        </p>
-      </td>
-    </tr>
-  </table>
-
-  <br><br>
-
-  <table class="publications-table" style="width:100%;max-width:800px;margin:auto;">
-
-
-    <!-- ---------------------------------------------------------------------- -->
-    <!-- 🔵 NEW PUBLICATION: DCLIP -->
-    <!-- ---------------------------------------------------------------------- -->
-    <tr>
-      <td width="25%">
-        <img src="images/dclip_dummy.png" class="pub-img" onclick="enlarge('images/dclip_dummy.png')">
-      </td>
-
-      <td width="75%">
-        <papertitle>EFFICIENTLY DISENTANGLING CLIP FOR MULTI-OBJECT PERCEPTION</papertitle><br>
-        <strong>Samyak Rawlekar</strong>,  
-        <a>Heng Ji</a>,  
-        <a>Minh Do</a><br>
-        <em>Submitted</em>
-
-        <br><span class="toggle-btn" onclick="toggleAbstract('abs_dclip')">[Abstract]</span>
-        <div class="abstract" id="abs_dclip">
-          Vision-language models like CLIP excel at recognizing a single prominent object in a scene but struggle in complex multi-object settings. We identify excessive mutual feature information (MFI) as a key reason: features of one class contain substantial information about unrelated classes, causing unwanted activations. We propose DCLIP, an efficient framework that reduces MFI while adding minimal learnable parameters to a frozen VLM. DCLIP introduces an MFI Loss that regulates class feature similarity and an Asymmetric Loss (ASL) that aligns image features with disentangled text features. DCLIP reduces inter-class similarity by 30%, outperforms SOTA multi-label recognition methods on VOC2007 and COCO-14 with 75% fewer parameters, and improves zero-shot segmentation across six benchmarks.
-        </div>
-      </td>
-    </tr>
+    <script xml:space="preserve" language="JavaScript">
+  hideblock('S30_abs');
+</script>
+<script xml:space="preserve" language="JavaScript">
+  hideblock('LIMR_abs');
+</script>
 
 
-    <!-- (Your other publications are preserved exactly, unchanged—no "NEW", no "Oral" labels) -->
-    <!-- ---------------------------------------------------------------------- -->
-    <!-- Put your remaining publications here (I kept them unchanged) -->
-    <!-- ---------------------------------------------------------------------- -->
 
-    <!-- Example placeholder: -->
-    <tr>
-      <td width="25%">
-        <img src="images/example.png" class="pub-img" onclick="enlarge('images/example.png')">
-      </td>
-      <td width="75%">
-        <papertitle>Your Older Paper Title</papertitle><br>
-        Authors…<br>
-        <em>Conference</em><br>
-        <span class="toggle-btn" onclick="toggleAbstract('abs_old1')">[Abstract]</span>
-        <div class="abstract" id="abs_old1">Full abstract text…</div>
-      </td>
-    </tr>
+        
+        </table>
 
-    <!-- Continue listing the rest exactly as before -->
+        <table width="100%" align="center" border="0" cellspacing="0" cellpadding="20">
+          <tr>
+            <td><br>
+              <p align="right">
+                <font size="2">
+                  <a href="https://jonbarron.info">Template</a>
+                </font>
+              </p>
+            </td>
+          </tr>
+        </table>
+        <script xml:space="preserve" language="JavaScript">
+          hideblock('PosCoOp_abs');
+        </script>
+       <script xml:space="preserve" language="JavaScript">
+          hideblock('MLR1_abs');
+        </script>
+         <script xml:space="preserve" language="JavaScript">
+          hideblock('pal_abs');
+        </script>
+        <script xml:space="preserve" language="JavaScript">
+          hideblock('pcfb_abs');
+        </script>
+        <script xml:space="preserve" language="JavaScript">
+          hideblock('qr_abs');
+        </script>
+        <script xml:space="preserve" language="JavaScript">
+          hideblock('adapter_abs');
+        </script>
+        <br>
+        <br>
+        <br>
 
-  </table>
 
-  <br><br><br>
 
+
+        <!--
+        <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;">
+          <tr>
+            <td style="padding:2.5%;width:100%;vertical-align:middle">
+              <h2>Intel Projects</h2>
+              <p>Besides my work on the RealSense depth sensors and the publications above, a sampling of my publicly disclosed work
+              </p>
+            </td>
+          </tr>
+        </table>
+        <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;">
+
+          {% for post in site.posts %}
+          {% for cat in post.categories %}
+          {% if cat == 'Intel' %}
+          <tr>
+            <td style="padding:2.5%;width:25%;vertical-align:middle;min-width:120px">
+              <img src="/tn{{post.image}}" alt="project image" style="width:auto; height:auto; max-width:100%;" />
+            </td>
+            <td style="padding:2.5%;width:75%;vertical-align:middle">
+              <h3>{{post.title}}</h3>
+              <br>
+              <em>{{post.categories}} {{post.course}}</em>
+              <br>
+              {{ post.date | date: "%Y-%m-%d" }}
+
+              <br>
+              {% if post.website %}
+              <a href="{{post.website}}">website</a> /
+              {% endif %}
+              {% if post.paper %}
+              <a href="{{post.paper}}">paper</a> /
+              {% endif %}
+              {% if post.patent %}
+              <a href="{{post.patent}}">patent</a> /
+              {% endif %}
+              {% if post.patent2 %}
+              <a href="{{post.patent2}}">patent #2</a> /
+              {% endif %}
+              {% if post.patent3 %}
+              <a href="{{post.patent3}}">patent #3</a> /
+              {% endif %}
+              {% if post.video %}
+              <a href="{{post.video}}">video</a> /
+              {% endif %}
+              {% if post.video2 %}
+              <a href="{{post.video2}}">video #2</a> /
+              {% endif %}
+              {% if post.code %}
+              <a href="{{post.code}}">code</a> /
+              {% endif %}
+              {% if post.poster %}
+              <a href="{{post.poster}}">poster</a> /
+              {% endif %}
+              {% if post.slides %}
+              <a href="{{post.slides}}">slides</a> /
+              {% endif %}
+              <p></p>
+              {{ post.excerpt }}
+            </td>
+          </tr>
+          {% endif %}
+          {% endfor %}
+          {% endfor %}
+        </table>-->
+        
 </body>
+
 </html>
+
+
+
+
+
+
+
