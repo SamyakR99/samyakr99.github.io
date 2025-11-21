@@ -108,7 +108,59 @@
         </tbody></table>
       
       <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;">
-      
+
+        <tr>
+  <td style="padding:2.5%;width:40%;vertical-align:top;min-width:120px">
+    <img src="images/DCLIP.png" alt="project image" style="width:auto; height:auto; max-width:100%;" />
+  </td>
+
+  <td style="padding:2.5%;width:60%;vertical-align:top">
+    <h3>Efficiently Disentangling CLIP for Multi-Object Perception
+</h3>
+    <br>
+    <strong>Samyak Rawlekar</strong>, 
+    <a href="https://vanoracai.github.io/">Yujun Cai</a>, 
+    <a href="https://wangywust.github.io/">Yiwei Wanf</a>, 
+    <a href="https://faculty.ucmerced.edu/mhyang/">Ming-Hsuan Yang
+</a>, 
+    <a href="https://en.wikipedia.org/wiki/Narendra_Ahuja">Narendra Ahuja</a>
+    <br>
+    <em>Under Review</em>
+    <br>
+
+    <a href="javascript:toggleblock('DCLIP_abs')">abstract</a>
+    <a href="https://arxiv.org/pdf/2502.02977?">paper</a>
+    <!-- Add links here later: / project page / paper -->
+
+    <br>
+
+    <p align="justify"><i id="DCLIP_abs">
+      Vision-language models like CLIP excel at recognizing the single, prominent object
+      in a scene. However, they struggle in complex scenes containing multiple objects.
+      We identify a fundamental reason for this limitation: VLM feature space exhibits
+      excessive mutual feature information (MFI), where the features of one class contain
+      substantial information about other, unrelated classes. This high MFI becomes
+      evident during class-specific queries, as unrelated objects are activated alongside
+      the queried class. To address this limitation, we propose DCLIP, an efficient
+      framework that learns an optimal level of mutual information while adding only
+      minimal learnable parameters to a frozen VLM. DCLIP uses two complementary
+      losses: a novel MFI Loss that regulates class feature similarity to prevent excessive
+      overlap while preserving necessary shared information, and the Asymmetric Loss
+      (ASL) that aligns image features with the disentangled text features. Through
+      this disentanglement, DCLIP reduces excessive inter-class similarity by 30%. On
+      multi-label recognition, DCLIP performs favorably over SOTA approaches on
+      VOC2007 and COCO-14 while using 75% fewer training parameters. For zero-shot
+      semantic segmentation, it shows improved performance across six benchmark
+      datasets. These results highlight the importance of feature disentanglement for
+      multi-object perception in VLMs.
+    </i></p>
+  </td>
+</tr>
+
+<script xml:space="preserve" language="JavaScript">
+  hideblock('DCLIP_abs');
+</script>
+
         <tr>
           <td style="padding:2.5%;width:40%;vertical-align:top;min-width:120px">
             <img src="images/PosCoOp.png" alt="project image" style="width:auto; height:auto; max-width:100%;" />
@@ -330,6 +382,7 @@
 </body>
 
 </html>
+
 
 
 
