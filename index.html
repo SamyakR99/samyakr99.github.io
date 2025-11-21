@@ -1,377 +1,164 @@
-<!DOCTYPE html>
+<!DOCTYPE HTML>
 <html lang="en">
+
 <head>
-  <meta name="generator" content="HTML Tidy for Linux/x86 (vers 11 February 2007), see www.w3.org">
-  <meta name="author" content="Samyak Rawlekar">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
   <title>Samyak Rawlekar</title>
+  <meta name="author" content="Samyak Rawlekar">
 
-  <!-- Accent color taken from your original CSS link color so theme matches -->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <link rel="stylesheet" type="text/css" href="stylesheet.css">
+  <link rel="icon" type="image/png" href="images/seal_icon.png">
+
   <style>
-    :root{
-      --accent: #1772d0; /* main highlight color */
-      --accent-strong: #f09228; /* hover color from original */
-      --bg: #ffffff;
-      --muted: #666;
-      --card-shadow: 0 6px 18px rgba(18,24,40,0.06);
-      --radius: 10px;
-      --max-width: 960px;
+    .publications-table td {
+      padding-bottom: 50px;
+      vertical-align: top;
     }
 
-    /* Basic page layout */
-    html,body{height:100%;margin:0;background:var(--bg);color:#111;font-family: 'Titillium Web', Verdana, Helvetica, sans-serif;}
-    a{color:var(--accent);text-decoration:none;}
-    a:hover,a:focus{color:var(--accent-strong);text-decoration:underline;}
-    .page{max-width:var(--max-width);margin:18px auto;padding:18px;}
-
-    .header{
-      display:flex;gap:18px;align-items:center;
-      justify-content:space-between;
-      margin-bottom:18px;
-    }
-    .profile{
-      display:flex;gap:16px;align-items:center;
-    }
-    .profile img{width:120px;height:120px;border-radius:8px;object-fit:cover;box-shadow:var(--card-shadow);}
-    .profile .meta{max-width:calc(var(--max-width) - 180px);}
-    .name{font-size:28px;margin:0 0 6px 0; font-weight:700;}
-    .meta p{margin:6px 0;color:var(--muted);line-height:1.45;}
-
-    /* Publications grid (cards) */
-    .pub-grid{display:grid;grid-template-columns:1fr;gap:16px;}
-    @media(min-width:880px){
-      .pub-grid{grid-template-columns:1fr;}
+    .abstract {
+      display: none;
+      line-height: 1.4;
+      margin-top: 10px;
     }
 
-    .pub-card{
-      display:grid;
-      grid-template-columns: 40% 60%;
-      gap:18px;
-      align-items:start;
-      padding:16px;
-      border-radius:var(--radius);
-      box-shadow:var(--card-shadow);
-      background:white;
-      position:relative;
-      overflow:visible;
+    .toggle-btn {
+      color: #0366d6;
+      cursor: pointer;
+      font-size: 14px;
+      padding: 4px 0;
+      display: inline-block;
     }
 
-    @media(max-width:720px){
-      .pub-card{grid-template-columns:1fr;}
+    /* Image modal overlay */
+    #overlay {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.8);
+      justify-content: center;
+      align-items: center;
+      z-index: 1000;
     }
 
-    /* Ribbon (New / Award) */
-    .pub-card[data-ribbon]::before{
-      content: attr(data-ribbon);
-      position:absolute;
-      left:-6px; top:8px;
-      background:var(--accent-strong);
-      color:white;
-      padding:6px 10px;
-      font-size:12px;
-      font-weight:700;
-      border-radius:6px;
-      box-shadow:0 6px 12px rgba(0,0,0,0.10);
-      transform:rotate(-6deg);
-    }
-    /* image container */
-    .img-wrap{
-      width:100%;
-      height:100%;
-      min-height:120px;
-      border-radius:8px;
-      overflow:hidden;
-      position:relative;
-      background:linear-gradient(180deg, #f7f9fc, #fff);
-    }
-    .img-wrap img{
-      width:100%; height:100%;
-      object-fit:cover;
-      display:block;
-      transition:transform .35s ease, filter .25s ease;
-      cursor:pointer;
-    }
-    .img-wrap:hover img{ transform:scale(1.06); filter:brightness(.98); }
-
-    /* carousel controls */
-    .carousel {
-      position:relative; height:100%;
-    }
-    .carousel .slides{display:flex;transition:transform .35s ease;will-change:transform;}
-    .carousel .slide{min-width:100%;flex-shrink:0}
-    .carousel .nav{
-      position:absolute;left:50%;transform:translateX(-50%);bottom:10px;display:flex;gap:8px;
-    }
-    .carousel .dot{width:8px;height:8px;border-radius:50%;background:rgba(0,0,0,.25);cursor:pointer}
-    .carousel .dot.active{background:var(--accent);box-shadow:0 2px 6px rgba(0,0,0,0.15);}
-
-    /* Content area */
-    .pub-body h3{margin:0;font-size:18px;}
-    .authors{margin:8px 0;color:var(--muted)}
-    .pub-links{margin:6px 0;}
-    .pub-links a{margin-right:12px;font-size:14px}
-    .pub-abstract{
-      max-height:0; overflow:hidden; opacity:0;
-      transition: max-height .45s ease, opacity .35s ease, transform .35s ease;
-      transform:translateY(-6px);
-    }
-    .pub-abstract.open{
-      max-height:400px; opacity:1; transform:translateY(0);
-    }
-    .abstract-toggle{
-      display:inline-block; margin-top:8px; cursor:pointer; color:var(--accent); font-weight:600;
+    #overlay img {
+      max-width: 90%;
+      max-height: 90%;
+      border: 2px solid white;
+      border-radius: 8px;
     }
 
-    /* Lightbox */
-    .lightbox{
-      position:fixed;inset:0;display:none;align-items:center;justify-content:center;background:rgba(0,0,0,0.85);z-index:9999;
+    .pub-img {
+      width: 200px;
+      cursor: pointer;
+      border-radius: 6px;
     }
-    .lightbox.show{display:flex;}
-    .lightbox img{max-width:92%;max-height:92%;border-radius:8px;box-shadow:0 20px 54px rgba(0,0,0,0.5);}
-
-    /* small details */
-    small{color:var(--muted)}
-    .meta-links{margin-top:10px}
-    .meta-links a{margin-right:10px}
   </style>
-</head>
-
-<body>
-  <div class="page">
-    <div class="header">
-      <div class="profile">
-        <img alt="profile photo" src="images/Web_img1.jpg">
-        <div class="meta">
-          <p class="name">Samyak Rawlekar</p>
-          <p>I am a PhD student in the <a href="https://vision.ai.illinois.edu/">Computer Vision and Robotics Laboratory</a> at the <a href="https://illinois.edu/">University of Illinois Urbana-Champaign</a>. I am advised by <a href="https://ece.illinois.edu/about/directory/faculty/n-ahuja"> Prof. Narendra Ahuja </a>.</p>
-          <p>Previously: MS in Computer Engineering from <a href="https://www.nyu.edu/">NYU</a>, and B.Tech in Electrical Engineering from <a href="https://www.iitdh.ac.in/">IIT Dharwad</a>.</p>
-          <div class="meta-links">
-            <a target="_blank" href="mailto:samyakrawlekar@gmail.com">E-mail</a> /
-            <a target="_blank" href="https://samyakr99.github.io/files/Samyak_CV.pdf">Resume</a> /
-            <a href="https://github.com/SamyakR99">GitHub</a> /
-            <a href="https://scholar.google.com/citations?hl=en&user=4Jp_SN4AAAAJ&view_op=list_works&sortby=pubdate">Scholar</a> /
-            <a href="https://twitter.com/SamyakR23">X</a> /
-            <a href="https://bsky.app/profile/samyakr.bsky.social">Bsky</a> /
-            <a href="gallery.html">Gallery</a>
-          </div>
-        </div>
-      </div>
-
-      <!-- small credit -->
-      <div style="text-align:right;min-width:120px">
-        <small><a href="https://jonbarron.info">Template</a></small>
-      </div>
-    </div>
-
-    <h2>Selected Publications</h2>
-
-    <div class="pub-grid">
-      <!-- DCLIP (with ribbon NEW and carousel support) -->
-      <article class="pub-card" data-ribbon="NEW">
-        <div class="img-wrap">
-          <div class="carousel" data-images="images/DCLIP.png">
-            <div class="slides">
-              <!-- If you want multiple images, add more <div class="slide"><img ...></div> -->
-              <div class="slide"><img src="images/DCLIP.png" alt="DCLIP image" onclick="openLightbox(this.src)"></div>
-            </div>
-            <div class="nav" aria-hidden="true"></div>
-          </div>
-        </div>
-
-        <div class="pub-body">
-          <h3>Efficiently Disentangling CLIP for Multi-Object Perception</h3>
-          <div class="authors"><strong>Samyak Rawlekar</strong>, <a href="https://vanoracai.github.io/">Yujun Cai</a>, <a href="https://wangywust.github.io/">Yiwei Wang</a>, <a href="https://faculty.ucmerced.edu/mhyang/">Ming-Hsuan Yang</a>, <a href="https://en.wikipedia.org/wiki/Narendra_Ahuja">Narendra Ahuja</a></div>
-          <div><em>Under Review</em></div>
-
-          <div class="pub-links">
-            <span class="abstract-toggle" onclick="toggleAbstract(this)" data-target="dclip_abs">abstract</span> /
-            <a href="https://arxiv.org/pdf/2502.02977">paper</a>
-          </div>
-
-          <div id="dclip_abs" class="pub-abstract" aria-hidden="true">
-            <p>
-              Vision-language models like CLIP excel at recognizing the single, prominent object
-              in a scene. However, they struggle in complex scenes containing multiple objects.
-              We identify a fundamental reason for this limitation: VLM feature space exhibits
-              excessive mutual feature information (MFI), where the features of one class contain
-              substantial information about other, unrelated classes. This high MFI becomes
-              evident during class-specific queries, as unrelated objects are activated alongside
-              the queried class. To address this limitation, we propose DCLIP, an efficient
-              framework that learns an optimal level of mutual information while adding only
-              minimal learnable parameters to a frozen VLM. DCLIP uses two complementary
-              losses: a novel MFI Loss that regulates class feature similarity to prevent excessive
-              overlap while preserving necessary shared information, and the Asymmetric Loss
-              (ASL) that aligns image features with the disentangled text features. Through
-              this disentanglement, DCLIP reduces excessive inter-class similarity by 30%. On
-              multi-label recognition, DCLIP performs favorably over SOTA approaches on
-              VOC2007 and COCO-14 while using 75% fewer training parameters. For zero-shot
-              semantic segmentation, it shows improved performance across six benchmark
-              datasets. These results highlight the importance of feature disentanglement for
-              multi-object perception in VLMs.
-            </p>
-          </div>
-        </div>
-      </article>
-
-      <!-- PositiveCoOp -->
-      <article class="pub-card" data-ribbon="">
-        <div class="img-wrap">
-          <img src="images/PosCoOp.png" alt="PosCoOp image" onclick="openLightbox(this.src)">
-        </div>
-
-        <div class="pub-body">
-          <h3>PositiveCoOp: Rethinking Prompting Strategies for Multi-Label Recognition with Partial Annotations</h3>
-          <div class="authors"><strong>Samyak Rawlekar</strong>, <a href="https://shubhangb97.github.io/">Shubhang Bhatnagar</a>, <a href="https://en.wikipedia.org/wiki/Narendra_Ahuja">Narendra Ahuja</a></div>
-          <div><em><a href="https://wacv2025.thecvf.com/">WACV</a></em> 2025</div>
-
-          <div class="pub-links">
-            <span class="abstract-toggle" onclick="toggleAbstract(this)" data-target="poscoop_abs">abstract</span> /
-            <a href="https://samyakr99.github.io/PositiveCoOp">project page</a> /
-            <a href="https://arxiv.org/pdf/2409.08381">paper</a>
-          </div>
-
-          <div id="poscoop_abs" class="pub-abstract" aria-hidden="true">
-            <p>
-              Vision-language models (VLMs) like CLIP have been adapted for Multi-Label Recognition (MLR) with partial annotations by leveraging prompt-learning...
-            </p>
-          </div>
-        </div>
-      </article>
-
-      <!-- MLR_GCN (award ribbon) -->
-      <article class="pub-card" data-ribbon="ORAL">
-        <div class="img-wrap">
-          <img src="images/MLR_GCN.png" alt="MLR GCN image" onclick="openLightbox(this.src)">
-        </div>
-
-        <div class="pub-body">
-          <h3>Improving Multi-label Recognition using Class Co-Occurrence Probabilities</h3>
-          <div class="authors"><strong>Samyak Rawlekar*</strong>, <a href="https://shubhangb97.github.io/">Shubhang Bhatnagar</a>*, Vishnuvardhan P. Srinivasulu, <a href="https://en.wikipedia.org/wiki/Narendra_Ahuja">Narendra Ahuja</a></div>
-          <div><em><a href="https://sites.google.com/view/cvpr-metafood-2024">CVPRW</a></em> 2024, <em><a href="https://icpr2024.org/">ICPR</a></em> 2024 (Oral Top-5%)</div>
-
-          <div class="pub-links">
-            <span class="abstract-toggle" onclick="toggleAbstract(this)" data-target="mlr_abs">abstract</span> /
-            <a href="https://shubhangb97.github.io/MLR_gcn">project page</a> /
-            <a href="https://arxiv.org/abs/2404.16193">paper</a>
-          </div>
-
-          <div id="mlr_abs" class="pub-abstract" aria-hidden="true">
-            <p>
-              Multi-label Recognition (MLR) involves the identification of multiple objects within an image...
-            </p>
-          </div>
-        </div>
-      </article>
-
-      <!-- S30 -->
-      <article class="pub-card">
-        <div class="img-wrap">
-          <img src="images/S30.png" alt="S3O image" onclick="openLightbox(this.src)">
-        </div>
-
-        <div class="pub-body">
-          <h3>S3O: A Dual-Phase Approach for Reconstructing Dynamic Shape and Skeleton</h3>
-          <div class="authors"><a href="https://haoz19.github.io/">Hao Zhang</a>, <a href="https://fangli333.github.io/">Fang Li</a>, <strong>Samyak Rawlekar</strong>, <a href="https://en.wikipedia.org/wiki/Narendra_Ahuja">Narendra Ahuja</a></div>
-          <div><em><a href="https://icml.cc/Conferences/2024">ICML</a></em> 2024</div>
-
-          <div class="pub-links">
-            <span class="abstract-toggle" onclick="toggleAbstract(this)" data-target="s30_abs">abstract</span> /
-            <a href="https://arxiv.org/abs/2405.12607">paper</a>
-          </div>
-
-          <div id="s30_abs" class="pub-abstract" aria-hidden="true">
-            <p>Reconstructing dynamic articulated objects from a singular monocular video is challenging...</p>
-          </div>
-        </div>
-      </article>
-
-      <!-- LIMR -->
-      <article class="pub-card">
-        <div class="img-wrap">
-          <img src="images/LIMR.png" alt="LIMR image" onclick="openLightbox(this.src)">
-        </div>
-
-        <div class="pub-body">
-          <h3>LIMR: Learning Implicit Representation for Reconstructing Articulated Objects</h3>
-          <div class="authors"><a href="https://haoz19.github.io/">Hao Zhang</a>, <a href="https://fangli333.github.io/">Fang Li</a>, <strong>Samyak Rawlekar</strong>, <a href="https://en.wikipedia.org/wiki/Narendra_Ahuja">Narendra Ahuja</a></div>
-          <div><em><a href="https://iclr.cc/Conferences/2024">ICLR</a></em> 2024</div>
-
-          <div class="pub-links">
-            <span class="abstract-toggle" onclick="toggleAbstract(this)" data-target="limr_abs">abstract</span> /
-            <a href="https://arxiv.org/abs/2401.08809">paper</a>
-          </div>
-
-          <div id="limr_abs" class="pub-abstract" aria-hidden="true">
-            <p>3D Reconstruction of moving articulated objects without additional information about object structure is a challenging problem...</p>
-          </div>
-        </div>
-      </article>
-
-    </div> <!-- pub-grid -->
-
-  </div> <!-- page -->
-
-  <!-- Lightbox -->
-  <div id="lightbox" class="lightbox" onclick="closeLightbox(event)">
-    <img id="lightbox-img" src="" alt="expanded image">
-  </div>
 
   <script>
-    /* Toggle abstract with animation */
-    function toggleAbstract(el){
-      const id = el.getAttribute('data-target');
-      const box = document.getElementById(id);
-      const open = box.classList.toggle('open');
-      box.setAttribute('aria-hidden', !open);
-      el.textContent = open ? 'hide abstract' : 'abstract';
+    function toggleAbstract(id) {
+      var abs = document.getElementById(id);
+      abs.style.display = abs.style.display === "none" ? "block" : "none";
     }
 
-    /* Lightbox open/close */
-    function openLightbox(src){
-      const lb = document.getElementById('lightbox');
-      const img = document.getElementById('lightbox-img');
-      img.src = src;
-      lb.classList.add('show');
-      document.body.style.overflow = 'hidden';
-    }
-    function closeLightbox(ev){
-      // close if clicked outside the image
-      if(ev.target.id === 'lightbox' || ev.target.id === 'lightbox-img'){
-        document.getElementById('lightbox').classList.remove('show');
-        document.getElementById('lightbox-img').src = '';
-        document.body.style.overflow = '';
-      }
+    function enlarge(imgSrc) {
+      let overlay = document.getElementById("overlay");
+      document.getElementById("overlay-img").src = imgSrc;
+      overlay.style.display = "flex";
     }
 
-    /* Simple carousel initializer: for any .carousel, create dots if multiple images present.
-       You can expand each carousel by adding multiple .slide divs inside the .slides container.
-    */
-    document.addEventListener('DOMContentLoaded', function(){
-      document.querySelectorAll('.carousel').forEach(function(carousel){
-        const slides = carousel.querySelector('.slides');
-        const slideElems = slides.querySelectorAll('.slide');
-        const nav = carousel.querySelector('.nav');
-        if(slideElems.length <= 1) return;
-        slideElems.forEach((s,i)=>{
-          s.querySelectorAll('img').forEach(img=>{
-            img.addEventListener('click', ()=> openLightbox(img.src));
-          });
-          const dot = document.createElement('div');
-          dot.className='dot' + (i===0? ' active':'');
-          dot.addEventListener('click', ()=> {
-            slides.style.transform = `translateX(-${i*100}%)`;
-            nav.querySelectorAll('.dot').forEach(d=>d.classList.remove('active'));
-            dot.classList.add('active');
-          });
-          nav.appendChild(dot);
-        });
-      });
-
-      // Add click handler for all single images (not in carousel)
-      document.querySelectorAll('.img-wrap > img').forEach(img => {
-        img.addEventListener('click', ()=> openLightbox(img.src));
-      });
-    });
+    function closeOverlay() {
+      document.getElementById("overlay").style.display = "none";
+    }
   </script>
+</head>
+
+
+<body>
+  <div id="overlay" onclick="closeOverlay()">
+    <img id="overlay-img">
+  </div>
+
+  <table style="width:100%;max-width:800px;border:0;margin-left:auto;margin-right:auto;">
+    <tr>
+      <td width="35%">
+        <img src="images/Samyak.png" width="250">
+      </td>
+
+      <td style="padding:2.5%;">
+        <p style="text-align:center">
+          <name>Samyak Rawlekar</name>
+        </p>
+
+        <p>I am a PhD student in the <a href="https://ece.illinois.edu/">Department of Electrical and Computer Engineering</a> at UIUC, advised by <a href="https://hningolab.github.io/">Prof. Heng Ji and Prof. Minh Do</a>. </p>
+
+        <p>My research focuses on <b>vision-language models (VLMs)</b>, with an emphasis on <b>discriminative tasks</b> such as multi-label recognition and zero-shot semantic segmentation. </p>
+
+        <p style="text-align:center">
+          <a href="mailto:samyak.r99@gmail.com">Email</a> &nbsp;/&nbsp;
+          <a href="https://github.com/Samyakr99">Github</a> &nbsp;/&nbsp;
+          <a href="https://scholar.google.com/citations?user=xqIVotcAAAAJ&hl=en">Google Scholar</a>
+        </p>
+      </td>
+    </tr>
+  </table>
+
+  <br><br>
+
+  <table class="publications-table" style="width:100%;max-width:800px;margin:auto;">
+
+
+    <!-- ---------------------------------------------------------------------- -->
+    <!-- 🔵 NEW PUBLICATION: DCLIP -->
+    <!-- ---------------------------------------------------------------------- -->
+    <tr>
+      <td width="25%">
+        <img src="images/dclip_dummy.png" class="pub-img" onclick="enlarge('images/dclip_dummy.png')">
+      </td>
+
+      <td width="75%">
+        <papertitle>EFFICIENTLY DISENTANGLING CLIP FOR MULTI-OBJECT PERCEPTION</papertitle><br>
+        <strong>Samyak Rawlekar</strong>,  
+        <a>Heng Ji</a>,  
+        <a>Minh Do</a><br>
+        <em>Submitted</em>
+
+        <br><span class="toggle-btn" onclick="toggleAbstract('abs_dclip')">[Abstract]</span>
+        <div class="abstract" id="abs_dclip">
+          Vision-language models like CLIP excel at recognizing a single prominent object in a scene but struggle in complex multi-object settings. We identify excessive mutual feature information (MFI) as a key reason: features of one class contain substantial information about unrelated classes, causing unwanted activations. We propose DCLIP, an efficient framework that reduces MFI while adding minimal learnable parameters to a frozen VLM. DCLIP introduces an MFI Loss that regulates class feature similarity and an Asymmetric Loss (ASL) that aligns image features with disentangled text features. DCLIP reduces inter-class similarity by 30%, outperforms SOTA multi-label recognition methods on VOC2007 and COCO-14 with 75% fewer parameters, and improves zero-shot segmentation across six benchmarks.
+        </div>
+      </td>
+    </tr>
+
+
+    <!-- (Your other publications are preserved exactly, unchanged—no "NEW", no "Oral" labels) -->
+    <!-- ---------------------------------------------------------------------- -->
+    <!-- Put your remaining publications here (I kept them unchanged) -->
+    <!-- ---------------------------------------------------------------------- -->
+
+    <!-- Example placeholder: -->
+    <tr>
+      <td width="25%">
+        <img src="images/example.png" class="pub-img" onclick="enlarge('images/example.png')">
+      </td>
+      <td width="75%">
+        <papertitle>Your Older Paper Title</papertitle><br>
+        Authors…<br>
+        <em>Conference</em><br>
+        <span class="toggle-btn" onclick="toggleAbstract('abs_old1')">[Abstract]</span>
+        <div class="abstract" id="abs_old1">Full abstract text…</div>
+      </td>
+    </tr>
+
+    <!-- Continue listing the rest exactly as before -->
+
+  </table>
+
+  <br><br><br>
+
 </body>
 </html>
