@@ -48,10 +48,14 @@
             color: var(--link-hover);
         }
 
-        .theme-toggle {
+        .theme-toggle-container {
             position: fixed;
             top: 20px;
             right: 20px;
+            z-index: 1000;
+        }
+
+        .theme-toggle {
             width: 50px;
             height: 50px;
             border-radius: 50%;
@@ -62,7 +66,6 @@
             align-items: center;
             justify-content: center;
             transition: all 0.3s ease;
-            z-index: 1000;
             box-shadow: 0 2px 8px var(--card-shadow);
         }
 
@@ -92,14 +95,8 @@
             background-color: var(--card-bg);
         }
 
-        /* Ensure proper ordering on desktop */
-        @media (min-width: 768px) {
-            .intro .order-md-1 {
-                order: 1;
-            }
-            .intro .order-md-2 {
-                order: 2;
-            }
+        .intro-text {
+            text-align: left;
         }
 
         .social-icons a {
@@ -199,14 +196,16 @@
 </head>
 
 <body>
-    <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle dark mode">
-        <i class="fas fa-moon"></i>
-    </button>
+    <div class="theme-toggle-container">
+        <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle dark mode">
+            <i class="fas fa-moon"></i>
+        </button>
+    </div>
 
     <div class="intro px-3 py-3 pt-md-5 pb-md-4 mx-auto">
         <h1 class="display-6 text-center name">Samyak Rawlekar</h1>
-        <div class="d-flex flex-wrap bd-highlight mb-3 my-3 justify-content-center align-items-start">
-            <div class="intro-text order-2 order-md-1 p-2 my-1 bd-highlight text-left flex-grow-1">
+        <div class="d-flex flex-wrap bd-highlight mb-3 my-3 justify-content-center">
+            <div class="intro-text order-2 p-2 my-1 bd-highlight text-left">
                 <p>I am a PhD student in the <a href="https://vision.ai.illinois.edu/">Computer Vision and Robotics Laboratory</a> at the <a href="https://illinois.edu/">University of Illinois Urbana-Champaign</a>. 
                 I am advised by <a href="https://ece.illinois.edu/about/directory/faculty/n-ahuja">Prof. Narendra Ahuja</a>.</p>
                 
@@ -220,27 +219,30 @@
                     <a target="_blank" href="https://github.com/SamyakR99"><i class="fab fa-github"></i></a>
                     <a target="_blank" href="https://scholar.google.com/citations?hl=en&user=4Jp_SN4AAAAJ&view_op=list_works&sortby=pubdate"><i class="fas fa-graduation-cap"></i></a>
                     <a target="_blank" href="https://twitter.com/SamyakR23"><i class="fab fa-twitter"></i></a>
+                    <a target="_blank" href="https://bsky.app/profile/samyakr.bsky.social"><i class="fas fa-cloud"></i></a>
                 </p>
             </div>
-            <div class="p-2 order-1 order-md-2 bd-highlight">
+            <div class="p-2 order-1 bd-highlight">
                 <img class="img-thumbnail" src="images/Web_img1.jpg" alt="Profile photo" width="240px">
             </div>
         </div>
     </div>
 
     <div class="container">
+        <a name="publications"></a>
         <h2 class="display-7 mb-2 text-center">Selected Publications</h2>
         <p class="text-center mb-4">Please visit <a target="_blank" href="https://scholar.google.com/citations?hl=en&user=4Jp_SN4AAAAJ&view_op=list_works&sortby=pubdate">my Google Scholar</a> for the full list of publications</p>
+        <br>
 
         <div class="card-deck mb-3">
-            <div class="card mb-3 shadow-sm">
-                <div class="card-body p-3 d-flex flex-wrap">
-                    <div class="teaser order-1 order-md-1 p-2 bd-highlight">
+            <div class="card mb-2 shadow-sm">
+                <div class="card-body p-2 d-flex flex-wrap">
+                    <div class="teaser order-1 p-2 bd-highlight">
                         <a target="_blank" href="https://arxiv.org/pdf/2502.02977">
-                            <img src="images/DCLIP.png" alt="DCLIP project image" width="100%">
+                            <img src="images/DCLIP.png" alt="" width="100%">
                         </a>
                     </div>
-                    <div class="p-2 order-2 order-md-2 bd-highlight paper">
+                    <div class="p-2 order-2 bd-highlight paper">
                         <h4 class="my-0 mb-2 font-weight-normal">Efficiently Disentangling CLIP for Multi-Object Perception</h4>
                         <ul class="list-unstyled mb-0">
                             <li><strong>Samyak Rawlekar</strong>, <a href="https://vanoracai.github.io/">Yujun Cai</a>, <a href="https://wangywust.github.io/">Yiwei Wang</a>, <a href="https://faculty.ucmerced.edu/mhyang/">Ming-Hsuan Yang</a>, <a href="https://en.wikipedia.org/wiki/Narendra_Ahuja">Narendra Ahuja</a></li>
@@ -253,14 +255,14 @@
         </div>
 
         <div class="card-deck mb-3">
-            <div class="card mb-3 shadow-sm">
-                <div class="card-body p-3 d-flex flex-wrap">
-                    <div class="teaser order-1 order-md-1 p-2 bd-highlight">
+            <div class="card mb-2 shadow-sm">
+                <div class="card-body p-2 d-flex flex-wrap">
+                    <div class="teaser order-1 p-2 bd-highlight">
                         <a target="_blank" href="https://samyakr99.github.io/PositiveCoOp">
-                            <img src="images/PosCoOp.png" alt="PositiveCoOp project image" width="100%">
+                            <img src="images/PosCoOp.png" alt="" width="100%">
                         </a>
                     </div>
-                    <div class="p-2 order-2 order-md-2 bd-highlight paper">
+                    <div class="p-2 order-2 bd-highlight paper">
                         <h4 class="my-0 mb-2 font-weight-normal">PositiveCoOp: Rethinking Prompting Strategies for Multi-Label Recognition with Partial Annotations</h4>
                         <ul class="list-unstyled mb-0">
                             <li><strong>Samyak Rawlekar</strong>, <a href="https://shubhangb97.github.io/">Shubhang Bhatnagar</a>, <a href="https://en.wikipedia.org/wiki/Narendra_Ahuja">Narendra Ahuja</a></li>
@@ -273,14 +275,14 @@
         </div>
 
         <div class="card-deck mb-3">
-            <div class="card mb-3 shadow-sm">
-                <div class="card-body p-3 d-flex flex-wrap">
-                    <div class="teaser order-1 order-md-1 p-2 bd-highlight">
+            <div class="card mb-2 shadow-sm">
+                <div class="card-body p-2 d-flex flex-wrap">
+                    <div class="teaser order-1 p-2 bd-highlight">
                         <a target="_blank" href="https://shubhangb97.github.io/MLR_gcn">
-                            <img src="images/MLR_GCN.png" alt="MLR-GCN project image" width="100%">
+                            <img src="images/MLR_GCN.png" alt="" width="100%">
                         </a>
                     </div>
-                    <div class="p-2 order-2 order-md-2 bd-highlight paper">
+                    <div class="p-2 order-2 bd-highlight paper">
                         <h4 class="my-0 mb-2 font-weight-normal">Improving Multi-label Recognition using Class Co-Occurrence Probabilities</h4>
                         <ul class="list-unstyled mb-0">
                             <li><strong>Samyak Rawlekar*</strong>, <a href="https://shubhangb97.github.io/">Shubhang Bhatnagar*</a>, Vishnuvardhan Pogunulu Srinivasulu, <a href="https://en.wikipedia.org/wiki/Narendra_Ahuja">Narendra Ahuja</a></li>
@@ -293,14 +295,14 @@
         </div>
 
         <div class="card-deck mb-3">
-            <div class="card mb-3 shadow-sm">
-                <div class="card-body p-3 d-flex flex-wrap">
-                    <div class="teaser order-1 order-md-1 p-2 bd-highlight">
+            <div class="card mb-2 shadow-sm">
+                <div class="card-body p-2 d-flex flex-wrap">
+                    <div class="teaser order-1 p-2 bd-highlight">
                         <a target="_blank" href="https://arxiv.org/abs/2405.12607">
-                            <img src="images/S30.png" alt="S3O project image" width="100%">
+                            <img src="images/S30.png" alt="" width="100%">
                         </a>
                     </div>
-                    <div class="p-2 order-2 order-md-2 bd-highlight paper">
+                    <div class="p-2 order-2 bd-highlight paper">
                         <h4 class="my-0 mb-2 font-weight-normal">S3O: A Dual-Phase Approach for Reconstructing Dynamic Shape and Skeleton</h4>
                         <ul class="list-unstyled mb-0">
                             <li><a href="https://haoz19.github.io/">Hao Zhang</a>, <a href="https://fangli333.github.io/">Fang Li</a>, <strong>Samyak Rawlekar</strong>, <a href="https://en.wikipedia.org/wiki/Narendra_Ahuja">Narendra Ahuja</a></li>
@@ -313,14 +315,14 @@
         </div>
 
         <div class="card-deck mb-3">
-            <div class="card mb-3 shadow-sm">
-                <div class="card-body p-3 d-flex flex-wrap">
-                    <div class="teaser order-1 order-md-1 p-2 bd-highlight">
+            <div class="card mb-2 shadow-sm">
+                <div class="card-body p-2 d-flex flex-wrap">
+                    <div class="teaser order-1 p-2 bd-highlight">
                         <a target="_blank" href="https://arxiv.org/abs/2401.08809">
-                            <img src="images/LIMR.png" alt="LIMR project image" width="100%">
+                            <img src="images/LIMR.png" alt="" width="100%">
                         </a>
                     </div>
-                    <div class="p-2 order-2 order-md-2 bd-highlight paper">
+                    <div class="p-2 order-2 bd-highlight paper">
                         <h4 class="my-0 mb-2 font-weight-normal">LIMR: Learning Implicit Representation for Reconstructing Articulated Objects</h4>
                         <ul class="list-unstyled mb-0">
                             <li><a href="https://haoz19.github.io/">Hao Zhang</a>, <a href="https://fangli333.github.io/">Fang Li</a>, <strong>Samyak Rawlekar</strong>, <a href="https://en.wikipedia.org/wiki/Narendra_Ahuja">Narendra Ahuja</a></li>
@@ -343,4 +345,3 @@
 </body>
 
 </html>
-
