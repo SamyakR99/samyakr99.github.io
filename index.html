@@ -92,6 +92,16 @@
             background-color: var(--card-bg);
         }
 
+        /* Ensure proper ordering on desktop */
+        @media (min-width: 768px) {
+            .intro .order-md-1 {
+                order: 1;
+            }
+            .intro .order-md-2 {
+                order: 2;
+            }
+        }
+
         .social-icons a {
             font-size: 24px;
             margin: 0 8px;
@@ -195,11 +205,8 @@
 
     <div class="intro px-3 py-3 pt-md-5 pb-md-4 mx-auto">
         <h1 class="display-6 text-center name">Samyak Rawlekar</h1>
-        <div class="d-flex flex-wrap bd-highlight mb-3 my-3 justify-content-center">
-            <div class="p-2 order-1 bd-highlight">
-                <img class="img-thumbnail" src="images/Web_img1.jpg" alt="Profile photo" width="240px">
-            </div>
-            <div class="intro-text order-2 p-2 my-1 bd-highlight text-left">
+        <div class="d-flex flex-wrap bd-highlight mb-3 my-3 justify-content-center align-items-start">
+            <div class="intro-text order-2 order-md-1 p-2 my-1 bd-highlight text-left flex-grow-1">
                 <p>I am a PhD student in the <a href="https://vision.ai.illinois.edu/">Computer Vision and Robotics Laboratory</a> at the <a href="https://illinois.edu/">University of Illinois Urbana-Champaign</a>. 
                 I am advised by <a href="https://ece.illinois.edu/about/directory/faculty/n-ahuja">Prof. Narendra Ahuja</a>.</p>
                 
@@ -216,6 +223,9 @@
                     <a target="_blank" href="https://bsky.app/profile/samyakr.bsky.social"><i class="fas fa-cloud"></i></a>
                 </p>
             </div>
+            <div class="p-2 order-1 order-md-2 bd-highlight">
+                <img class="img-thumbnail" src="images/Web_img1.jpg" alt="Profile photo" width="240px">
+            </div>
         </div>
     </div>
 
@@ -226,12 +236,12 @@
         <div class="card-deck mb-3">
             <div class="card mb-3 shadow-sm">
                 <div class="card-body p-3 d-flex flex-wrap">
-                    <div class="teaser order-1 p-2 bd-highlight">
+                    <div class="teaser order-1 order-md-1 p-2 bd-highlight">
                         <a target="_blank" href="https://arxiv.org/pdf/2502.02977">
                             <img src="images/DCLIP.png" alt="DCLIP project image" width="100%">
                         </a>
                     </div>
-                    <div class="p-2 order-2 bd-highlight paper">
+                    <div class="p-2 order-2 order-md-2 bd-highlight paper">
                         <h4 class="my-0 mb-2 font-weight-normal">Efficiently Disentangling CLIP for Multi-Object Perception</h4>
                         <ul class="list-unstyled mb-0">
                             <li><strong>Samyak Rawlekar</strong>, <a href="https://vanoracai.github.io/">Yujun Cai</a>, <a href="https://wangywust.github.io/">Yiwei Wang</a>, <a href="https://faculty.ucmerced.edu/mhyang/">Ming-Hsuan Yang</a>, <a href="https://en.wikipedia.org/wiki/Narendra_Ahuja">Narendra Ahuja</a></li>
@@ -246,12 +256,12 @@
         <div class="card-deck mb-3">
             <div class="card mb-3 shadow-sm">
                 <div class="card-body p-3 d-flex flex-wrap">
-                    <div class="teaser order-1 p-2 bd-highlight">
+                    <div class="teaser order-1 order-md-1 p-2 bd-highlight">
                         <a target="_blank" href="https://samyakr99.github.io/PositiveCoOp">
                             <img src="images/PosCoOp.png" alt="PositiveCoOp project image" width="100%">
                         </a>
                     </div>
-                    <div class="p-2 order-2 bd-highlight paper">
+                    <div class="p-2 order-2 order-md-2 bd-highlight paper">
                         <h4 class="my-0 mb-2 font-weight-normal">PositiveCoOp: Rethinking Prompting Strategies for Multi-Label Recognition with Partial Annotations</h4>
                         <ul class="list-unstyled mb-0">
                             <li><strong>Samyak Rawlekar</strong>, <a href="https://shubhangb97.github.io/">Shubhang Bhatnagar</a>, <a href="https://en.wikipedia.org/wiki/Narendra_Ahuja">Narendra Ahuja</a></li>
@@ -266,12 +276,12 @@
         <div class="card-deck mb-3">
             <div class="card mb-3 shadow-sm">
                 <div class="card-body p-3 d-flex flex-wrap">
-                    <div class="teaser order-1 p-2 bd-highlight">
+                    <div class="teaser order-1 order-md-1 p-2 bd-highlight">
                         <a target="_blank" href="https://shubhangb97.github.io/MLR_gcn">
                             <img src="images/MLR_GCN.png" alt="MLR-GCN project image" width="100%">
                         </a>
                     </div>
-                    <div class="p-2 order-2 bd-highlight paper">
+                    <div class="p-2 order-2 order-md-2 bd-highlight paper">
                         <h4 class="my-0 mb-2 font-weight-normal">Improving Multi-label Recognition using Class Co-Occurrence Probabilities</h4>
                         <ul class="list-unstyled mb-0">
                             <li><strong>Samyak Rawlekar*</strong>, <a href="https://shubhangb97.github.io/">Shubhang Bhatnagar*</a>, Vishnuvardhan Pogunulu Srinivasulu, <a href="https://en.wikipedia.org/wiki/Narendra_Ahuja">Narendra Ahuja</a></li>
@@ -286,12 +296,12 @@
         <div class="card-deck mb-3">
             <div class="card mb-3 shadow-sm">
                 <div class="card-body p-3 d-flex flex-wrap">
-                    <div class="teaser order-1 p-2 bd-highlight">
+                    <div class="teaser order-1 order-md-1 p-2 bd-highlight">
                         <a target="_blank" href="https://arxiv.org/abs/2405.12607">
                             <img src="images/S30.png" alt="S3O project image" width="100%">
                         </a>
                     </div>
-                    <div class="p-2 order-2 bd-highlight paper">
+                    <div class="p-2 order-2 order-md-2 bd-highlight paper">
                         <h4 class="my-0 mb-2 font-weight-normal">S3O: A Dual-Phase Approach for Reconstructing Dynamic Shape and Skeleton</h4>
                         <ul class="list-unstyled mb-0">
                             <li><a href="https://haoz19.github.io/">Hao Zhang</a>, <a href="https://fangli333.github.io/">Fang Li</a>, <strong>Samyak Rawlekar</strong>, <a href="https://en.wikipedia.org/wiki/Narendra_Ahuja">Narendra Ahuja</a></li>
@@ -306,12 +316,12 @@
         <div class="card-deck mb-3">
             <div class="card mb-3 shadow-sm">
                 <div class="card-body p-3 d-flex flex-wrap">
-                    <div class="teaser order-1 p-2 bd-highlight">
+                    <div class="teaser order-1 order-md-1 p-2 bd-highlight">
                         <a target="_blank" href="https://arxiv.org/abs/2401.08809">
                             <img src="images/LIMR.png" alt="LIMR project image" width="100%">
                         </a>
                     </div>
-                    <div class="p-2 order-2 bd-highlight paper">
+                    <div class="p-2 order-2 order-md-2 bd-highlight paper">
                         <h4 class="my-0 mb-2 font-weight-normal">LIMR: Learning Implicit Representation for Reconstructing Articulated Objects</h4>
                         <ul class="list-unstyled mb-0">
                             <li><a href="https://haoz19.github.io/">Hao Zhang</a>, <a href="https://fangli333.github.io/">Fang Li</a>, <strong>Samyak Rawlekar</strong>, <a href="https://en.wikipedia.org/wiki/Narendra_Ahuja">Narendra Ahuja</a></li>
