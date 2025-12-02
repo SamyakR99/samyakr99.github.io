@@ -92,11 +92,13 @@
 
         .img-thumbnail {
             border-radius: 12px;
-            border: 3px solid var(--border-color);
+            /* Thin border for profile picture */
+            border: 1px solid var(--border-color);
             background-color: var(--card-bg);
-            /* Make image responsive within its column */
-            max-width: 100%; 
+            /* Force image to fill the expanded column */
+            width: 100%;
             height: auto;
+            object-fit: cover;
         }
 
         .intro-text {
@@ -115,7 +117,8 @@
 
         .card {
             background-color: var(--card-bg);
-            border: 1px solid var(--border-color);
+            /* Thin border for publications */
+            border: 0.5px solid var(--border-color);
             transition: all 0.3s ease;
         }
 
@@ -124,7 +127,6 @@
             box-shadow: 0 6px 16px var(--card-shadow) !important;
         }
 
-        /* Updated Teaser CSS for Grid Layout */
         .teaser img {
             width: 100%;
             height: auto;
@@ -163,8 +165,11 @@
                 width: 45px;
                 height: 45px;
             }
-            /* Add some spacing between stacked columns on mobile */
-            .col-md-3, .col-md-9, .col-md-4, .col-md-8 {
+
+            .col-md-3,
+            .col-md-9,
+            .col-md-4,
+            .col-md-8 {
                 margin-bottom: 1rem;
             }
         }
@@ -207,9 +212,9 @@
 
     <div class="intro px-3 py-3 pt-md-5 pb-md-4 mx-auto">
         <h1 class="display-6 text-center name">Samyak Rawlekar</h1>
-        
+
         <div class="row align-items-center">
-            <div class="col-md-9 intro-text">
+            <div class="col-md-8 intro-text">
                 <p>I am a PhD student in the <a href="https://vision.ai.illinois.edu/">Computer Vision and Robotics
                         Laboratory</a> at the <a href="https://illinois.edu/">University of Illinois Urbana-Champaign</a>.
                     I am advised by <a href="https://ece.illinois.edu/about/directory/faculty/n-ahuja">Prof. Narendra
@@ -223,7 +228,7 @@
                         University</a>, and B.Tech in Electrical Engineering from <a href="https://www.iitdh.ac.in/">IIT
                         Dharwad</a>.</p>
 
-                <p class="social-icons">
+                <p class="social-icons text-center mt-3">
                     <a target="_blank" href="mailto:samyakrawlekar@gmail.com"><i class="far fa-envelope"></i></a>
                     <a target="_blank" href="https://samyakr99.github.io/files/Samyak_CV.pdf"><i
                             class="fas fa-file-alt"></i></a>
@@ -235,8 +240,8 @@
                     <a target="_blank" href="https://bsky.app/profile/samyakr.bsky.social"><i class="fas fa-cloud"></i></a>
                 </p>
             </div>
-            
-            <div class="col-md-3 text-center">
+
+            <div class="col-md-4 text-center">
                 <img class="img-thumbnail" src="images/Web_img1.jpg" alt="Profile photo">
             </div>
         </div>
@@ -260,7 +265,8 @@
                             </a>
                         </div>
                         <div class="col-md-9 paper">
-                            <h4 class="my-0 mb-2 font-weight-normal">Efficiently Disentangling CLIP for Multi-Object Perception</h4>
+                            <h4 class="my-0 mb-2 font-weight-normal">Efficiently Disentangling CLIP for Multi-Object
+                                Perception</h4>
                             <ul class="list-unstyled mb-0">
                                 <li><strong>Samyak Rawlekar</strong>, <a href="https://vanoracai.github.io/">Yujun
                                         Cai</a>, <a href="https://wangywust.github.io/">Yiwei Wang</a>, <a
@@ -320,8 +326,7 @@
                                         Bhatnagar*</a>, Vishnuvardhan Pogunulu Srinivasulu, <a
                                         href="https://en.wikipedia.org/wiki/Narendra_Ahuja">Narendra Ahuja</a></li>
                                 <li><i><a href="https://sites.google.com/view/cvpr-metafood-2024">CVPRW</a> 2024, <a
-                                            href="https://icpr2024.org/">ICPR</a> 2024 <span class="achievement">[Oral,
-                                            Top-5%]</span></i></li>
+                                            href="https://icpr2024.org/">ICPR</a> 2024 [Oral, Top-5%]</i></li>
                                 <li class="mt-2"><a target="_blank" href="https://arxiv.org/abs/2404.16193">paper</a> |
                                     <a target="_blank" href="https://shubhangb97.github.io/MLR_gcn">project page</a>
                                 </li>
@@ -342,7 +347,8 @@
                             </a>
                         </div>
                         <div class="col-md-9 paper">
-                            <h4 class="my-0 mb-2 font-weight-normal">S3O: A Dual-Phase Approach for Reconstructing Dynamic
+                            <h4 class="my-0 mb-2 font-weight-normal">S3O: A Dual-Phase Approach for Reconstructing
+                                Dynamic
                                 Shape and Skeleton</h4>
                             <ul class="list-unstyled mb-0">
                                 <li><a href="https://haoz19.github.io/">Hao Zhang</a>, <a
