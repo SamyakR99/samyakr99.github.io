@@ -1,582 +1,336 @@
-<!DOCTYPE HTML "-//W3C//DTD HTML 4.01 Transitional//EN">
+<!doctype html>
 <html lang="en">
-  <head>
-    <meta name="generator" content="HTML Tidy for Linux/x86 (vers 11 February 2007), see www.w3.org">
-    <style type="text/css">
-      /* Design Credits: Jon Barron, Deepak Pathak, Saurabh Gupta and Aditya Kusupati*/
-      
-      /* Dark mode variables */
-      :root {
-        --bg-color: #ffffff;
-        --text-color: #000000;
-        --link-color: #1772d0;
-        --link-hover: #f09228;
-        --card-hover-bg: rgba(23, 114, 208, 0.04);
-        --gradient-start: #f5f7fa;
-        --gradient-end: #c3cfe2;
-        --shadow-color: rgba(0,0,0,0.07);
-        --pub-hover-shadow: rgba(0,0,0,0.08);
-        --modal-bg: rgba(0,0,0,0.9);
-      }
 
-      [data-theme="dark"] {
-        --bg-color: #1a1a1a;
-        --text-color: #e0e0e0;
-        --link-color: #5ca3ff;
-        --link-hover: #ffb366;
-        --card-hover-bg: rgba(92, 163, 255, 0.08);
-        --gradient-start: #2a2a2a;
-        --gradient-end: #3a3a3a;
-        --shadow-color: rgba(0,0,0,0.3);
-        --pub-hover-shadow: rgba(0,0,0,0.4);
-        --modal-bg: rgba(0,0,0,0.95);
-      }
-
-      body {
-        background-color: var(--bg-color);
-        color: var(--text-color);
-        transition: background-color 0.3s ease, color 0.3s ease;
-      }
-
-      a {
-        color: var(--link-color);
-        text-decoration: none;
-        transition: color 0.3s ease;
-      }
-  
-      a:focus,
-      a:hover {
-        color: var(--link-hover);
-        text-decoration: none;
-      }
-  
-      body,
-      td,
-      th {
-        font-family: 'Titillium Web', Verdana, Helvetica, sans-serif;
-        font-size: 16px;
-        font-weight: 400
-      }
-  
-      heading {
-        font-family: 'Titillium Web', Verdana, Helvetica, sans-serif;
-        font-size: 19px;
-        font-weight: 1000
-      }
-  
-      strong {
-        font-family: 'Titillium Web', Verdana, Helvetica, sans-serif;
-        font-size: 16px;
-        font-weight: 800
-      }
-  
-      strongred {
-        font-family: 'Titillium Web', Verdana, Helvetica, sans-serif;
-        color: 'red';
-        font-size: 16px
-      }
-  
-      sectionheading {
-        font-family: 'Titillium Web', Verdana, Helvetica, sans-serif;
-        font-size: 22px;
-        font-weight: 600
-      }
-  
-      pageheading {
-        font-family: 'Titillium Web', Verdana, Helvetica, sans-serif;
-        font-size: 38px;
-        font-weight: 400
-      }
-
-      /* Dark mode toggle button */
-      .theme-toggle {
-        position: fixed;
-        top: 20px;
-        right: 20px;
-        width: 50px;
-        height: 50px;
-        border-radius: 50%;
-        background: var(--link-color);
-        border: none;
-        cursor: pointer;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        transition: all 0.3s ease;
-        z-index: 1000;
-        box-shadow: 0 2px 8px var(--shadow-color);
-      }
-
-      .theme-toggle:hover {
-        background: var(--link-hover);
-        transform: scale(1.1);
-      }
-
-      .theme-toggle svg {
-        width: 24px;
-        height: 24px;
-        fill: white;
-      }
-
-      /* Image container styles */
-      .img-container {
-        width: 100%;
-        height: 180px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        cursor: pointer;
-        transition: all 0.3s ease;
-        overflow: hidden;
-        border-radius: 12px;
-        background: linear-gradient(135deg, var(--gradient-start) 0%, var(--gradient-end) 100%);
-        box-shadow: 0 4px 6px var(--shadow-color);
-        position: relative;
-      }
-
-      .img-container::before {
-        content: '🔍 Click to enlarge';
-        position: absolute;
-        bottom: 0;
-        left: 0;
-        right: 0;
-        background: rgba(23, 114, 208, 0.9);
-        color: white;
-        padding: 6px;
-        text-align: center;
-        font-size: 12px;
-        opacity: 0;
-        transition: opacity 0.3s ease;
-      }
-
-      .img-container:hover::before {
-        opacity: 1;
-      }
-
-      .img-container img {
-        width: 100%;
-        height: 100%;
-        object-fit: contain;
-        transition: transform 0.4s ease;
-        padding: 10px;
-      }
-
-      .img-container:hover img {
-        transform: scale(1.08);
-      }
-
-      /* Publication row hover effect */
-      .pub-row {
-        transition: all 0.3s ease;
-        border-radius: 12px;
-      }
-
-      .pub-row:hover {
-        background-color: var(--card-hover-bg);
-        transform: translateY(-2px);
-        box-shadow: 0 4px 12px var(--pub-hover-shadow);
-      }
-      
-      .modal {
-        display: none;
-        position: fixed;
-        z-index: 1000;
-        left: 0;
-        top: 0;
-        width: 100%;
-        height: 100%;
-        background-color: var(--modal-bg);
-        animation: fadeIn 0.3s ease;
-      }
-
-      @keyframes fadeIn {
-        from { opacity: 0; }
-        to { opacity: 1; }
-      }
-
-      .modal-content {
-        margin: auto;
-        display: block;
-        max-width: 90%;
-        max-height: 90%;
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        animation: zoomIn 0.3s ease;
-      }
-
-      @keyframes zoomIn {
-        from { transform: translate(-50%, -50%) scale(0.5); }
-        to { transform: translate(-50%, -50%) scale(1); }
-      }
-
-      .close {
-        position: absolute;
-        top: 20px;
-        right: 40px;
-        color: #f1f1f1;
-        font-size: 40px;
-        font-weight: bold;
-        cursor: pointer;
-        transition: color 0.3s ease;
-      }
-
-      .close:hover,
-      .close:focus {
-        color: var(--link-hover);
-      }
-
-      /* Publication row hover effect */
-      .pub-row {
-        transition: background-color 0.3s ease;
-        border-radius: 8px;
-      }
-
-      .pub-row:hover {
-        background-color: var(--card-hover-bg);
-      }
-
-      /* Links styling */
-      .pub-links a {
-        margin-right: 8px;
-        padding: 4px 8px;
-        border-radius: 4px;
-        transition: background-color 0.3s ease;
-      }
-
-      .pub-links a:hover {
-        background-color: rgba(23, 114, 208, 0.1);
-      }
-
-      /* Smooth scrolling */
-      html {
-        scroll-behavior: smooth;
-      }
-    </style>
-    <script type="text/javascript" src="js/hidebib.js"></script>
-    <title>Samyak Rawlekar</title>
-
-    <meta name="author" content="Samyak Rawlekar">
+<head>
+    <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-
-    <link rel="stylesheet" type="text/css" href="stylesheet.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🔥</text></svg>">
-  </head>
+    <title>Samyak Rawlekar</title>
+    
+    <style>
+        :root {
+            --bg-color: #ffffff;
+            --text-color: #000000;
+            --card-bg: #ffffff;
+            --card-shadow: rgba(0,0,0,.125);
+            --link-color: #1772d0;
+            --link-hover: #f09228;
+            --border-color: rgba(0,0,0,.125);
+        }
+
+        [data-theme="dark"] {
+            --bg-color: #1a1a1a;
+            --text-color: #e0e0e0;
+            --card-bg: #2d2d2d;
+            --card-shadow: rgba(0,0,0,.4);
+            --link-color: #5ca3ff;
+            --link-hover: #ffb366;
+            --border-color: rgba(255,255,255,.125);
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            transition: background-color 0.3s ease, color 0.3s ease;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        a {
+            color: var(--link-color);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        a:hover {
+            color: var(--link-hover);
+        }
+
+        .theme-toggle {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: var(--link-color);
+            border: none;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            z-index: 1000;
+            box-shadow: 0 2px 8px var(--card-shadow);
+        }
+
+        .theme-toggle:hover {
+            background: var(--link-hover);
+            transform: scale(1.1);
+        }
+
+        .theme-toggle i {
+            color: white;
+            font-size: 20px;
+        }
+
+        .intro {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .name {
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+        }
+
+        .img-thumbnail {
+            border-radius: 12px;
+            border: 3px solid var(--border-color);
+            background-color: var(--card-bg);
+        }
+
+        .social-icons a {
+            font-size: 24px;
+            margin: 0 8px;
+            color: var(--link-color);
+        }
+
+        .social-icons a:hover {
+            color: var(--link-hover);
+        }
+
+        .card {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-color);
+            transition: all 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 6px 16px var(--card-shadow) !important;
+        }
+
+        .teaser {
+            min-width: 200px;
+            max-width: 280px;
+        }
+
+        .teaser img {
+            border-radius: 8px;
+            transition: transform 0.3s ease;
+        }
+
+        .card:hover .teaser img {
+            transform: scale(1.05);
+        }
+
+        .achievement {
+            color: var(--link-hover);
+            font-weight: 600;
+        }
+
+        h2 {
+            color: var(--text-color);
+            font-weight: 600;
+            margin-top: 2rem;
+        }
+
+        h4 {
+            color: var(--text-color);
+            font-weight: 600;
+        }
+
+        .container {
+            max-width: 1000px;
+        }
+
+        @media (max-width: 768px) {
+            .teaser {
+                max-width: 100%;
+                margin-bottom: 1rem;
+            }
+            
+            .theme-toggle {
+                width: 45px;
+                height: 45px;
+            }
+        }
+    </style>
+
+    <script>
+        function setTheme(theme) {
+            document.documentElement.setAttribute('data-theme', theme);
+            localStorage.setItem('theme', theme);
+            
+            const icon = document.querySelector('.theme-toggle i');
+            if (theme === 'dark') {
+                icon.className = 'fas fa-sun';
+            } else {
+                icon.className = 'fas fa-moon';
+            }
+        }
+
+        function initTheme() {
+            const savedTheme = localStorage.getItem('theme') || 'light';
+            setTheme(savedTheme);
+        }
+
+        function toggleTheme() {
+            const currentTheme = document.documentElement.getAttribute('data-theme');
+            const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+            setTheme(newTheme);
+        }
+
+        document.addEventListener('DOMContentLoaded', initTheme);
+    </script>
+</head>
 
 <body>
-  <!-- Dark Mode Toggle Button -->
-  <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle dark mode">
-    <svg id="theme-icon-sun" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-      <circle cx="12" cy="12" r="5"/>
-      <line x1="12" y1="1" x2="12" y2="3"/>
-      <line x1="12" y1="21" x2="12" y2="23"/>
-      <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/>
-      <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/>
-      <line x1="1" y1="12" x2="3" y2="12"/>
-      <line x1="21" y1="12" x2="23" y2="12"/>
-      <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/>
-      <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
-    </svg>
-    <svg id="theme-icon-moon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" style="display:none;">
-      <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
-    </svg>
-  </button>
+    <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle dark mode">
+        <i class="fas fa-moon"></i>
+    </button>
 
-  <!-- Modal for image magnification -->
-  <div id="imageModal" class="modal" onclick="closeModal()">
-    <span class="close">&times;</span>
-    <img class="modal-content" id="modalImage">
-  </div>
-
-  <table style="width:100%;max-width:800px;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;">
-    <tr style="padding:0px">
-      <td style="padding:0px">
-        <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;">
-          <tr style="padding:0px">
-            <td style="padding:2.5%;width:60%;vertical-align:middle">
-              <p class="name" style="text-align: center;">
-                Samyak Rawlekar
-              </p>
-              <p>I am a PhD student in the <a href="https://vision.ai.illinois.edu/">Computer Vision and Robotics Laboratory</a> at the <a href="https://illinois.edu/">University of Illinois Urbana-Champaign</a>. 
-                I am advised by <a href="https://ece.illinois.edu/about/directory/faculty/n-ahuja"> Prof. Narendra Ahuja </a>. 
-          </p>
-              <p>I love pixels and have recently been integrating them with text to solve intricate and exciting problems in Computer Vision. Particularly, I focus on using large multi-modal (vision-language) models for multi-task learning. 
-          </p>
-              <p>Previously, I obtained MS in Computer Engineering from <a href="https://www.nyu.edu/"> New York University </a>, and B.Tech in Electrical Engineering from <a href="https://www.iitdh.ac.in/"> IIT Dharwad </a>.
-              </p>
-              
-              <p style="text-align:center">
-                <a target="_blank" href="mailto:samyakrawlekar@gmail.com">E-mail</a> &nbsp;/&nbsp;
-                 <a target="_blank" href="https://samyakr99.github.io/files/Samyak_CV.pdf">Resume</a> &nbsp;/&nbsp;
-                <a href="https://github.com/SamyakR99">GitHub</a> &nbsp;/&nbsp;
-                <a href="https://scholar.google.com/citations?hl=en&user=4Jp_SN4AAAAJ&view_op=list_works&sortby=pubdate">Scholar</a> &nbsp;/&nbsp;
-                <a href="https://twitter.com/SamyakR23">X</a> &nbsp;/&nbsp;
-                <a href="https://bsky.app/profile/samyakr.bsky.social">Bsky</a> &nbsp;/&nbsp;
-                <a href="gallery.html">Gallery</a>
-              </p>
-            </td>
-            <td style="padding:2.5%;width:40%;max-width:40%">
-              <img class="profile-img" style="width:100%;max-width:100%" alt="profile photo" src="images/Web_img1.jpg">
-            </td>
-          </tr>
-        </table>
-        
-        <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;">
-          <tr>
-            <td style="padding:20px;width:100%;vertical-align:middle">
-              <h2>Selected Publications</h2>
-            </td>
-          </tr>
-        </table>
-      
-      <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;">
-
-        <tr class="pub-row">
-          <td style="padding:2.5%;width:25%;vertical-align:top;">
-            <div class="img-container" onclick="openModal(event, 'images/DCLIP.png')">
-              <img src="images/DCLIP.png" alt="DCLIP project image" />
+    <div class="intro px-3 py-3 pt-md-5 pb-md-4 mx-auto">
+        <h1 class="display-6 text-center name">Samyak Rawlekar</h1>
+        <div class="d-flex flex-wrap bd-highlight mb-3 my-3 justify-content-center">
+            <div class="p-2 order-1 bd-highlight">
+                <img class="img-thumbnail" src="images/Web_img1.jpg" alt="Profile photo" width="240px">
             </div>
-          </td>
-
-          <td style="padding:2.5%;width:75%;vertical-align:middle">
-            <h3>Efficiently Disentangling CLIP for Multi-Object Perception</h3>
-            <br>
-            <strong>Samyak Rawlekar</strong>, 
-            <a href="https://vanoracai.github.io/">Yujun Cai</a>, 
-            <a href="https://wangywust.github.io/">Yiwei Wang</a>, 
-            <a href="https://faculty.ucmerced.edu/mhyang/">Ming-Hsuan Yang</a>, 
-            <a href="https://en.wikipedia.org/wiki/Narendra_Ahuja">Narendra Ahuja</a>
-            <br>
-            <em>Under Review</em>
-            <br>
-            <br>
-            <div class="pub-links">
-              <a href="javascript:toggleblock('DCLIP_abs')">abstract</a>
-              <a href="https://arxiv.org/pdf/2502.02977">paper</a>
+            <div class="intro-text order-2 p-2 my-1 bd-highlight text-left">
+                <p>I am a PhD student in the <a href="https://vision.ai.illinois.edu/">Computer Vision and Robotics Laboratory</a> at the <a href="https://illinois.edu/">University of Illinois Urbana-Champaign</a>. 
+                I am advised by <a href="https://ece.illinois.edu/about/directory/faculty/n-ahuja">Prof. Narendra Ahuja</a>.</p>
+                
+                <p>I love pixels and have recently been integrating them with text to solve intricate and exciting problems in Computer Vision. Particularly, I focus on using large multi-modal (vision-language) models for multi-task learning.</p>
+                
+                <p>Previously, I obtained MS in Computer Engineering from <a href="https://www.nyu.edu/">New York University</a>, and B.Tech in Electrical Engineering from <a href="https://www.iitdh.ac.in/">IIT Dharwad</a>.</p>
+                
+                <p class="text-center social-icons">
+                    <a target="_blank" href="mailto:samyakrawlekar@gmail.com"><i class="far fa-envelope"></i></a>
+                    <a target="_blank" href="https://samyakr99.github.io/files/Samyak_CV.pdf"><i class="fas fa-file-alt"></i></a>
+                    <a target="_blank" href="https://github.com/SamyakR99"><i class="fab fa-github"></i></a>
+                    <a target="_blank" href="https://scholar.google.com/citations?hl=en&user=4Jp_SN4AAAAJ&view_op=list_works&sortby=pubdate"><i class="fas fa-graduation-cap"></i></a>
+                    <a target="_blank" href="https://twitter.com/SamyakR23"><i class="fab fa-twitter"></i></a>
+                    <a target="_blank" href="https://bsky.app/profile/samyakr.bsky.social"><i class="fas fa-cloud"></i></a>
+                </p>
             </div>
-            <br>
+        </div>
+    </div>
 
-            <p align="justify"><i id="DCLIP_abs">
-              Vision-language models like CLIP excel at recognizing the single, prominent object
-              in a scene. However, they struggle in complex scenes containing multiple objects.
-              We identify a fundamental reason for this limitation: VLM feature space exhibits
-              excessive mutual feature information (MFI), where the features of one class contain
-              substantial information about other, unrelated classes. This high MFI becomes
-              evident during class-specific queries, as unrelated objects are activated alongside
-              the queried class. To address this limitation, we propose DCLIP, an efficient
-              framework that learns an optimal level of mutual information while adding only
-              minimal learnable parameters to a frozen VLM. DCLIP uses two complementary
-              losses: a novel MFI Loss that regulates class feature similarity to prevent excessive
-              overlap while preserving necessary shared information, and the Asymmetric Loss
-              (ASL) that aligns image features with the disentangled text features. Through
-              this disentanglement, DCLIP reduces excessive inter-class similarity by 30%. On
-              multi-label recognition, DCLIP performs favorably over SOTA approaches on
-              VOC2007 and COCO-14 while using 75% fewer training parameters. For zero-shot
-              semantic segmentation, it shows improved performance across six benchmark
-              datasets. These results highlight the importance of feature disentanglement for
-              multi-object perception in VLMs.
-            </i></p>
-          </td>
-        </tr>
+    <div class="container">
+        <h2 class="display-7 mb-2 text-center">Selected Publications</h2>
+        <p class="text-center mb-4">Please visit <a target="_blank" href="https://scholar.google.com/citations?hl=en&user=4Jp_SN4AAAAJ&view_op=list_works&sortby=pubdate">my Google Scholar</a> for the full list of publications</p>
 
-        <tr class="pub-row">
-          <td style="padding:2.5%;width:25%;vertical-align:top;">
-            <div class="img-container" onclick="openModal(event, 'images/PosCoOp.png')">
-              <img src="images/PosCoOp.png" alt="PositiveCoOp project image" />
+        <div class="card-deck mb-3">
+            <div class="card mb-3 shadow-sm">
+                <div class="card-body p-3 d-flex flex-wrap">
+                    <div class="teaser order-1 p-2 bd-highlight">
+                        <a target="_blank" href="https://arxiv.org/pdf/2502.02977">
+                            <img src="images/DCLIP.png" alt="DCLIP project image" width="100%">
+                        </a>
+                    </div>
+                    <div class="p-2 order-2 bd-highlight paper">
+                        <h4 class="my-0 mb-2 font-weight-normal">Efficiently Disentangling CLIP for Multi-Object Perception</h4>
+                        <ul class="list-unstyled mb-0">
+                            <li><strong>Samyak Rawlekar</strong>, <a href="https://vanoracai.github.io/">Yujun Cai</a>, <a href="https://wangywust.github.io/">Yiwei Wang</a>, <a href="https://faculty.ucmerced.edu/mhyang/">Ming-Hsuan Yang</a>, <a href="https://en.wikipedia.org/wiki/Narendra_Ahuja">Narendra Ahuja</a></li>
+                            <li><i>Under Review</i></li>
+                            <li class="mt-2"><a target="_blank" href="https://arxiv.org/pdf/2502.02977">paper</a></li>
+                        </ul>
+                    </div>
+                </div>
             </div>
-          </td>
-          <td style="padding:2.5%;width:75%;vertical-align:middle">
-            <h3>PositiveCoOp: Rethinking Prompting Strategies for Multi-Label Recognition with Partial Annotations</h3>
-            <br>
-            <strong>Samyak Rawlekar</strong>, <a href="https://shubhangb97.github.io/">Shubhang Bhatnagar </a>, <a href="https://en.wikipedia.org/wiki/Narendra_Ahuja"> Narendra Ahuja </a>
-            <br>
-            <em> <a href="https://wacv2025.thecvf.com/">WACV </a></em> 2025
-            <br>
-            <br>
-            <div class="pub-links">
-              <a href="javascript:toggleblock('PosCoOp_abs')">abstract</a>
-              <a href="https://samyakr99.github.io/PositiveCoOp">project page</a>
-              <a href="https://arxiv.org/pdf/2409.08381">paper</a>
+        </div>
+
+        <div class="card-deck mb-3">
+            <div class="card mb-3 shadow-sm">
+                <div class="card-body p-3 d-flex flex-wrap">
+                    <div class="teaser order-1 p-2 bd-highlight">
+                        <a target="_blank" href="https://samyakr99.github.io/PositiveCoOp">
+                            <img src="images/PosCoOp.png" alt="PositiveCoOp project image" width="100%">
+                        </a>
+                    </div>
+                    <div class="p-2 order-2 bd-highlight paper">
+                        <h4 class="my-0 mb-2 font-weight-normal">PositiveCoOp: Rethinking Prompting Strategies for Multi-Label Recognition with Partial Annotations</h4>
+                        <ul class="list-unstyled mb-0">
+                            <li><strong>Samyak Rawlekar</strong>, <a href="https://shubhangb97.github.io/">Shubhang Bhatnagar</a>, <a href="https://en.wikipedia.org/wiki/Narendra_Ahuja">Narendra Ahuja</a></li>
+                            <li><i><a href="https://wacv2025.thecvf.com/">WACV</a> 2025</i></li>
+                            <li class="mt-2"><a target="_blank" href="https://arxiv.org/pdf/2409.08381">paper</a> | <a target="_blank" href="https://samyakr99.github.io/PositiveCoOp">project page</a></li>
+                        </ul>
+                    </div>
+                </div>
             </div>
-            <br>
+        </div>
 
-            <p align="justify"> <i id="PosCoOp_abs">Vision-language models (VLMs) like CLIP have been adapted for Multi-Label Recognition (MLR) with partial annotations by leveraging prompt-learning, where positive and negative prompts are learned for each class to associate their embeddings with class presence or absence in the shared vision-text feature space. While this approach improves MLR performance by relying on VLM priors, we hypothesize that learning negative prompts may be suboptimal, as the datasets used to train VLMs lack image-caption pairs explicitly focusing on class absence. To analyze the impact of positive and negative prompt learning on MLR, we introduce PositiveCoOp and NegativeCoOp, where only one prompt is learned with VLM guidance while the other is replaced by an embedding vector learned directly in the shared feature space without relying on the text encoder. Through empirical analysis, we observe that negative prompts degrade MLR performance, and learning only positive prompts, combined with learned negative embeddings (PositiveCoOp), outperforms dual prompt learning approaches. Moreover, we quantify the performance benefits that prompt-learning offers over a simple vision-features-only baseline, observing that the baseline displays strong performance comparable to dual prompt learning approach (DualCoOp), when the proportion of missing labels is low, while requiring half the training compute and 16 times fewer parameters.</i></p>
-          </td>
-        </tr>
-
-        <tr class="pub-row">
-          <td style="padding:2.5%;width:25%;vertical-align:top;">
-            <div class="img-container" onclick="openModal(event, 'images/MLR_GCN.png')">
-              <img src="images/MLR_GCN.png" alt="MLR-GCN project image" />
+        <div class="card-deck mb-3">
+            <div class="card mb-3 shadow-sm">
+                <div class="card-body p-3 d-flex flex-wrap">
+                    <div class="teaser order-1 p-2 bd-highlight">
+                        <a target="_blank" href="https://shubhangb97.github.io/MLR_gcn">
+                            <img src="images/MLR_GCN.png" alt="MLR-GCN project image" width="100%">
+                        </a>
+                    </div>
+                    <div class="p-2 order-2 bd-highlight paper">
+                        <h4 class="my-0 mb-2 font-weight-normal">Improving Multi-label Recognition using Class Co-Occurrence Probabilities</h4>
+                        <ul class="list-unstyled mb-0">
+                            <li><strong>Samyak Rawlekar*</strong>, <a href="https://shubhangb97.github.io/">Shubhang Bhatnagar*</a>, Vishnuvardhan Pogunulu Srinivasulu, <a href="https://en.wikipedia.org/wiki/Narendra_Ahuja">Narendra Ahuja</a></li>
+                            <li><i><a href="https://sites.google.com/view/cvpr-metafood-2024">CVPRW</a> 2024, <a href="https://icpr2024.org/">ICPR</a> 2024 <span class="achievement">[Oral, Top-5%]</span></i></li>
+                            <li class="mt-2"><a target="_blank" href="https://arxiv.org/abs/2404.16193">paper</a> | <a target="_blank" href="https://shubhangb97.github.io/MLR_gcn">project page</a></li>
+                        </ul>
+                    </div>
+                </div>
             </div>
-          </td>
-          <td style="padding:2.5%;width:75%;vertical-align:middle">
-            <h3>Improving Multi-label Recognition using Class Co-Occurrence Probabilities</h3>
-            <br>
-            <strong>Samyak Rawlekar*</strong>, <a href="https://shubhangb97.github.io/">Shubhang Bhatnagar* </a>,  Vishnuvardhan Pogunulu Srinivasulu, <a href="https://en.wikipedia.org/wiki/Narendra_Ahuja"> Narendra Ahuja </a>
-            <br>
-            <em> <a href="https://sites.google.com/view/cvpr-metafood-2024">CVPRW </a></em> 2024, <em> <a href="https://icpr2024.org/">ICPR </a> 2024 (Oral Top-5%)</em>
-            <br>
-            <br>
-            <div class="pub-links">
-              <a href="javascript:toggleblock('MLR1_abs')">abstract</a>
-              <a href="https://shubhangb97.github.io/MLR_gcn">project page</a>
-              <a href="https://arxiv.org/abs/2404.16193">paper</a>
+        </div>
+
+        <div class="card-deck mb-3">
+            <div class="card mb-3 shadow-sm">
+                <div class="card-body p-3 d-flex flex-wrap">
+                    <div class="teaser order-1 p-2 bd-highlight">
+                        <a target="_blank" href="https://arxiv.org/abs/2405.12607">
+                            <img src="images/S30.png" alt="S3O project image" width="100%">
+                        </a>
+                    </div>
+                    <div class="p-2 order-2 bd-highlight paper">
+                        <h4 class="my-0 mb-2 font-weight-normal">S3O: A Dual-Phase Approach for Reconstructing Dynamic Shape and Skeleton</h4>
+                        <ul class="list-unstyled mb-0">
+                            <li><a href="https://haoz19.github.io/">Hao Zhang</a>, <a href="https://fangli333.github.io/">Fang Li</a>, <strong>Samyak Rawlekar</strong>, <a href="https://en.wikipedia.org/wiki/Narendra_Ahuja">Narendra Ahuja</a></li>
+                            <li><i><a href="https://icml.cc/Conferences/2024">ICML</a> 2024</i></li>
+                            <li class="mt-2"><a target="_blank" href="https://arxiv.org/abs/2405.12607">paper</a></li>
+                        </ul>
+                    </div>
+                </div>
             </div>
-            <br>
+        </div>
 
-            <p align="justify"> <i id="MLR1_abs">Multi-label Recognition (MLR) involves the identification of multiple objects within an image. 
-                To address the additional complexity of this problem, recent works have leveraged information from vision-language models (VLMs) trained on large text-images datasets for 
-                the task. These methods learn an independent classifier for each object (class), overlooking correlations in their occurrences. Such co-occurrences can be captured from the
-                 training data as conditional probabilities between a pair of classes. We propose a framework to extend the independent classifiers by incorporating the 
-                 co-occurrence information for object pairs to improve the performance of independent classifiers. We use a Graph Convolutional Network (GCN) to enforce the 
-                 conditional probabilities between classes, by refining the initial estimates derived from image and text sources obtained using VLMs. We validate our method on four MLR
-                  datasets, where our approach outperforms all state-of-the-art methods.</i></p>
-          </td>
-        </tr>
-
-        <tr class="pub-row">
-          <td style="padding:2.5%;width:25%;vertical-align:middle;">
-            <div class="img-container" onclick="openModal(event, 'images/S30.png')">
-              <img src="images/S30.png" alt="S3O project image" style="width:100%; height:auto;" />
+        <div class="card-deck mb-3">
+            <div class="card mb-3 shadow-sm">
+                <div class="card-body p-3 d-flex flex-wrap">
+                    <div class="teaser order-1 p-2 bd-highlight">
+                        <a target="_blank" href="https://arxiv.org/abs/2401.08809">
+                            <img src="images/LIMR.png" alt="LIMR project image" width="100%">
+                        </a>
+                    </div>
+                    <div class="p-2 order-2 bd-highlight paper">
+                        <h4 class="my-0 mb-2 font-weight-normal">LIMR: Learning Implicit Representation for Reconstructing Articulated Objects</h4>
+                        <ul class="list-unstyled mb-0">
+                            <li><a href="https://haoz19.github.io/">Hao Zhang</a>, <a href="https://fangli333.github.io/">Fang Li</a>, <strong>Samyak Rawlekar</strong>, <a href="https://en.wikipedia.org/wiki/Narendra_Ahuja">Narendra Ahuja</a></li>
+                            <li><i><a href="https://iclr.cc/Conferences/2024">ICLR</a> 2024</i></li>
+                            <li class="mt-2"><a target="_blank" href="https://arxiv.org/abs/2401.08809">paper</a></li>
+                        </ul>
+                    </div>
+                </div>
             </div>
-          </td>
-          <td style="padding:2.5%;width:75%;vertical-align:middle">
-            <h3>S3O: A Dual-Phase Approach for Reconstructing Dynamic Shape and Skeleton</h3>
-            <br>
-            <a href="https://haoz19.github.io/">Hao Zhang</a>, 
-            <a href="https://fangli333.github.io/">Fang Li</a>, 
-            <strong>Samyak Rawlekar</strong>, 
-            <a href="https://en.wikipedia.org/wiki/Narendra_Ahuja">Narendra Ahuja</a>
-            <br>
-            <em><a href="https://icml.cc/Conferences/2024">ICML</a></em> 2024
-            <br>
-            <br>
-            <div class="pub-links">
-              <a href="javascript:toggleblock('S30_abs')">abstract</a>
-              <a href="https://arxiv.org/abs/2405.12607">paper</a>
-            </div>
-            <br>
+        </div>
 
-            <p align="justify"><i id="S30_abs">
-              Reconstructing dynamic articulated objects from a singular monocular video is challenging, requiring joint estimation of shape, motion, and camera parameters from limited views...
-            </i></p>
-          </td>
-        </tr>
+        <div class="text-center mt-5 mb-3">
+            <p><small><a href="https://jonbarron.info">Template credit</a></small></p>
+        </div>
+    </div>
 
-        <tr class="pub-row">
-          <td style="padding:2.5%;width:25%;vertical-align:middle;">
-            <div class="img-container" onclick="openModal(event, 'images/LIMR.png')">
-              <img src="images/LIMR.png" alt="LIMR project image" style="width:100%; height:auto;" />
-            </div>
-          </td>
-          <td style="padding:2.5%;width:75%;vertical-align:middle">
-            <h3>LIMR: Learning Implicit Representation for Reconstructing Articulated Objects</h3>
-            <br>
-            <a href="https://haoz19.github.io/">Hao Zhang</a>, 
-            <a href="https://fangli333.github.io/">Fang Li</a>,
-            <strong>Samyak Rawlekar</strong>, 
-            <a href="https://en.wikipedia.org/wiki/Narendra_Ahuja">Narendra Ahuja</a>
-            <br>
-            <em><a href="https://iclr.cc/Conferences/2024">ICLR</a></em> 2024
-            <br>
-            <br>
-            <div class="pub-links">
-              <a href="javascript:toggleblock('LIMR_abs')">abstract</a>
-              <a href="https://arxiv.org/abs/2401.08809">paper</a>
-            </div>
-            <br>
-
-            <p align="justify"><i id="LIMR_abs">
-              3D Reconstruction of moving articulated objects without additional information about object structure is a challenging problem...
-            </i></p>
-          </td>
-        </tr>
-        
-      </table>
-
-      <table width="100%" align="center" border="0" cellspacing="0" cellpadding="20">
-        <tr>
-          <td><br>
-            <p align="right">
-              <font size="2">
-                <a href="https://jonbarron.info">Template</a>
-              </font>
-            </p>
-          </td>
-        </tr>
-      </table>
-
-      <script xml:space="preserve" language="JavaScript">
-        hideblock('DCLIP_abs');
-        hideblock('PosCoOp_abs');
-        hideblock('MLR1_abs');
-        hideblock('S30_abs');
-        hideblock('LIMR_abs');
-      </script>
-
-      <script>
-        // Dark mode toggle functionality
-        function toggleTheme() {
-          const html = document.documentElement;
-          const currentTheme = html.getAttribute('data-theme');
-          const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
-          
-          html.setAttribute('data-theme', newTheme);
-          localStorage.setItem('theme', newTheme);
-          
-          // Toggle icons
-          const sunIcon = document.getElementById('theme-icon-sun');
-          const moonIcon = document.getElementById('theme-icon-moon');
-          
-          if (newTheme === 'dark') {
-            sunIcon.style.display = 'none';
-            moonIcon.style.display = 'block';
-          } else {
-            sunIcon.style.display = 'block';
-            moonIcon.style.display = 'none';
-          }
-        }
-
-        // Load saved theme on page load
-        (function() {
-          const savedTheme = localStorage.getItem('theme') || 'light';
-          document.documentElement.setAttribute('data-theme', savedTheme);
-          
-          const sunIcon = document.getElementById('theme-icon-sun');
-          const moonIcon = document.getElementById('theme-icon-moon');
-          
-          if (savedTheme === 'dark') {
-            sunIcon.style.display = 'none';
-            moonIcon.style.display = 'block';
-          }
-        })();
-
-        function openModal(event, imgSrc) {
-          event.stopPropagation();
-          const modal = document.getElementById('imageModal');
-          const modalImg = document.getElementById('modalImage');
-          modal.style.display = 'block';
-          modalImg.src = imgSrc;
-          document.body.style.overflow = 'hidden';
-        }
-
-        function closeModal() {
-          const modal = document.getElementById('imageModal');
-          modal.style.display = 'none';
-          document.body.style.overflow = 'auto';
-        }
-
-        document.addEventListener('keydown', function(event) {
-          if (event.key === 'Escape') {
-            closeModal();
-          }
-        });
-      </script>
-    </td>
-  </tr>
-</table>
-
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW"
+        crossorigin="anonymous"></script>
 </body>
+
 </html>
