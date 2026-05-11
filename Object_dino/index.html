@@ -262,7 +262,7 @@
 
         <div class="row">
             <div class="col-12 text-center">
-                <img src="./img/teaser.png" class="img-fluid rounded-custom mb-3" alt="Object-centric information encoded in patch-level interactions" onerror="this.src='https://via.placeholder.com/1000x350?text=Object-DINO+Teaser+Figure'">
+                <img src="./img/OD_fig1.png" class="img-fluid rounded-custom mb-3" alt="Object-centric information encoded in patch-level interactions" onerror="this.src='https://via.placeholder.com/1000x350?text=Object-DINO+Teaser+Figure'">
                 <p class="text-muted" style="max-width: 900px; margin: 0 auto; font-size: 0.95rem; text-align: left;">
                     <strong>Figure 1.</strong> Object-centric information is encoded in patch-level interactions. We visualize the inter-patch similarity maps computed from the Query (Q), Key (K), and Value (V) representations of patch tokens. Each component captures a complementary view of object structure. The <strong>Ensemble</strong> aggregates all three components, producing robust foreground-background separation and precise object localization.
                 </p>
@@ -308,7 +308,7 @@
                         </p>
                         
                         <div class="text-center my-4">
-                            <img src="./img/figure2.png" class="img-fluid rounded-custom mb-2" alt="Analysis of the object-centric head distribution" onerror="this.src='https://via.placeholder.com/900x300?text=Figure+2:+Head+Distribution+Analysis'">
+                            <img src="./img/OD_fig2.png" class="img-fluid rounded-custom mb-2" alt="Analysis of the object-centric head distribution" onerror="this.src='https://via.placeholder.com/900x300?text=Figure+2:+Head+Distribution+Analysis'">
                             <p class="text-muted small" style="text-align: left; max-width: 850px; margin: 0 auto;">
                                 <strong>Figure 2. Analysis of the object-centric head distribution.</strong> (a) The heatmap demonstrates that numerous heads in intermediate layers (e.g., Layers 8-10) are consistently selected as object-centric, proving it is a distributed phenomenon. (b) The final layer contribution plot reveals several "noisy" (non-object-centric) heads. (c) The histogram shows the number of strongly active heads per layer.
                             </p>
@@ -340,7 +340,7 @@
                         By aggregating the similarity maps from <em>only</em> this specialized, distributed subset of heads, Object-DINO produces high-fidelity foreground-background separation while filtering out non-object noise.
                     </p>
                     <div class="text-center mt-4">
-                        <img src="./img/figure3.png" class="img-fluid rounded-custom mb-3" alt="Object-DINO Architecture" onerror="this.src='https://via.placeholder.com/900x350?text=Figure+3:+Object-DINO+Architecture'">
+                        <img src="./img/OD_fig3.png" class="img-fluid rounded-custom mb-3" alt="Object-DINO Architecture" onerror="this.src='https://via.placeholder.com/900x350?text=Figure+3:+Object-DINO+Architecture'">
                         <p class="text-muted small" style="text-align: left; max-width: 850px; margin: 0 auto;">
                             <strong>Figure 3. Object-DINO Overview.</strong> Our training-free algorithm computes patch similarity maps from Query, Key, and Value representations, ensembles them, and clusters the heads to automatically identify the distributed object-centric cluster, filtering noise from non-object-centric heads.
                         </p>
