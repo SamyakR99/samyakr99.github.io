@@ -202,7 +202,7 @@
         <div class="row">
             <div class="col-12 text-center">
                 <h2 class="fw-bold mb-2">Finding Distributed Object-Centric Properties in Self-Supervised Transformers</h2>
-                <h4 class="text-danger mb-4 fw-bold">CVPR 2026 (Highlight)</h4>
+                <h4 class="text-danger mb-4 fw-bold">CVPR 2026</h4>
                 
                 <ul class="list-inline fs-5 mb-2">
                     <li class="list-inline-item mx-3"><a href="https://samyakr99.github.io/">Samyak Rawlekar</a><sup>1</sup></li>
@@ -249,12 +249,12 @@
                     <img src="img/youtube.png" height="60px" onerror="this.src='https://via.placeholder.com/60x60?text=Video'">
                     <h4>Video</h4>
                 </a>
-                <a href="https://github.com/SamyakR99/Object-DINO" target="_blank" class="resource-link">
+                <a href="https://github.com/SamyakR99/Object_dino" target="_blank" class="resource-link">
                     <img src="img/code.png" height="60px" onerror="this.src='https://via.placeholder.com/60x60?text=Code'">
                     <h4>Code</h4>
                 </a>
                 <a href="https://cvpr.thecvf.com/" target="_blank" class="resource-link">
-                    <img src="img/CVPR_Logo2_Denver 2026_Color.jpg" height="60px" alt="CVPR Logo" onerror="this.src='https://via.placeholder.com/120x60?text=CVPR'">
+                    <img src="img/cvpr_logo.svg" height="60px" alt="CVPR Logo" onerror="this.src='https://via.placeholder.com/120x60?text=CVPR'">
                     <h4>CVPR '26</h4>
                 </a>
             </div>
@@ -262,7 +262,7 @@
 
         <div class="row">
             <div class="col-12 text-center">
-                <img src="./img/OD_fig1.png" class="img-fluid rounded-custom mb-3" alt="Object-centric information encoded in patch-level interactions" onerror="this.src='https://via.placeholder.com/1000x350?text=Object-DINO+Teaser+Figure'">
+                <img src="./img/teaser.png" class="img-fluid rounded-custom mb-3" alt="Object-centric information encoded in patch-level interactions" onerror="this.src='https://via.placeholder.com/1000x350?text=Object-DINO+Teaser+Figure'">
                 <p class="text-muted" style="max-width: 900px; margin: 0 auto; font-size: 0.95rem; text-align: left;">
                     <strong>Figure 1.</strong> Object-centric information is encoded in patch-level interactions. We visualize the inter-patch similarity maps computed from the Query (Q), Key (K), and Value (V) representations of patch tokens. Each component captures a complementary view of object structure. The <strong>Ensemble</strong> aggregates all three components, producing robust foreground-background separation and precise object localization.
                 </p>
@@ -303,13 +303,22 @@
 
                     <div class="analysis-box">
                         <h4 class="fw-bold mb-3">Insight 2: Object-Centricity is a Distributed Property</h4>
-                        <p class="text-justify mb-0">
+                        <p class="text-justify mb-3">
                             It is a common assumption that the strongest object representations exist exclusively in the final layer of a ViT. By characterizing every attention head across the network using our ensemble similarity matrix, we prove that object-centric information is <strong>hierarchically distributed</strong>. 
-                            <br><br>
+                        </p>
+                        
+                        <div class="text-center my-4">
+                            <img src="./img/figure2.png" class="img-fluid rounded-custom mb-2" alt="Analysis of the object-centric head distribution" onerror="this.src='https://via.placeholder.com/900x300?text=Figure+2:+Head+Distribution+Analysis'">
+                            <p class="text-muted small" style="text-align: left; max-width: 850px; margin: 0 auto;">
+                                <strong>Figure 2. Analysis of the object-centric head distribution.</strong> (a) The heatmap demonstrates that numerous heads in intermediate layers (e.g., Layers 8-10) are consistently selected as object-centric, proving it is a distributed phenomenon. (b) The final layer contribution plot reveals several "noisy" (non-object-centric) heads. (c) The histogram shows the number of strongly active heads per layer.
+                            </p>
+                        </div>
+                        
+                        <p class="text-justify mb-0">
                             Our analysis of over 4,000 COCO images reveals that:
                             <br>
                             1. <strong>Not all final-layer heads are object-centric.</strong> Several heads in the final layer encode global context rather than objects. Naively aggregating them introduces significant noise. <br>
-                            2. <strong>Intermediate layers matter.</strong> Numerous highly robust object-centric heads exist in intermediate layers (e.g., Layers 8–10 in DINO). Ignoring them discards valuable localization data.
+                            2. <strong>Intermediate layers matter.</strong> Numerous highly robust object-centric heads exist in intermediate layers. Ignoring them discards valuable localization data.
                         </p>
                     </div>
                 </div>
@@ -331,7 +340,10 @@
                         By aggregating the similarity maps from <em>only</em> this specialized, distributed subset of heads, Object-DINO produces high-fidelity foreground-background separation while filtering out non-object noise.
                     </p>
                     <div class="text-center mt-4">
-                        <img src="./img/main_architecture.png" class="img-fluid rounded-custom" alt="Object-DINO Overview" onerror="this.src='https://via.placeholder.com/900x350?text=Object-DINO+Architecture+Diagram'">
+                        <img src="./img/figure3.png" class="img-fluid rounded-custom mb-3" alt="Object-DINO Architecture" onerror="this.src='https://via.placeholder.com/900x350?text=Figure+3:+Object-DINO+Architecture'">
+                        <p class="text-muted small" style="text-align: left; max-width: 850px; margin: 0 auto;">
+                            <strong>Figure 3. Object-DINO Overview.</strong> Our training-free algorithm computes patch similarity maps from Query, Key, and Value representations, ensembles them, and clusters the heads to automatically identify the distributed object-centric cluster, filtering noise from non-object-centric heads.
+                        </p>
                     </div>
                 </div>
             </div>
