@@ -236,7 +236,7 @@
         </div>
 
         <div class="row mb-5">
-            <div class="col-12 d-flex justify-content-center gap-3 flex-wrap">
+            <div class="col-12 d-flex justify-content-center align-items-end gap-3 flex-wrap">
                 <a href="https://arxiv.org/abs/2603.26127" target="_blank" class="resource-link">
                     <img src="img/paper_snap.png" height="60px" onerror="this.src='https://via.placeholder.com/60x80?text=Paper'">
                     <h4>Paper</h4>
@@ -249,8 +249,8 @@
                     <img src="img/youtube.png" height="60px" onerror="this.src='https://via.placeholder.com/60x60?text=Video'">
                     <h4>Video</h4>
                 </a>
-                <a href="https://github.com/SamyakR99/Object_dino" target="_blank" class="resource-link">
-                    <img src="img/code.png" height="60px" onerror="this.src='https://via.placeholder.com/60x60?text=Code'">
+                <a href="https://github.com/SamyakR99/Object-DINO" target="_blank" class="resource-link">
+                    <i class="fab fa-github" style="font-size: 60px; color: var(--heading-color);"></i>
                     <h4>Code</h4>
                 </a>
                 <a href="https://cvpr.thecvf.com/" target="_blank" class="resource-link">
@@ -260,9 +260,9 @@
             </div>
         </div>
 
-        <div class="row">
-            <div class="col-12 text-center">
-                <img src="./img/OD_fig1.png" class="img-fluid rounded-custom mb-3" alt="Object-centric information encoded in patch-level interactions" onerror="this.src='https://via.placeholder.com/1000x350?text=Object-DINO+Teaser+Figure'">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10 text-center">
+                <img src="./img/OD_fig1.png" class="img-fluid rounded-custom mb-3" style="max-width: 100%; width: 100%; max-width: 900px; height: auto;" alt="Object-centric information encoded in patch-level interactions" onerror="this.src='https://via.placeholder.com/1000x350?text=Object-DINO+Teaser+Figure'">
                 <p class="text-muted" style="max-width: 900px; margin: 0 auto; font-size: 0.95rem; text-align: left;">
                     <strong>Figure 1.</strong> Object-centric information is encoded in patch-level interactions. We visualize the inter-patch similarity maps computed from the Query (Q), Key (K), and Value (V) representations of patch tokens. Each component captures a complementary view of object structure. The <strong>Ensemble</strong> aggregates all three components, producing robust foreground-background separation and precise object localization.
                 </p>
@@ -340,7 +340,7 @@
                         By aggregating the similarity maps from <em>only</em> this specialized, distributed subset of heads, Object-DINO produces high-fidelity foreground-background separation while filtering out non-object noise.
                     </p>
                     <div class="text-center mt-4">
-                        <img src="./img/OD_fig3.png" class="img-fluid rounded-custom mb-3" alt="Object-DINO Architecture" onerror="this.src='https://via.placeholder.com/900x350?text=Figure+3:+Object-DINO+Architecture'">
+                        <img src="./img/OD_fig3.png" class="img-fluid rounded-custom mb-3" alt="Object-DINO Architecture" onerror="this.src='https://via.placeholder.com/900x300?text=Figure+3:+Object-DINO+Architecture'">
                         <p class="text-muted small" style="text-align: left; max-width: 850px; margin: 0 auto;">
                             <strong>Figure 3. Object-DINO Overview.</strong> Our training-free algorithm computes patch similarity maps from Query, Key, and Value representations, ensembles them, and clusters the heads to automatically identify the distributed object-centric cluster, filtering noise from non-object-centric heads.
                         </p>
