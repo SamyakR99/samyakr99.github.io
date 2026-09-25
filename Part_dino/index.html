@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Object-DINO: Finding Distributed Object-Centric Properties in Self-Supervised Transformers</title>
+    <meta name="description" content="Object-DINO Project Page">
+
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Finding Distributed Object-Centric Properties in Self-Supervised Transformers" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Finding Distributed Object-Centric Properties in Self-Supervised Transformers" />
+
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🔍</text></svg>">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+    <style>
+        /* Smooth Theming Variables */
+        :root {
+            --bg-color: #ffffff;
+            --text-color: #333333;
+            --heading-color: #111111;
+            --link-color: #1772d0;
+            --link-hover: #f09228;
+            --card-bg: #f8f9fa;
+            --analysis-bg: #f0f7ff;
+            --border-color: rgba(0, 0, 0, 0.1);
+            --shadow: 0 4px 6px rgba(0,0,0,0.05);
+            --accent-color: #1772d0;
+        }
+
+        [data-theme="dark"] {
+            --bg-color: #1a1a1a;
+            --text-color: #cccccc;
+            --heading-color: #ffffff;
+            --link-color: #5ca3ff;
+            --link-hover: #ffb366;
+            --card-bg: #2d2d2d;
+            --analysis-bg: #1e2b3c;
+            --border-color: rgba(255, 255, 255, 0.1);
+            --shadow: 0 4px 6px rgba(0,0,0,0.3);
+            --accent-color: #5ca3ff;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            transition: background-color 0.3s ease, color 0.3s ease;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            padding-bottom: 50px;
+        }
+
+        h2, h3, h4 {
+            color: var(--heading-color);
+            transition: color 0.3s ease;
+        }
+
+        a {
+            color: var(--link-color);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        a:hover {
+            color: var(--link-hover);
+        }
+
+        /* Dark Mode Toggle */
+        .theme-toggle-container {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 1000;
+        }
+
+        .theme-toggle {
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            background: var(--link-color);
+            border: none;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+        }
+
+        .theme-toggle:hover {
+            background: var(--link-hover);
+            transform: scale(1.1) rotate(15deg);
+        }
+
+        .theme-toggle i {
+            color: white;
+            font-size: 18px;
+        }
+
+        /* Hover Effects for Logos and Buttons */
+        .resource-link, .uni-logo {
+            transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275), filter 0.3s ease;
+            display: inline-block;
+            text-align: center;
+            padding: 10px;
+            border-radius: 12px;
+        }
+
+        .resource-link:hover, .uni-logo:hover {
+            transform: translateY(-5px) scale(1.05);
+            background-color: var(--card-bg);
+            box-shadow: var(--shadow);
+        }
+
+        .resource-link img, .uni-logo img {
+            border-radius: 8px;
+            object-fit: contain;
+        }
+
+        .resource-link h4 {
+            margin-top: 10px;
+            font-size: 1.1rem;
+            font-weight: 600;
+        }
+
+        /* Paper Content Sections */
+        .content-section {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            padding: 40px;
+            margin-top: 30px;
+            box-shadow: var(--shadow);
+            transition: all 0.3s ease;
+        }
+
+        /* Specialized Analysis Highlight Box */
+        .analysis-box {
+            background-color: var(--analysis-bg);
+            border-left: 5px solid var(--accent-color);
+            padding: 25px;
+            border-radius: 0 12px 12px 0;
+            margin-bottom: 25px;
+        }
+
+        .img-fluid.rounded-custom {
+            border-radius: 12px;
+            box-shadow: var(--shadow);
+        }
+
+        /* Code Block */
+        textarea.form-control {
+            background-color: #272822;
+            color: #f8f8f2;
+            border: none;
+            border-radius: 8px;
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 0.9rem;
+            resize: none;
+        }
+    </style>
+
+    <script>
+        function setTheme(theme) {
+            document.documentElement.setAttribute('data-theme', theme);
+            localStorage.setItem('theme', theme);
+            const icon = document.querySelector('.theme-toggle i');
+            if (theme === 'dark') {
+                icon.className = 'fas fa-sun';
+            } else {
+                icon.className = 'fas fa-moon';
+            }
+        }
+
+        function initTheme() {
+            const savedTheme = localStorage.getItem('theme') || 'light';
+            setTheme(savedTheme);
+        }
+
+        function toggleTheme() {
+            const currentTheme = document.documentElement.getAttribute('data-theme');
+            const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+            setTheme(newTheme);
+        }
+        document.addEventListener('DOMContentLoaded', initTheme);
+    </script>
+</head>
+
+<body>
+    <div class="theme-toggle-container">
+        <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle dark mode">
+            <i class="fas fa-moon"></i>
+        </button>
+    </div>
+
+    <div class="container mt-5" id="main">
+        <div class="row">
+            <div class="col-12 text-center">
+                <h2 class="fw-bold mb-2">Finding Distributed Object-Centric Properties in Self-Supervised Transformers</h2>
+                <h4 class="mb-4 fw-bold">CVPR 2026 <span class="text-danger">(Highlight)</span></h4>
+                <ul class="list-inline fs-5 mb-2">
+                    <li class="list-inline-item mx-3"><a href="https://samyakr99.github.io/">Samyak Rawlekar</a><sup>1</sup></li>
+                    <li class="list-inline-item mx-3"><a href="https://scholar.google.com/citations?hl=en&user=MbjU6lkAAAAJ">Amitabh Swain</a><sup>1</sup></li>
+                    <li class="list-inline-item mx-3"><a href="https://vanoracai.github.io/">Yujun Cai</a><sup>2</sup></li>
+                    <li class="list-inline-item mx-3"><a href="https://wangywust.github.io/">Yiwei Wang</a><sup>3</sup></li>
+                    <li class="list-inline-item mx-3"><a href="https://faculty.ucmerced.edu/mhyang/">Ming-Hsuan Yang</a><sup>3</sup></li>
+                    <li class="list-inline-item mx-3"><a href="https://ece.illinois.edu/about/directory/faculty/n-ahuja">Narendra Ahuja</a><sup>1</sup></li>
+                </ul>
+                
+                <ul class="list-inline fs-6 text-muted mb-4">
+                    <li class="list-inline-item mx-3"><sup>1</sup><a href="https://illinois.edu/" class="text-muted">University of Illinois Urbana-Champaign</a></li>
+                    <li class="list-inline-item mx-3"><sup>2</sup><a href="https://www.uq.edu.au/" class="text-muted">University of Queensland</a></li>
+                    <li class="list-inline-item mx-3"><sup>3</sup><a href="https://www.ucmerced.edu/" class="text-muted">UC Merced</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="row mb-4">
+            <div class="col-12 d-flex justify-content-center align-items-center gap-4 flex-wrap">
+                <a href="https://illinois.edu/" target="_blank" class="uni-logo">
+                    <img src="img/uiuc_logo.png" height="80px" alt="UIUC Logo" onerror="this.src='https://via.placeholder.com/150x50?text=UIUC'">
+                </a>
+                <a href="https://www.uq.edu.au/" target="_blank" class="uni-logo">
+                    <img src="img/uq_logo.png" height="50px" alt="UQ Logo" onerror="this.src='https://via.placeholder.com/150x50?text=U+Queensland'">
+                </a>
+                <a href="https://www.ucmerced.edu/" target="_blank" class="uni-logo">
+                    <img src="img/ucmerced_logo.jpg" height="50px"  alt="UC Merced Logo" onerror="this.src='https://via.placeholder.com/150x50?text=UC+Merced'">
+                </a>
+            </div>
+        </div>
+
+        <div class="row mb-5">
+            <div class="col-12 d-flex justify-content-center align-items-end gap-3 flex-wrap">
+                <a href="https://arxiv.org/abs/2603.26127" target="_blank" class="resource-link">
+                    <img src="img/paper_snap.png" height="60px" onerror="this.src='https://via.placeholder.com/60x80?text=Paper'">
+                    <h4>Paper</h4>
+                </a>
+                <a href="img/CVPR2026_poster.pdf" target="_blank" class="resource-link">
+                    <img src="img/poster.png" height="60px" onerror="this.src='https://via.placeholder.com/60x60?text=Poster'">
+                    <h4>Poster</h4>
+                </a>
+                <a href="http://youtube.com/watch?v=-lLqh3WCiKc" target="_blank" class="resource-link">
+                    <img src="img/youtube.png" height="60px" onerror="this.src='https://via.placeholder.com/60x60?text=Video'">
+                    <h4>Video</h4>
+                </a>
+                <a href="https://github.com/SamyakR99/Object-DINO" target="_blank" class="resource-link">
+                    <i class="fab fa-github" style="font-size: 60px; color: var(--heading-color);"></i>
+                    <h4>Code</h4>
+                </a>
+                <a href="https://cvpr.thecvf.com/" target="_blank" class="resource-link">
+                    <img src="img/CVPR_Logo2_Denver 2026_Color.jpg" height="60px" alt="CVPR Logo" onerror="this.src='https://via.placeholder.com/120x60?text=CVPR'">
+                    <h4>CVPR '26</h4>
+                </a>
+            </div>
+        </div>
+
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10 text-center">
+                <img src="./img/OD_fig1.png" class="img-fluid rounded-custom mb-3" style="max-width: 100%; width: 100%; max-width: 900px; height: auto;" alt="Object-centric information encoded in patch-level interactions" onerror="this.src='https://via.placeholder.com/1000x350?text=Object-DINO+Teaser+Figure'">
+                <p class="text-muted" style="max-width: 900px; margin: 0 auto; font-size: 0.95rem; text-align: left;">
+                    <strong>Figure 1.</strong> Object-centric information is encoded in patch-level interactions. We visualize the inter-patch similarity maps computed from the Query (Q), Key (K), and Value (V) representations of patch tokens. Each component captures a complementary view of object structure. The <strong>Ensemble</strong> aggregates all three components, producing robust foreground-background separation and precise object localization.
+                </p>
+            </div>
+        </div>
+
+        <div class="row justify-content-center">
+            <div class="col-lg-10">
+                <div class="content-section">
+                    <h3 class="fw-bold mb-3">Abstract</h3>
+                    <p class="text-justify mb-0">
+                        Self-supervised Vision Transformers (ViTs) like DINO show an emergent ability to discover objects, typically observed in <code>[CLS]</code> token attention maps of the final layer. However, these maps often contain spurious activations resulting in poor localization. This occurs because the <code>[CLS]</code> token, trained on an image-level objective, summarizes the entire image rather than focusing strictly on objects, diluting the rich, object-centric information existing in local, patch-level interactions. We perform a systematic analysis of inter-patch similarity across all layers and attention components (query, key, and value) to uncover where object-centric information truly resides. Based on our insights, we introduce <strong>Object-DINO</strong>, a training-free method that extracts this distributed object-centric information to drastically improve downstream tasks like unsupervised object discovery and hallucination mitigation in Multimodal Large Language Models (MLLMs).
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <div class="row justify-content-center">
+            <div class="col-lg-10">
+                <div class="content-section">
+                    <h3 class="fw-bold mb-4">Key Analyses & Insights</h3>
+                    <p class="text-justify mb-4">
+                        A core contribution of our work is shifting the focus away from the globally-optimized <code>[CLS]</code> token to uncover how local patch-level interactions natively encode scene structure. Our systematic analysis yields two critical findings that redefine how we extract emergent object representations from self-supervised ViTs:
+                    </p>
+
+                    <div class="analysis-box">
+                        <h4 class="fw-bold mb-3">Insight 1: Complementary Signals in Query, Key, and Value</h4>
+                        <p class="text-justify mb-0">
+                            Prior patch-level methods (like TokenCut) relied exclusively on Key (K) features. By computing normalized self-similarity matrices for all attention components, we discover that Queries (Q), Keys (K), and Values (V) all possess strong but <em>complementary</em> localization properties. 
+                            <br><br>
+                            &bull; <strong>Query Similarity</strong> reveals which patches seek similar information.<br>
+                            &bull; <strong>Key Similarity</strong> reveals patches offering similar contextual cues.<br>
+                            &bull; <strong>Value Similarity</strong> identifies patches with similar feature content.<br>
+                            <br>
+                            Combining these into a unified <strong>Ensemble Similarity Matrix</strong> mitigates individual component artifacts, creating a highly robust, low-noise representation of object saliency.
+                        </p>
+                    </div>
+
+                    <div class="analysis-box">
+                        <h4 class="fw-bold mb-3">Insight 2: Object-Centricity is a Distributed Property</h4>
+                        <p class="text-justify mb-3">
+                            It is a common assumption that the strongest object representations exist exclusively in the final layer of a ViT. By characterizing every attention head across the network using our ensemble similarity matrix, we prove that object-centric information is <strong>hierarchically distributed</strong>. 
+                        </p>
+                        
+                        <div class="text-center my-4">
+                            <img src="./img/OD_fig2.png" class="img-fluid rounded-custom mb-2" alt="Analysis of the object-centric head distribution" onerror="this.src='https://via.placeholder.com/900x300?text=Figure+2:+Head+Distribution+Analysis'">
+                            <p class="text-muted small" style="text-align: left; max-width: 850px; margin: 0 auto;">
+                                <strong>Figure 2. Analysis of the object-centric head distribution.</strong> (a) The heatmap demonstrates that numerous heads in intermediate layers (e.g., Layers 8-10) are consistently selected as object-centric, proving it is a distributed phenomenon. (b) The final layer contribution plot reveals several "noisy" (non-object-centric) heads. (c) The histogram shows the number of strongly active heads per layer.
+                            </p>
+                        </div>
+                        
+                        <p class="text-justify mb-0">
+                            Our analysis of over 4,000 COCO images reveals that:
+                            <br>
+                            1. <strong>Not all final-layer heads are object-centric.</strong> Several heads in the final layer encode global context rather than objects. Naively aggregating them introduces significant noise. <br>
+                            2. <strong>Intermediate layers matter.</strong> Numerous highly robust object-centric heads exist in intermediate layers. Ignoring them discards valuable localization data.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="row justify-content-center">
+            <div class="col-lg-10">
+                <div class="content-section">
+                    <h3 class="fw-bold mb-4">The Object-DINO Method</h3>
+                    <p class="text-justify mb-4">
+                        Motivated by our analysis, we introduce <strong>Object-DINO</strong>, an entirely training-free algorithm designed to automatically discover and extract the distributed set of object-centric heads. The process operates in two phases:
+                    </p>
+                    <ul class="mb-4 text-justify">
+                        <li class="mb-3"><strong>Phase 1: Feature Extraction.</strong> For every attention head across all layers, we compute the patch similarity maps from its Q, K, and V representations. We ensemble and flatten these maps to create a feature vector that describes that specific head's localization behavior.</li>
+                        <li><strong>Phase 2: Head Clustering & Selection.</strong> We cluster all heads based on these behavioral features using k-means. Guided by the empirical observation that object-centric information concentrates heavily toward the end of the network, we automatically identify the "Object Cluster" as the one containing the highest prevalence of final-layer heads.</li>
+                    </ul>
+                    <p class="text-justify mb-4">
+                        By aggregating the similarity maps from <em>only</em> this specialized, distributed subset of heads, Object-DINO produces high-fidelity foreground-background separation while filtering out non-object noise.
+                    </p>
+                    <div class="text-center mt-4">
+                        <img src="./img/OD_fig3.png" class="img-fluid rounded-custom mb-3" alt="Object-DINO Architecture" onerror="this.src='https://via.placeholder.com/900x300?text=Figure+3:+Object-DINO+Architecture'">
+                        <p class="text-muted small" style="text-align: left; max-width: 850px; margin: 0 auto;">
+                            <strong>Figure 3. Object-DINO Overview.</strong> Our training-free algorithm computes patch similarity maps from Query, Key, and Value representations, ensembles them, and clusters the heads to automatically identify the distributed object-centric cluster, filtering noise from non-object-centric heads.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row justify-content-center">
+            <div class="col-lg-10">
+                <div class="content-section">
+                    <h3 class="fw-bold mb-4">Applications & Downstream Results</h3>
+                    
+                    <h4 class="fw-bold mt-4 mb-3">1. Unsupervised Object Discovery</h4>
+                    <p class="text-justify mb-4">
+                        We integrate Object-DINO into the graph-based TokenCut framework, replacing their naive final-layer Key aggregation with our automatically discovered distributed heads. This single, training-free swap yields massive performance gains across all benchmarks for both DINO-v2 and DINO-v3 models. Specifically, we observe <strong>CorLoc improvements ranging from +3.6 to +12.4 points</strong> on PASCAL VOC and COCO 20k.
+                    </p>
+                    <div class="text-center mb-5">
+                        <img src="./img/result_object_discovery.png" class="img-fluid rounded-custom" onerror="this.src='https://via.placeholder.com/800x250?text=Table/Chart:+Object+Discovery+Results'">
+                    </div>
+
+                    <h4 class="fw-bold mb-3">2. Mitigating Object Hallucinations in MLLMs</h4>
+                    <p class="text-justify mb-4">
+                        Multimodal Large Language Models (MLLMs) frequently hallucinate objects not present in the image. We leverage Object-DINO as an open-set visual grounder. We propose a training-free, dual-branch decoding strategy: a standard branch and a visual guidance branch steered by the Object-DINO saliency map. By amplifying tokens consistent with this explicit visual evidence, our method corrects hallucinations and achieves state-of-the-art Precision and F1 scores on the <strong>POPE</strong> and <strong>CHAIR</strong> benchmarks, without the heavy computational overhead of multi-pass diffusion methods.
+                    </p>
+                    <div class="text-center">
+                        <img src="./img/result_mllm_hallucination.png" class="img-fluid rounded-custom" onerror="this.src='https://via.placeholder.com/800x300?text=Diagram:+MLLM+Hallucination+Mitigation'">
+                    </div>
+                </div>
+            </div>
+        </div>
+       
+        <div class="row justify-content-center">
+            <div class="col-lg-10">
+                <div class="content-section">
+                    <h3 class="fw-bold mb-3">Citation</h3>
+                    <textarea id="bibtex" class="form-control p-3" rows="7" readonly>
+@article{rawlekar2026finding,
+  title={Finding Distributed Object-Centric Properties in Self-Supervised Transformers},
+  author={Rawlekar, Samyak and Swain, Amitabh and Cai, Yujun and Wang, Yiwei and Yang, Ming-Hsuan and Ahuja, Narendra},
+  journal={arXiv preprint arXiv:2603.26127},
+  year={2026}
+}</textarea>
+                </div>
+            </div>
+        </div>
+
+        <div class="row mt-5">
+            <div class="col-12 text-center">
+                <p class="text-muted small">
+                    The website template was inspired by <a href="http://mgharbi.com/" class="text-muted text-decoration-underline">Michaël Gharbi</a> and <a href="https://dorverbin.github.io/refnerf" class="text-muted text-decoration-underline">Ref-NeRF</a>.
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
