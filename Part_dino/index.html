@@ -106,12 +106,72 @@
     .footer a { text-decoration:underline; color:inherit; }
     .skip-link { position:absolute; left:15px; top:-100px; padding:10px; background:var(--bg-color); z-index:20; }
     .skip-link:focus { top:15px; }
-    @media(max-width:850px) { .result-grid { grid-template-columns:1fr; } .content-section { padding:25px; } .example-grid { grid-template-columns:repeat(2,minmax(0,1fr)); gap:22px; } }
-    @media(max-width:540px) { body { padding:0 12px 35px; } .page-header { padding:65px 4px 8px; } .content-section { padding:20px 16px; margin-top:22px; } h2 { font-size:1.35rem; } .authors { gap:6px 16px; font-size:1rem; } .affiliations { gap:4px; } .resources { gap:4px; } .resource-link { min-width:118px; padding:12px 10px; font-size:.9rem; } .resource-icon { width:48px; height:48px; } .poster-icon { width:54px; height:54px; } .conference-logo { width:130px; height:56px; } .analysis-box { padding:18px; } .analysis-panels { grid-template-columns:repeat(2,minmax(0,1fr)); } .analysis-panel img { height:125px; } .curves { grid-template-columns:1fr; } .curves img { max-width:380px; margin:auto; } .qualitative { min-width:600px; } }
-    @media(prefers-reduced-motion:reduce) { *,*::before,*::after { scroll-behavior:auto!important; transition:none!important; } }
-    @media print { .theme-toggle,.resources,.section-nav,.copy-button { display:none; } body { background:#fff; color:#111; } .content-section { break-inside:avoid; box-shadow:none; } }
+    .reading-progress { position:fixed; inset:0 0 auto; z-index:40; height:4px; background:transparent; pointer-events:none; }
+    .reading-progress span { display:block; width:0; height:100%; background:linear-gradient(90deg,var(--link-color),var(--link-hover)); }
+    .section-nav { position:sticky; top:10px; z-index:15; width:max-content; max-width:100%; margin:0 auto 28px; padding:8px 12px; border:1px solid var(--border-color); border-radius:999px; background:var(--bg-color); background:color-mix(in srgb,var(--bg-color) 88%,transparent); box-shadow:var(--shadow); backdrop-filter:blur(12px); }
+    .section-nav a { padding:3px 7px; border-radius:999px; }
+    .section-nav a[aria-current="true"] { color:var(--bg-color); background:var(--link-color); }
+    .interactive-label { margin:0 0 10px; color:var(--muted); font-size:.82rem; font-weight:700; letter-spacing:.04em; text-transform:uppercase; }
+    .control-row { display:flex; flex-wrap:wrap; gap:8px; }
+    .control-button,.step-button,.explorer-arrow { border:1px solid var(--border-color); border-radius:999px; background:var(--bg-color); color:var(--text-color); cursor:pointer; padding:8px 13px; transition:transform .18s,background-color .18s,color .18s,border-color .18s; }
+    .control-button:hover,.step-button:hover,.explorer-arrow:hover { transform:translateY(-1px); border-color:var(--link-color); }
+    .control-button[aria-pressed="true"],.step-button[aria-selected="true"] { color:var(--bg-color); background:var(--link-color); border-color:var(--link-color); }
+    .boundary-comparison { margin:20px auto 0; max-width:760px; }
+    .compare-frame { --position:50%; position:relative; overflow:hidden; aspect-ratio:1; border-radius:13px; border:1px solid var(--border-color); background:#fff; box-shadow:var(--shadow); touch-action:none; }
+    .compare-frame>img,.compare-overlay img { width:100%; height:100%; object-fit:contain; background:#fff; }
+    .compare-overlay { position:absolute; inset:0; clip-path:inset(0 calc(100% - var(--position)) 0 0); }
+    .compare-divider { position:absolute; top:0; bottom:0; left:var(--position); width:3px; transform:translateX(-50%); background:#fff; box-shadow:0 0 0 1px rgba(0,0,0,.18); pointer-events:none; }
+    .compare-divider::after { content:'↔'; position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); display:grid; place-items:center; width:42px; height:42px; border-radius:50%; background:var(--link-color); color:#fff; font-weight:700; box-shadow:0 2px 10px rgba(0,0,0,.3); }
+    .compare-range { position:absolute; inset:0; width:100%; height:100%; margin:0; opacity:0; cursor:ew-resize; }
+    .compare-tag { position:absolute; top:12px; z-index:2; padding:5px 9px; border-radius:7px; background:rgba(15,20,28,.76); color:#fff; font-size:.78rem; pointer-events:none; }
+    .compare-tag.left { left:12px; }
+    .compare-tag.right { right:12px; }
+    .compare-note { text-align:center; margin:10px 0 0; color:var(--muted); font-size:.86rem; }
+    .method-stepper { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:10px; margin:18px 0; }
+    .step-button { border-radius:12px; text-align:left; padding:13px 14px; }
+    .step-button b { display:block; color:inherit; font-size:.76rem; margin-bottom:3px; opacity:.78; }
+    .steps li.is-active { margin-left:-5px; padding:11px 13px; border-radius:10px; background:var(--analysis-bg); box-shadow:inset 4px 0 0 var(--link-color); }
+    .metric-explorer { margin:22px 0; padding:20px; border:1px solid var(--border-color); border-radius:14px; background:var(--bg-color); }
+    .metric-controls { display:grid; grid-template-columns:2fr 1fr 1fr; gap:12px; margin-bottom:18px; }
+    .metric-controls label { color:var(--muted); font-size:.78rem; font-weight:700; }
+    .metric-controls select { display:block; width:100%; margin-top:5px; border:1px solid var(--border-color); border-radius:8px; padding:9px 10px; background:var(--card-bg); color:var(--text-color); font:inherit; }
+    .metric-chart { display:grid; gap:12px; }
+    .metric-bar-row { display:grid; grid-template-columns:105px 1fr 64px; align-items:center; gap:10px; font-size:.9rem; }
+    .metric-track { height:18px; overflow:hidden; border-radius:999px; background:var(--card-bg); }
+    .metric-bar { width:0; height:100%; border-radius:inherit; background:#9aa5b1; transition:width .45s ease; }
+    .metric-bar.ours { background:linear-gradient(90deg,var(--link-color),#4aa3ff); }
+    .metric-value { text-align:right; font-weight:700; font-variant-numeric:tabular-nums; }
+    .metric-summary { min-height:1.5em; margin:13px 0 0; color:var(--muted); font-size:.86rem; }
+    .qual-explorer { margin-top:18px; padding:20px; border:1px solid var(--border-color); border-radius:14px; background:var(--bg-color); }
+    .qual-datasets,.qual-methods { justify-content:center; }
+    .qual-stage { position:relative; display:grid; grid-template-columns:auto minmax(0,1fr) auto; gap:12px; align-items:center; margin:18px 0; }
+    .qual-image-wrap { min-height:420px; display:grid; place-items:center; overflow:hidden; border-radius:12px; background:#fff; }
+    .qual-main-image { width:100%; height:420px; object-fit:contain; cursor:zoom-in; }
+    .explorer-arrow { width:44px; height:44px; padding:0; font-size:1.35rem; }
+    .qual-caption { margin:10px 0 0; text-align:center; color:var(--muted); font-size:.87rem; }
+    .source-grid { margin-top:18px; }
+    .source-grid>summary { width:max-content; margin:auto; }
+    .source-grid figure { margin-top:15px; }
+    figure img:not(.conference-logo):not(.poster-icon) { cursor:zoom-in; }
+    .lightbox { position:fixed; inset:0; z-index:60; display:none; grid-template-rows:auto minmax(0,1fr) auto; background:rgba(5,8,12,.94); color:#fff; padding:18px; }
+    .lightbox.is-open { display:grid; }
+    .lightbox-toolbar { display:flex; justify-content:flex-end; gap:8px; }
+    .lightbox button { border:1px solid rgba(255,255,255,.3); border-radius:50%; width:44px; height:44px; background:rgba(255,255,255,.1); color:#fff; cursor:pointer; font-size:1.25rem; }
+    .lightbox-stage { display:grid; grid-template-columns:auto minmax(0,1fr) auto; align-items:center; gap:14px; min-height:0; }
+    .lightbox-stage img { width:100%; height:calc(100vh - 150px); max-width:100%; max-height:calc(100vh - 150px); margin:auto; object-fit:contain; cursor:default!important; }
+    .lightbox-caption { text-align:center; margin:10px auto 0; max-width:900px; color:#d8dde5; font-size:.9rem; }
+    .back-to-top { position:fixed; right:18px; bottom:18px; z-index:14; width:46px; height:46px; border:0; border-radius:50%; background:var(--link-color); color:var(--bg-color); box-shadow:0 3px 12px rgba(0,0,0,.25); cursor:pointer; opacity:0; transform:translateY(10px); pointer-events:none; transition:opacity .2s,transform .2s; }
+    .back-to-top.is-visible { opacity:1; transform:none; pointer-events:auto; }
+    .js .reveal-section { opacity:0; transform:translateY(18px); transition:opacity .45s ease,transform .45s ease; }
+    .js .reveal-section.is-visible { opacity:1; transform:none; }
+    body.lightbox-open { overflow:hidden; }
+    @media(max-width:850px) { .result-grid { grid-template-columns:1fr; } .content-section { padding:25px; } .example-grid { grid-template-columns:repeat(2,minmax(0,1fr)); gap:22px; } .method-stepper { grid-template-columns:1fr; } .qual-image-wrap,.qual-main-image { min-height:340px; height:340px; } }
+    @media(max-width:540px) { body { padding:0 12px 35px; } .page-header { padding:65px 4px 8px; } .content-section { padding:20px 16px; margin-top:22px; } h2 { font-size:1.35rem; } .authors { gap:6px 16px; font-size:1rem; } .affiliations { gap:4px; } .resources { gap:4px; } .resource-link { min-width:118px; padding:12px 10px; font-size:.9rem; } .resource-icon { width:48px; height:48px; } .poster-icon { width:54px; height:54px; } .conference-logo { width:130px; height:56px; } .analysis-box { padding:18px; } .analysis-panels { grid-template-columns:repeat(2,minmax(0,1fr)); } .analysis-panel img { height:125px; } .curves { grid-template-columns:1fr; } .curves img { max-width:380px; margin:auto; } .qualitative { min-width:600px; } .section-nav { top:5px; gap:5px; padding:7px 9px; font-size:.78rem; } .metric-controls { grid-template-columns:1fr; } .metric-bar-row { grid-template-columns:82px 1fr 54px; gap:7px; font-size:.78rem; } .qual-explorer,.metric-explorer { padding:14px; } .qual-stage { grid-template-columns:1fr; } .qual-stage>.explorer-arrow { position:absolute; z-index:2; } .qual-stage>.explorer-arrow:first-child { left:23px; } .qual-stage>.explorer-arrow:last-child { right:23px; } .qual-image-wrap,.qual-main-image { min-height:290px; height:290px; } .lightbox { padding:10px; } .lightbox-stage { grid-template-columns:1fr; } .lightbox-stage .lightbox-prev,.lightbox-stage .lightbox-next { position:absolute; top:50%; z-index:2; } .lightbox-stage .lightbox-prev { left:10px; } .lightbox-stage .lightbox-next { right:10px; } }
+    @media(prefers-reduced-motion:reduce) { *,*::before,*::after { scroll-behavior:auto!important; transition:none!important; } .js .reveal-section { opacity:1; transform:none; } }
+    @media print { .theme-toggle,.resources,.section-nav,.copy-button,.reading-progress,.back-to-top,.lightbox,.interactive-only { display:none!important; } body { background:#fff; color:#111; } .content-section { break-inside:avoid; box-shadow:none; } }
   </style>
   <script>
+    document.documentElement.classList.add('js');
     // Apply the saved theme before paint; storage may be unavailable in file previews.
     try { const t=localStorage.getItem('theme'); if(t==='light'||t==='dark') document.documentElement.dataset.theme=t; } catch(e) {}
   </script>
@@ -266,6 +326,327 @@
         status.textContent='Citation selected. Press Ctrl+C (Windows/Linux) or Command+C (Mac) to copy.';
       }
     });
+
+    (()=>{
+      const reducedMotion=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+      // Reading progress, scroll-aware navigation, and a compact return control.
+      const progress=document.createElement('div');
+      progress.className='reading-progress';
+      progress.setAttribute('aria-hidden','true');
+      progress.innerHTML='<span></span>';
+      document.body.prepend(progress);
+
+      const backToTop=document.createElement('button');
+      backToTop.className='back-to-top';
+      backToTop.type='button';
+      backToTop.setAttribute('aria-label','Back to top');
+      backToTop.textContent='↑';
+      document.body.append(backToTop);
+      backToTop.addEventListener('click',()=>window.scrollTo({top:0,behavior:reducedMotion?'auto':'smooth'}));
+
+      function updatePageChrome(){
+        const max=document.documentElement.scrollHeight-innerHeight;
+        progress.firstElementChild.style.width=(max>0?Math.min(100,scrollY/max*100):0)+'%';
+        backToTop.classList.toggle('is-visible',scrollY>700);
+      }
+      addEventListener('scroll',updatePageChrome,{passive:true});
+      addEventListener('resize',updatePageChrome);
+      updatePageChrome();
+
+      const sectionNav=document.querySelector('.section-nav');
+      if(sectionNav&&!sectionNav.querySelector('a[href="#qualitative"]')){
+        const qualitativeLink=document.createElement('a');
+        qualitativeLink.href='#qualitative';
+        qualitativeLink.textContent='Qualitative';
+        sectionNav.querySelector('a[href="#citation"]')?.before(qualitativeLink);
+      }
+      const navLinks=[...(sectionNav?.querySelectorAll('a[href^="#"]')||[])];
+      const observedSections=navLinks.map(link=>document.querySelector(link.getAttribute('href'))).filter(Boolean);
+      if('IntersectionObserver' in window){
+        const navObserver=new IntersectionObserver(entries=>{
+          const visible=entries.filter(entry=>entry.isIntersecting).sort((a,b)=>b.intersectionRatio-a.intersectionRatio)[0];
+          if(!visible) return;
+          navLinks.forEach(link=>{
+            if(link.getAttribute('href')==='#'+visible.target.id) link.setAttribute('aria-current','true');
+            else link.removeAttribute('aria-current');
+          });
+        },{rootMargin:'-25% 0px -60% 0px',threshold:[0,.15,.5]});
+        observedSections.forEach(section=>navObserver.observe(section));
+      }
+
+      const sections=[...document.querySelectorAll('.content-section')];
+      sections.forEach(section=>section.classList.add('reveal-section'));
+      if(reducedMotion||!('IntersectionObserver' in window)) sections.forEach(section=>section.classList.add('is-visible'));
+      else {
+        const revealObserver=new IntersectionObserver(entries=>entries.forEach(entry=>{
+          if(entry.isIntersecting){ entry.target.classList.add('is-visible'); revealObserver.unobserve(entry.target); }
+        }),{rootMargin:'0px 0px -8% 0px',threshold:.08});
+        sections.forEach(section=>revealObserver.observe(section));
+      }
+
+      // A direct visual comparison of the two boundary signals already shown on the page.
+      const insightPanels=[...document.querySelectorAll('#insights .analysis-panel')];
+      if(insightPanels.length>=4){
+        const dinoImage=insightPanels[2].querySelector('img');
+        const structureImage=insightPanels[3].querySelector('img');
+        const comparison=document.createElement('div');
+        comparison.className='boundary-comparison interactive-only';
+        comparison.innerHTML=`
+          <p class="interactive-label">Drag to compare boundary signals</p>
+          <div class="compare-frame">
+            <img src="${dinoImage.src}" alt="DINO feature-similarity boundaries">
+            <div class="compare-overlay"><img src="${structureImage.src}" alt="Image-contrast boundaries"></div>
+            <span class="compare-tag left">DINO similarity</span>
+            <span class="compare-tag right">Image contrast</span>
+            <span class="compare-divider" aria-hidden="true"></span>
+            <input class="compare-range" type="range" min="0" max="100" value="50" aria-label="Reveal DINO similarity or image contrast">
+          </div>
+          <p class="compare-note">Move the divider to inspect where the two boundary signals differ.</p>`;
+        insightPanels[0].parentElement.after(comparison);
+        insightPanels.slice(2).forEach(panel=>panel.hidden=true);
+        const range=comparison.querySelector('.compare-range');
+        const frame=comparison.querySelector('.compare-frame');
+        range.addEventListener('input',()=>frame.style.setProperty('--position',range.value+'%'));
+      }
+
+      // Selectable method stages connect the pipeline figure with its explanation.
+      const methodSteps=[...document.querySelectorAll('#method .steps li')];
+      const methodFigure=document.querySelector('#method .method-figure');
+      if(methodSteps.length&&methodFigure){
+        const stepper=document.createElement('div');
+        stepper.className='method-stepper interactive-only';
+        stepper.setAttribute('role','tablist');
+        stepper.setAttribute('aria-label','Part-DINO pipeline stages');
+        methodSteps.forEach((item,index)=>{
+          const button=document.createElement('button');
+          button.type='button';
+          button.className='step-button';
+          button.setAttribute('role','tab');
+          button.innerHTML='<b>Step '+(index+1)+'</b>'+item.querySelector('strong').textContent.replace(/\.$/,'');
+          button.addEventListener('click',()=>selectStep(index));
+          button.addEventListener('keydown',event=>{
+            if(event.key!=='ArrowLeft'&&event.key!=='ArrowRight') return;
+            event.preventDefault();
+            const next=(index+(event.key==='ArrowRight'?1:-1)+methodSteps.length)%methodSteps.length;
+            selectStep(next);
+            stepper.children[next].focus();
+          });
+          stepper.append(button);
+        });
+        methodFigure.parentElement.before(stepper);
+        function selectStep(index){
+          [...stepper.children].forEach((button,i)=>button.setAttribute('aria-selected',String(i===index)));
+          methodSteps.forEach((item,i)=>item.classList.toggle('is-active',i===index));
+        }
+        selectStep(0);
+      }
+
+      // Parse the visible paper tables so the chart can never drift from the reported values.
+      const metricTables=[...document.querySelectorAll('#results table.metrics')];
+      if(metricTables.length){
+        const datasets=metricTables.map(table=>{
+          const headers=[...table.querySelectorAll('thead th')].map(cell=>cell.textContent.trim());
+          const metrics=headers.slice(2).map(label=>label.replace(/[↑↓]/g,'').trim());
+          const byK={};
+          table.querySelectorAll('tbody tr').forEach(row=>{
+            const cells=[...row.children];
+            const k=cells[0].textContent.trim();
+            const method=cells[1].textContent.trim();
+            byK[k]??={};
+            byK[k][method]={};
+            metrics.forEach((metric,i)=>byK[k][method][metric]=Number(cells[i+2].textContent.trim()));
+          });
+          return {name:table.querySelector('caption').textContent.trim(),metrics,byK};
+        });
+        const explorer=document.createElement('div');
+        explorer.className='metric-explorer interactive-only';
+        explorer.innerHTML=`
+          <p class="interactive-label">Explore the reported comparisons</p>
+          <div class="metric-controls">
+            <label>Dataset<select class="metric-dataset"></select></label>
+            <label>Parts (K)<select class="metric-k"></select></label>
+            <label>Metric<select class="metric-name"></select></label>
+          </div>
+          <div class="metric-chart" role="img">
+            <div class="metric-bar-row"><span>DINO + SAM</span><div class="metric-track"><div class="metric-bar baseline"></div></div><span class="metric-value baseline-value"></span></div>
+            <div class="metric-bar-row"><span>Part-DINO</span><div class="metric-track"><div class="metric-bar ours"></div></div><span class="metric-value ours-value"></span></div>
+          </div>
+          <p class="metric-summary" aria-live="polite"></p>`;
+        document.querySelector('#results .analysis-box').after(explorer);
+        const datasetSelect=explorer.querySelector('.metric-dataset');
+        const kSelect=explorer.querySelector('.metric-k');
+        const metricSelect=explorer.querySelector('.metric-name');
+        datasets.forEach((dataset,index)=>datasetSelect.add(new Option(dataset.name,String(index))));
+        function refill(select,values,preferred){
+          select.replaceChildren(...values.map(value=>new Option(value,value)));
+          if(preferred&&values.includes(preferred)) select.value=preferred;
+        }
+        function updateMetricOptions(){
+          const dataset=datasets[Number(datasetSelect.value)];
+          refill(kSelect,Object.keys(dataset.byK),kSelect.value);
+          refill(metricSelect,dataset.metrics,metricSelect.value);
+          updateMetricChart();
+        }
+        function updateMetricChart(){
+          const dataset=datasets[Number(datasetSelect.value)];
+          const k=kSelect.value;
+          const metric=metricSelect.value;
+          const pair=dataset.byK[k];
+          const baseline=pair['DINO + SAM']?.[metric];
+          const ours=pair['Part-DINO']?.[metric];
+          if(!Number.isFinite(baseline)||!Number.isFinite(ours)) return;
+          const scale=Math.max(baseline,ours,1)*1.08;
+          explorer.querySelector('.baseline').style.width=(baseline/scale*100)+'%';
+          explorer.querySelector('.ours').style.width=(ours/scale*100)+'%';
+          explorer.querySelector('.baseline-value').textContent=baseline.toFixed(2);
+          explorer.querySelector('.ours-value').textContent=ours.toFixed(2);
+          const difference=ours-baseline;
+          const direction=difference>0?'higher':difference<0?'lower':'unchanged';
+          const magnitude=Math.abs(difference).toFixed(2);
+          explorer.querySelector('.metric-summary').textContent=`At K = ${k}, Part-DINO is ${magnitude} points ${direction} on ${metric}. ${metric==='NME'?'Lower is better.':'Higher is better.'}`;
+          explorer.querySelector('.metric-chart').setAttribute('aria-label',`${dataset.name}, K ${k}, ${metric}: DINO plus SAM ${baseline.toFixed(2)}, Part-DINO ${ours.toFixed(2)}.`);
+        }
+        datasetSelect.addEventListener('change',updateMetricOptions);
+        kSelect.addEventListener('change',updateMetricChart);
+        metricSelect.addEventListener('change',updateMetricChart);
+        updateMetricOptions();
+      }
+
+      // Turn the dense qualitative table into a large, keyboard-friendly image explorer.
+      const qualitativeTable=document.querySelector('#qualitative table.qualitative');
+      if(qualitativeTable){
+        const datasetNames=[...qualitativeTable.querySelectorAll('thead th')].slice(1).map(cell=>cell.textContent.trim());
+        const methodRows=[...qualitativeTable.querySelectorAll('tbody tr')].map(row=>({
+          name:row.querySelector('th').textContent.trim(),
+          images:[...row.querySelectorAll('td img')].map(image=>({src:image.src,alt:image.alt}))
+        }));
+        let datasetIndex=0;
+        let methodIndex=methodRows.length-1;
+        const explorer=document.createElement('div');
+        explorer.className='qual-explorer interactive-only';
+        explorer.tabIndex=0;
+        explorer.innerHTML=`
+          <p class="interactive-label">Choose a dataset and method</p>
+          <div class="control-row qual-datasets" role="group" aria-label="Dataset"></div>
+          <div class="qual-stage">
+            <button class="explorer-arrow qual-prev" type="button" aria-label="Previous method">‹</button>
+            <div class="qual-image-wrap"><img class="qual-main-image" alt=""></div>
+            <button class="explorer-arrow qual-next" type="button" aria-label="Next method">›</button>
+          </div>
+          <div class="control-row qual-methods" role="group" aria-label="Method"></div>
+          <p class="qual-caption" aria-live="polite"></p>`;
+        const datasetControls=explorer.querySelector('.qual-datasets');
+        const methodControls=explorer.querySelector('.qual-methods');
+        datasetNames.forEach((name,index)=>{
+          const button=document.createElement('button');
+          button.type='button'; button.className='control-button'; button.textContent=name;
+          button.addEventListener('click',()=>{datasetIndex=index;updateQualitative();});
+          datasetControls.append(button);
+        });
+        methodRows.forEach((row,index)=>{
+          const button=document.createElement('button');
+          button.type='button'; button.className='control-button'; button.textContent=row.name;
+          button.addEventListener('click',()=>{methodIndex=index;updateQualitative();});
+          methodControls.append(button);
+        });
+        function changeMethod(delta){
+          methodIndex=(methodIndex+delta+methodRows.length)%methodRows.length;
+          updateQualitative();
+        }
+        explorer.querySelector('.qual-prev').addEventListener('click',()=>changeMethod(-1));
+        explorer.querySelector('.qual-next').addEventListener('click',()=>changeMethod(1));
+        explorer.addEventListener('keydown',event=>{
+          if(event.target.matches('button')) return;
+          if(event.key==='ArrowLeft'||event.key==='ArrowRight'){
+            event.preventDefault(); changeMethod(event.key==='ArrowRight'?1:-1);
+          }
+        });
+        function updateQualitative(){
+          const selected=methodRows[methodIndex].images[datasetIndex];
+          const image=explorer.querySelector('.qual-main-image');
+          image.src=selected.src; image.alt=selected.alt;
+          [...datasetControls.children].forEach((button,i)=>button.setAttribute('aria-pressed',String(i===datasetIndex)));
+          [...methodControls.children].forEach((button,i)=>button.setAttribute('aria-pressed',String(i===methodIndex)));
+          explorer.querySelector('.qual-caption').textContent=`${methodRows[methodIndex].name} on ${datasetNames[datasetIndex]}`;
+        }
+        const originalFigure=qualitativeTable.closest('figure');
+        originalFigure.before(explorer);
+        const sourceDetails=document.createElement('details');
+        sourceDetails.className='source-grid';
+        sourceDetails.innerHTML='<summary>View the complete comparison grid</summary>';
+        originalFigure.after(sourceDetails);
+        sourceDetails.append(originalFigure);
+        updateQualitative();
+      }
+
+      // Fullscreen inspection for scientific figures and explorer outputs.
+      const lightbox=document.createElement('div');
+      lightbox.className='lightbox';
+      lightbox.setAttribute('role','dialog');
+      lightbox.setAttribute('aria-modal','true');
+      lightbox.setAttribute('aria-label','Expanded figure');
+      lightbox.innerHTML=`
+        <div class="lightbox-toolbar"><button class="lightbox-close" type="button" aria-label="Close expanded figure">×</button></div>
+        <div class="lightbox-stage"><button class="lightbox-prev" type="button" aria-label="Previous figure">‹</button><img alt=""><button class="lightbox-next" type="button" aria-label="Next figure">›</button></div>
+        <p class="lightbox-caption"></p>`;
+      document.body.append(lightbox);
+      const lightboxImage=lightbox.querySelector('img');
+      let lightboxItems=[];
+      let lightboxIndex=0;
+      let lastFocus=null;
+      function eligibleImages(){
+        return [...document.querySelectorAll('main figure img, .qual-main-image, .compare-frame>img, .compare-overlay img')].filter(image=>{
+          const closed=image.closest('details:not([open])');
+          return !closed&&!image.hidden;
+        });
+      }
+      function imageCaption(image){
+        return image.closest('figure')?.querySelector('figcaption')?.textContent.trim()||image.alt||'Expanded figure';
+      }
+      function showLightboxItem(index){
+        if(!lightboxItems.length) return;
+        lightboxIndex=(index+lightboxItems.length)%lightboxItems.length;
+        const source=lightboxItems[lightboxIndex];
+        lightboxImage.src=source.src;
+        lightboxImage.alt=source.alt||'';
+        lightbox.querySelector('.lightbox-caption').textContent=imageCaption(source);
+      }
+      function openLightbox(source){
+        lightboxItems=eligibleImages();
+        lightboxIndex=Math.max(0,lightboxItems.indexOf(source));
+        lastFocus=document.activeElement;
+        showLightboxItem(lightboxIndex);
+        lightbox.classList.add('is-open');
+        document.body.classList.add('lightbox-open');
+        lightbox.querySelector('.lightbox-close').focus();
+      }
+      function closeLightbox(){
+        lightbox.classList.remove('is-open');
+        document.body.classList.remove('lightbox-open');
+        lastFocus?.focus?.();
+      }
+      document.addEventListener('click',event=>{
+        const image=event.target.closest('main figure img, .qual-main-image');
+        if(image) openLightbox(image);
+      });
+      document.querySelectorAll('main figure img').forEach(image=>{
+        image.tabIndex=0;
+        image.setAttribute('role','button');
+        image.setAttribute('aria-label',(image.alt||'Figure')+'. Open larger view.');
+        image.addEventListener('keydown',event=>{ if(event.key==='Enter'||event.key===' '){ event.preventDefault(); openLightbox(image); } });
+      });
+      lightbox.querySelector('.lightbox-close').addEventListener('click',closeLightbox);
+      lightbox.querySelector('.lightbox-prev').addEventListener('click',()=>showLightboxItem(lightboxIndex-1));
+      lightbox.querySelector('.lightbox-next').addEventListener('click',()=>showLightboxItem(lightboxIndex+1));
+      lightbox.addEventListener('click',event=>{ if(event.target===lightbox) closeLightbox(); });
+      document.addEventListener('keydown',event=>{
+        if(!lightbox.classList.contains('is-open')) return;
+        if(event.key==='Escape') closeLightbox();
+        if(event.key==='ArrowLeft') showLightboxItem(lightboxIndex-1);
+        if(event.key==='ArrowRight') showLightboxItem(lightboxIndex+1);
+      });
+    })();
   </script>
 </body>
 </html>
