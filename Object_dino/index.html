@@ -1,24 +1,20 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="light">
+
+<html data-theme="light" lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-
-    <title>Object-DINO: Finding Distributed Object-Centric Properties in Self-Supervised Transformers</title>
-    <meta name="description" content="Object-DINO Project Page">
-
-    <meta property="og:type" content="website" />
-    <meta property="og:title" content="Finding Distributed Object-Centric Properties in Self-Supervised Transformers" />
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="Finding Distributed Object-Centric Properties in Self-Supervised Transformers" />
-
-    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🔍</text></svg>">
-
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-
-    <style>
+<meta charset="utf-8"/>
+<meta content="ie=edge" http-equiv="x-ua-compatible"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<title>Object-DINO: Finding Distributed Object-Centric Properties in Self-Supervised Transformers</title>
+<meta content="Object-DINO Project Page" name="description"/>
+<meta content="website" property="og:type">
+<meta content="Finding Distributed Object-Centric Properties in Self-Supervised Transformers" property="og:title">
+<meta content="summary_large_image" name="twitter:card">
+<meta content="Finding Distributed Object-Centric Properties in Self-Supervised Transformers" name="twitter:title">
+<link href="data:image/svg+xml,&lt;svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22&gt;&lt;text y=%22.9em%22 font-size=%2290%22&gt;🔍&lt;/text&gt;&lt;/svg&gt;" rel="icon"/>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"/>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet"/>
+<style>
         /* Smooth Theming Variables */
         :root {
             --bg-color: #ffffff;
@@ -164,8 +160,7 @@
             resize: none;
         }
     </style>
-
-    <script>
+<script>
         function setTheme(theme) {
             document.documentElement.setAttribute('data-theme', theme);
             localStorage.setItem('theme', theme);
@@ -189,213 +184,210 @@
         }
         document.addEventListener('DOMContentLoaded', initTheme);
     </script>
-</head>
+</meta></meta></meta></meta><style>
+:root{--od-accent:#087f83;--od-good:#087f83;--od-warn:#b86c25;--od-muted:#657181;--od-line:#dce3e8;--od-panel:#fff;--od-tint:#eaf7f5;--od-base:#8b9bad} [data-theme=dark]{--od-accent:#5dd8ca;--od-good:#5dd8ca;--od-warn:#f5b86a;--od-muted:#aab8c8;--od-line:#394652;--od-panel:#202932;--od-tint:#183c3c;--od-base:#8294a8} html{scroll-behavior:smooth;scroll-padding-top:85px} body{font-family:system-ui,-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif}.od-main{margin-top:105px!important}.od-title{font-size:clamp(1.9rem,3.6vw,3.05rem);letter-spacing:-.045em;line-height:1.13;max-width:1000px;margin:0 auto}.od-kicker,.od-eyebrow{font-size:.72rem;letter-spacing:.14em;font-weight:800;color:var(--od-accent);margin-bottom:10px}.od-nav{position:fixed;top:0;left:0;right:0;z-index:900;background:var(--bg-color);border-bottom:1px solid var(--od-line);display:flex;align-items:center;justify-content:space-between;padding:14px max(70px,calc((100vw - 1100px)/2));gap:18px;min-height:64px}.od-brand{font-weight:850;color:var(--heading-color);white-space:nowrap}.od-mark{color:var(--od-accent);font-size:1.2rem}.od-navlinks{display:flex;gap:20px;white-space:nowrap}.od-navlinks a{font-size:.85rem;color:var(--od-muted);font-weight:650}.od-navlinks a.active{color:var(--od-accent)}#od-progress{position:fixed;top:0;left:0;width:0;height:3px;background:var(--od-accent);z-index:1100}.od-hero-note{border:1px solid var(--od-line);background:linear-gradient(120deg,var(--od-tint),var(--od-panel));border-radius:20px;padding:26px 30px;margin:0 0 18px;text-align:left}.od-hero-note>span{color:var(--od-accent);font-size:.7rem;letter-spacing:.15em;font-weight:800}.od-hero-note>strong{display:block;font-size:clamp(1.5rem,3vw,2.25rem);letter-spacing:-.04em;color:var(--heading-color)}.od-hero-note p{margin:5px 0 18px}.od-statline{display:flex;gap:12px 30px;flex-wrap:wrap;border-top:1px solid var(--od-line);padding-top:12px;font-size:.84rem;color:var(--od-muted)}.od-statline b{color:var(--od-accent);font-size:1.05rem;margin-right:4px}.od-lab{background:var(--od-panel);border:1px solid var(--od-line);border-radius:18px;padding:24px;margin:20px 0;box-shadow:0 8px 25px rgba(20,40,55,.045);text-align:left}.od-lab h3{font-size:clamp(1.25rem,2.5vw,1.7rem);letter-spacing:-.025em;font-weight:760;margin:0 0 8px}.od-sub{color:var(--od-muted);font-size:.93rem;margin:0 0 16px}.od-toolbar{display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap;margin:12px 0}.od-tabs{display:flex;gap:5px;flex-wrap:wrap;margin:8px 0}.od-tabs button,.od-steps button,.od-copy,.od-top{border:1px solid var(--od-line);background:var(--od-panel);color:var(--heading-color);font:inherit;font-size:.85rem;font-weight:650;padding:8px 12px;border-radius:8px;cursor:pointer;transition:background .18s,transform .18s}.od-tabs button:hover,.od-steps button:hover,.od-copy:hover{border-color:var(--od-accent);transform:translateY(-1px)}.od-tabs button[aria-pressed=true],.od-steps button[aria-pressed=true]{background:var(--od-tint);border-color:var(--od-accent);color:var(--od-accent)}button:focus-visible,a:focus-visible,[tabindex]:focus-visible{outline:3px solid var(--od-accent);outline-offset:3px}.od-compare,.od-head-layout,.od-grounding{display:grid;grid-template-columns:1fr 1fr;gap:18px;align-items:start}.od-panel-title{font-size:.8rem;font-weight:700;margin:7px 0;color:var(--heading-color)}.od-crop{position:relative;overflow:hidden;aspect-ratio:195/131;border-radius:10px;background:var(--od-tint);border:1px solid var(--od-line)}.od-crop img{position:absolute;max-width:none;width:512.8205%;height:auto;left:0;top:0;display:block}.od-explain{background:var(--od-tint);border-left:3px solid var(--od-accent);border-radius:0 8px 8px 0;padding:11px 14px;margin:15px 0;color:var(--text-color);font-size:.9rem;min-height:48px}.od-foot{font-size:.75rem;color:var(--od-muted);margin-top:12px}.od-details{padding:10px 15px;border:1px solid var(--od-line);border-radius:10px;text-align:left;color:var(--od-muted);font-size:.9rem}.od-details summary{cursor:pointer;font-weight:650}.od-details img{margin-top:12px}.od-head-grid{display:grid;grid-template-columns:repeat(6,1fr);gap:7px;margin:8px 0}.od-head-grid button{aspect-ratio:1;border:1px solid var(--od-line);border-radius:9px;background:var(--od-tint);color:var(--od-accent);font-weight:750;cursor:pointer}.od-head-grid button.warn{background:var(--od-panel);color:var(--od-warn);border-color:var(--od-warn)}.od-head-grid button[aria-pressed=true]{outline:3px solid var(--heading-color);outline-offset:2px}.od-head-image{position:relative;aspect-ratio:1;max-width:350px;border-radius:12px;overflow:hidden;background:var(--od-tint);display:grid;place-items:center}.od-head-image img{width:100%;height:100%;object-fit:contain}.od-head-image div{padding:20px;text-align:center}.od-legend{display:flex;gap:8px 20px;flex-wrap:wrap;font-size:.78rem;color:var(--od-muted);margin:12px 0}.od-dot{display:inline-block;width:10px;height:10px;border-radius:50%;margin-right:4px;background:var(--od-base)}.od-dot.good{background:var(--od-good)}.od-dot.warn{background:var(--od-warn)}.od-dot.base{background:var(--od-base)}.od-bars{margin:16px 0;display:grid;gap:13px}.od-bar-row{display:grid;grid-template-columns:minmax(100px,155px) 1fr 52px;align-items:center;gap:10px;font-size:.83rem}.od-track{height:16px;border-radius:4px;background:var(--od-line);overflow:hidden}.od-fill{height:100%;border-radius:4px;background:var(--od-base);transition:width .35s}.od-fill.good{background:var(--od-good)}.od-fill.mid{background:#6e9ab4}.od-num{font-weight:750;text-align:right;font-variant-numeric:tabular-nums}.od-group{border-bottom:1px solid var(--od-line);padding-bottom:10px;display:grid;gap:7px}.od-group:last-child{border:0}.od-group-title{font-size:.86rem;font-weight:750;display:flex;justify-content:space-between}.od-gain{color:var(--od-accent)}.od-steps{display:grid;grid-template-columns:repeat(5,1fr);gap:6px;margin:16px 0}.od-steps button{text-align:left;padding:9px}.od-steps button span{display:block;font-size:.7rem;color:var(--od-muted)}.od-step-content{display:grid;grid-template-columns:1fr 1.4fr;gap:18px;align-items:center;min-height:155px}.od-step-art{background:var(--od-tint);border-radius:12px;min-height:140px;display:grid;place-items:center}.od-step-art svg{width:100%;height:140px}.od-step-content h4{font-size:1.1rem;font-weight:750}.od-step-content p{font-size:.9rem}.od-caption-output{font-weight:750;font-size:clamp(1.25rem,2.5vw,1.8rem);line-height:1.35;margin:18px 0}.od-caption-output mark{background:transparent;color:var(--od-warn);padding:0}.od-caption-output mark.correct{color:var(--od-accent)}.od-select-label{font-size:.78rem;color:var(--od-muted);display:flex;align-items:center;gap:6px}.od-select-label select{background:var(--od-panel);border:1px solid var(--od-line);color:var(--heading-color);border-radius:8px;padding:7px;max-width:180px}.od-copy{float:right;margin-bottom:8px}.od-zoom{cursor:zoom-in}.od-top{position:fixed;right:18px;bottom:18px;z-index:850;box-shadow:var(--shadow)}#od-lightbox{max-width:95vw;max-height:94vh;background:var(--od-panel);border:1px solid var(--od-line);border-radius:14px;padding:36px 12px 12px}#od-lightbox::backdrop{background:rgba(0,0,0,.82)}#od-lightbox img{max-width:90vw;max-height:82vh;object-fit:contain}#od-close{position:absolute;top:4px;right:10px;border:0;background:none;color:var(--heading-color);font-size:25px;cursor:pointer}.content-section{border-radius:20px}.text-muted{color:var(--od-muted)!important}[data-theme=dark] .analysis-box{border-left-color:var(--od-accent)}@media(max-width:700px){.od-nav{padding:10px 65px 10px 12px;gap:7px;flex-wrap:wrap}.od-navlinks{overflow-x:auto;gap:13px;width:100%;padding-bottom:3px}.od-navlinks a{font-size:.75rem}.od-main{margin-top:120px!important}.content-section{padding:18px}.od-lab{padding:15px}.od-hero-note{padding:18px}.od-compare{gap:8px}.od-head-layout,.od-grounding,.od-step-content{grid-template-columns:1fr}.od-head-image{max-width:100%;width:100%}.od-steps{grid-template-columns:repeat(3,1fr)}.od-bar-row{grid-template-columns:91px 1fr 43px;gap:6px;font-size:.75rem}.od-statline{gap:8px 15px}.theme-toggle{width:38px;height:38px}}@media(prefers-reduced-motion:reduce){*,*::before,*::after{scroll-behavior:auto!important;transition:none!important;animation:none!important}}
+</style></head>
+<body><div id="od-progress"></div><nav aria-label="Project sections" class="od-nav"><a class="od-brand" href="#main"><span class="od-mark">◉</span> Object-DINO</a><div class="od-navlinks"><a href="#abstract">Overview</a><a href="#findings">Findings</a><a href="#method">Method</a><a href="#applications">Results</a><a href="#citation">Citation</a></div></nav>
+<div class="theme-toggle-container" style="top: 10px; right: 12px;">
+<button aria-label="Toggle dark mode" class="theme-toggle" onclick="toggleTheme()">
+<i class="fas fa-moon"></i>
+</button>
+</div>
+<div class="container od-main" id="main">
+<div class="row">
+<div class="col-12 text-center">
+<div class="od-kicker">SELF-SUPERVISED VISION · OBJECT DISCOVERY</div><h2 class="fw-bold mb-2 od-title">Finding Distributed Object-Centric Properties in Self-Supervised Transformers</h2>
+<h4 class="mb-4 fw-bold">CVPR 2026 <span class="text-danger">(Highlight)</span></h4>
+<ul class="list-inline fs-5 mb-2">
+<li class="list-inline-item mx-3"><a href="https://samyakr99.github.io/">Samyak Rawlekar</a><sup>1</sup></li>
+<li class="list-inline-item mx-3"><a href="https://scholar.google.com/citations?hl=en&amp;user=MbjU6lkAAAAJ">Amitabh Swain</a><sup>1</sup></li>
+<li class="list-inline-item mx-3"><a href="https://vanoracai.github.io/">Yujun Cai</a><sup>2</sup></li>
+<li class="list-inline-item mx-3"><a href="https://wangywust.github.io/">Yiwei Wang</a><sup>3</sup></li>
+<li class="list-inline-item mx-3"><a href="https://faculty.ucmerced.edu/mhyang/">Ming-Hsuan Yang</a><sup>3</sup></li>
+<li class="list-inline-item mx-3"><a href="https://ece.illinois.edu/about/directory/faculty/n-ahuja">Narendra Ahuja</a><sup>1</sup></li>
+</ul>
+<ul class="list-inline fs-6 text-muted mb-4">
+<li class="list-inline-item mx-3"><sup>1</sup><a class="text-muted" href="https://illinois.edu/">University of Illinois Urbana-Champaign</a></li>
+<li class="list-inline-item mx-3"><sup>2</sup><a class="text-muted" href="https://www.uq.edu.au/">University of Queensland</a></li>
+<li class="list-inline-item mx-3"><sup>3</sup><a class="text-muted" href="https://www.ucmerced.edu/">UC Merced</a></li>
+</ul>
+</div>
+</div>
+<div class="row mb-4">
+<div class="col-12 d-flex justify-content-center align-items-center gap-4 flex-wrap">
+<a class="uni-logo" href="https://illinois.edu/" target="_blank">
+<img alt="UIUC Logo" height="80px" onerror="if(!this.dataset.retried){this.dataset.retried='1';this.src='https://samyakr99.github.io/Object_dino/img/uiuc_logo.png';}else{this.onerror=null;this.alt=this.alt||'Project image unavailable';}" src="img/uiuc_logo.png"/>
+</a>
+<a class="uni-logo" href="https://www.uq.edu.au/" target="_blank">
+<img alt="UQ Logo" height="50px" onerror="if(!this.dataset.retried){this.dataset.retried='1';this.src='https://samyakr99.github.io/Object_dino/img/uq_logo.png';}else{this.onerror=null;this.alt=this.alt||'Project image unavailable';}" src="img/uq_logo.png"/>
+</a>
+<a class="uni-logo" href="https://www.ucmerced.edu/" target="_blank">
+<img alt="UC Merced Logo" height="50px" onerror="if(!this.dataset.retried){this.dataset.retried='1';this.src='https://samyakr99.github.io/Object_dino/img/ucmerced_logo.jpg';}else{this.onerror=null;this.alt=this.alt||'Project image unavailable';}" src="img/ucmerced_logo.jpg"/>
+</a>
+</div>
+</div>
+<div class="row mb-5">
+<div class="col-12 d-flex justify-content-center align-items-end gap-3 flex-wrap">
+<a class="resource-link" href="https://arxiv.org/abs/2603.26127" target="_blank">
+<img height="60px" onerror="if(!this.dataset.retried){this.dataset.retried='1';this.src='https://samyakr99.github.io/Object_dino/img/paper_snap.png';}else{this.onerror=null;this.alt=this.alt||'Project image unavailable';}" src="img/paper_snap.png"/>
+<h4>Paper</h4>
+</a>
+<a class="resource-link" href="img/CVPR2026_poster.pdf" target="_blank">
+<img height="60px" onerror="if(!this.dataset.retried){this.dataset.retried='1';this.src='https://samyakr99.github.io/Object_dino/img/poster.png';}else{this.onerror=null;this.alt=this.alt||'Project image unavailable';}" src="img/poster.png"/>
+<h4>Poster</h4>
+</a>
+<a class="resource-link" href="https://youtube.com/watch?v=-lLqh3WCiKc" target="_blank">
+<img height="60px" onerror="if(!this.dataset.retried){this.dataset.retried='1';this.src='https://samyakr99.github.io/Object_dino/img/youtube.png';}else{this.onerror=null;this.alt=this.alt||'Project image unavailable';}" src="img/youtube.png"/>
+<h4>Video</h4>
+</a>
+<a class="resource-link" href="https://github.com/SamyakR99/Object-DINO" target="_blank">
+<i class="fab fa-github" style="font-size: 60px; color: var(--heading-color);"></i>
+<h4>Code</h4>
+</a>
+<a class="resource-link" href="https://cvpr.thecvf.com/" target="_blank">
+<img alt="CVPR Logo" height="60px" onerror="if(!this.dataset.retried){this.dataset.retried='1';this.src='https://samyakr99.github.io/Object_dino/img/CVPR_Logo2_Denver 2026_Color.jpg';}else{this.onerror=null;this.alt=this.alt||'Project image unavailable';}" src="img/CVPR_Logo2_Denver 2026_Color.jpg"/>
+<h4>CVPR '26</h4>
+</a>
+</div>
+</div>
+<div class="row justify-content-center">
+<div class="col-12 col-lg-10"><div class="od-hero-note"><span>OBJECTNESS IS DISTRIBUTED</span><strong>Look beyond the last layer.</strong><p>Explore how patch-level signals and attention heads reveal objects in frozen vision transformers.</p><div class="od-statline"><span><b>Q + K + V</b> complementary signals</span><span><b>4,000</b> COCO images analyzed</span><span><b>+12.4</b> max. CorLoc gain</span></div></div></div><div class="col-12 col-lg-10"><section class="od-lab" id="signal-lab"><div class="od-eyebrow">01 / Signal explorer · Figure 1</div><h3>Same image. Different signals.</h3><p class="od-sub">Choose an attention component to see what it highlights in the original paper examples.</p><div class="od-toolbar"><div aria-label="Example" class="od-tabs" id="scene-tabs"><button aria-pressed="true" data-scene="0">Rider &amp; dogs</button><button aria-pressed="false" data-scene="1">Lighthouse &amp; boat</button></div><div aria-label="Attention component" class="od-tabs" id="signal-tabs"><button aria-pressed="false" data-signal="1">Q</button><button aria-pressed="false" data-signal="2">K</button><button aria-pressed="false" data-signal="3">V</button><button aria-pressed="true" data-signal="4">Ensemble</button></div></div><div class="od-compare"><div><div class="od-panel-title">Input image</div><div class="od-crop" id="input-crop"><img alt="Input image from Figure 1" data-fallback="https://samyakr99.github.io/Object_dino/img/OD_fig1.png" src="./img/OD_fig1.png"/></div></div><div><div class="od-panel-title" id="signal-label">Ensemble similarity</div><div class="od-crop" id="signal-crop"><img alt="Selected similarity map from Figure 1" data-fallback="https://samyakr99.github.io/Object_dino/img/OD_fig1.png" src="./img/OD_fig1.png"/></div></div></div><div aria-live="polite" class="od-explain" id="signal-note"></div><div class="od-foot">Actual visualizations from Figure 1 · Select another component to compare.</div></section></div><div class="col-12 col-lg-10 text-center od-original-teaser">
 
-<body>
-    <div class="theme-toggle-container">
-        <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle dark mode">
-            <i class="fas fa-moon"></i>
-        </button>
-    </div>
 
-    <div class="container mt-5" id="main">
-        <div class="row">
-            <div class="col-12 text-center">
-                <h2 class="fw-bold mb-2">Finding Distributed Object-Centric Properties in Self-Supervised Transformers</h2>
-                <h4 class="mb-4 fw-bold">CVPR 2026 <span class="text-danger">(Highlight)</span></h4>
-                <ul class="list-inline fs-5 mb-2">
-                    <li class="list-inline-item mx-3"><a href="https://samyakr99.github.io/">Samyak Rawlekar</a><sup>1</sup></li>
-                    <li class="list-inline-item mx-3"><a href="https://scholar.google.com/citations?hl=en&user=MbjU6lkAAAAJ">Amitabh Swain</a><sup>1</sup></li>
-                    <li class="list-inline-item mx-3"><a href="https://vanoracai.github.io/">Yujun Cai</a><sup>2</sup></li>
-                    <li class="list-inline-item mx-3"><a href="https://wangywust.github.io/">Yiwei Wang</a><sup>3</sup></li>
-                    <li class="list-inline-item mx-3"><a href="https://faculty.ucmerced.edu/mhyang/">Ming-Hsuan Yang</a><sup>3</sup></li>
-                    <li class="list-inline-item mx-3"><a href="https://ece.illinois.edu/about/directory/faculty/n-ahuja">Narendra Ahuja</a><sup>1</sup></li>
-                </ul>
-                
-                <ul class="list-inline fs-6 text-muted mb-4">
-                    <li class="list-inline-item mx-3"><sup>1</sup><a href="https://illinois.edu/" class="text-muted">University of Illinois Urbana-Champaign</a></li>
-                    <li class="list-inline-item mx-3"><sup>2</sup><a href="https://www.uq.edu.au/" class="text-muted">University of Queensland</a></li>
-                    <li class="list-inline-item mx-3"><sup>3</sup><a href="https://www.ucmerced.edu/" class="text-muted">UC Merced</a></li>
-                </ul>
-            </div>
-        </div>
-
-        <div class="row mb-4">
-            <div class="col-12 d-flex justify-content-center align-items-center gap-4 flex-wrap">
-                <a href="https://illinois.edu/" target="_blank" class="uni-logo">
-                    <img src="img/uiuc_logo.png" height="80px" alt="UIUC Logo" onerror="this.src='https://via.placeholder.com/150x50?text=UIUC'">
-                </a>
-                <a href="https://www.uq.edu.au/" target="_blank" class="uni-logo">
-                    <img src="img/uq_logo.png" height="50px" alt="UQ Logo" onerror="this.src='https://via.placeholder.com/150x50?text=U+Queensland'">
-                </a>
-                <a href="https://www.ucmerced.edu/" target="_blank" class="uni-logo">
-                    <img src="img/ucmerced_logo.jpg" height="50px"  alt="UC Merced Logo" onerror="this.src='https://via.placeholder.com/150x50?text=UC+Merced'">
-                </a>
-            </div>
-        </div>
-
-        <div class="row mb-5">
-            <div class="col-12 d-flex justify-content-center align-items-end gap-3 flex-wrap">
-                <a href="https://arxiv.org/abs/2603.26127" target="_blank" class="resource-link">
-                    <img src="img/paper_snap.png" height="60px" onerror="this.src='https://via.placeholder.com/60x80?text=Paper'">
-                    <h4>Paper</h4>
-                </a>
-                <a href="img/CVPR2026_poster.pdf" target="_blank" class="resource-link">
-                    <img src="img/poster.png" height="60px" onerror="this.src='https://via.placeholder.com/60x60?text=Poster'">
-                    <h4>Poster</h4>
-                </a>
-                <a href="http://youtube.com/watch?v=-lLqh3WCiKc" target="_blank" class="resource-link">
-                    <img src="img/youtube.png" height="60px" onerror="this.src='https://via.placeholder.com/60x60?text=Video'">
-                    <h4>Video</h4>
-                </a>
-                <a href="https://github.com/SamyakR99/Object-DINO" target="_blank" class="resource-link">
-                    <i class="fab fa-github" style="font-size: 60px; color: var(--heading-color);"></i>
-                    <h4>Code</h4>
-                </a>
-                <a href="https://cvpr.thecvf.com/" target="_blank" class="resource-link">
-                    <img src="img/CVPR_Logo2_Denver 2026_Color.jpg" height="60px" alt="CVPR Logo" onerror="this.src='https://via.placeholder.com/120x60?text=CVPR'">
-                    <h4>CVPR '26</h4>
-                </a>
-            </div>
-        </div>
-
-        <div class="row justify-content-center">
-            <div class="col-12 col-lg-10 text-center">
-                <img src="./img/OD_fig1.png" class="img-fluid rounded-custom mb-3" style="max-width: 100%; width: 100%; max-width: 900px; height: auto;" alt="Object-centric information encoded in patch-level interactions" onerror="this.src='https://via.placeholder.com/1000x350?text=Object-DINO+Teaser+Figure'">
-                <p class="text-muted" style="max-width: 900px; margin: 0 auto; font-size: 0.95rem; text-align: left;">
-                    <strong>Figure 1.</strong> Object-centric information is encoded in patch-level interactions. We visualize the inter-patch similarity maps computed from the Query (Q), Key (K), and Value (V) representations of patch tokens. Each component captures a complementary view of object structure. The <strong>Ensemble</strong> aggregates all three components, producing robust foreground-background separation and precise object localization.
-                </p>
-            </div>
-        </div>
-
-        <div class="row justify-content-center">
-            <div class="col-lg-10">
-                <div class="content-section">
-                    <h3 class="fw-bold mb-3">Abstract</h3>
-                    <p class="text-justify mb-0">
+<details class="od-details"><summary>View complete Figure 1</summary><img alt="Object-centric information encoded in patch-level interactions" class="img-fluid rounded-custom mb-3 od-zoom" onerror="if(!this.dataset.retried){this.dataset.retried='1';this.src='https://samyakr99.github.io/Object_dino/img/OD_fig1.png';}else{this.onerror=null;this.alt=this.alt||'Project image unavailable';}" role="button" src="./img/OD_fig1.png" style="max-width: 100%; width: 100%; max-width: 900px; height: auto;" tabindex="0" title="Open figure full screen"/><p class="text-muted" style="max-width: 900px; margin: 0 auto; font-size: 0.95rem; text-align: left;">
+<strong>Figure 1.</strong> Object-centric information is encoded in patch-level interactions. We visualize the inter-patch similarity maps computed from the Query (Q), Key (K), and Value (V) representations of patch tokens. Each component captures a complementary view of object structure. The <strong>Ensemble</strong> aggregates all three components, producing robust foreground-background separation and precise object localization.
+                </p></details></div>
+</div>
+<div class="row justify-content-center">
+<div class="col-lg-10">
+<div class="content-section" id="abstract">
+<h3 class="fw-bold mb-3">Abstract</h3>
+<p class="text-justify mb-0">
                         Self-supervised Vision Transformers (ViTs) like DINO show an emergent ability to discover objects, typically observed in <code>[CLS]</code> token attention maps of the final layer. However, these maps often contain spurious activations resulting in poor localization. This occurs because the <code>[CLS]</code> token, trained on an image-level objective, summarizes the entire image rather than focusing strictly on objects, diluting the rich, object-centric information existing in local, patch-level interactions. We perform a systematic analysis of inter-patch similarity across all layers and attention components (query, key, and value) to uncover where object-centric information truly resides. Based on our insights, we introduce <strong>Object-DINO</strong>, a training-free method that extracts this distributed object-centric information to drastically improve downstream tasks like unsupervised object discovery and hallucination mitigation in Multimodal Large Language Models (MLLMs).
                     </p>
-                </div>
-            </div>
-        </div>
-
-        <div class="row justify-content-center">
-            <div class="col-lg-10">
-                <div class="content-section">
-                    <h3 class="fw-bold mb-4">Key Analyses & Insights</h3>
-                    <p class="text-justify mb-4">
+</div>
+</div>
+</div>
+<div class="row justify-content-center">
+<div class="col-lg-10">
+<div class="content-section" id="findings">
+<h3 class="fw-bold mb-4">Key Analyses &amp; Insights</h3>
+<p class="text-justify mb-4">
                         A core contribution of our work is shifting the focus away from the globally-optimized <code>[CLS]</code> token to uncover how local patch-level interactions natively encode scene structure. Our systematic analysis yields two critical findings that redefine how we extract emergent object representations from self-supervised ViTs:
                     </p>
-
-                    <div class="analysis-box">
-                        <h4 class="fw-bold mb-3">Insight 1: Complementary Signals in Query, Key, and Value</h4>
-                        <p class="text-justify mb-0">
+<div class="analysis-box">
+<h4 class="fw-bold mb-3">Insight 1: Complementary Signals in Query, Key, and Value</h4>
+<p class="text-justify mb-0">
                             Prior patch-level methods (like TokenCut) relied exclusively on Key (K) features. By computing normalized self-similarity matrices for all attention components, we discover that Queries (Q), Keys (K), and Values (V) all possess strong but <em>complementary</em> localization properties. 
-                            <br><br>
-                            &bull; <strong>Query Similarity</strong> reveals which patches seek similar information.<br>
-                            &bull; <strong>Key Similarity</strong> reveals patches offering similar contextual cues.<br>
-                            &bull; <strong>Value Similarity</strong> identifies patches with similar feature content.<br>
-                            <br>
+                            <br/><br/>
+                            • <strong>Query Similarity</strong> reveals which patches seek similar information.<br/>
+                            • <strong>Key Similarity</strong> reveals patches offering similar contextual cues.<br/>
+                            • <strong>Value Similarity</strong> identifies patches with similar feature content.<br/>
+<br/>
                             Combining these into a unified <strong>Ensemble Similarity Matrix</strong> mitigates individual component artifacts, creating a highly robust, low-noise representation of object saliency.
                         </p>
-                    </div>
-
-                    <div class="analysis-box">
-                        <h4 class="fw-bold mb-3">Insight 2: Object-Centricity is a Distributed Property</h4>
-                        <p class="text-justify mb-3">
-                            It is a common assumption that the strongest object representations exist exclusively in the final layer of a ViT. By characterizing every attention head across the network using our ensemble similarity matrix, we prove that object-centric information is <strong>hierarchically distributed</strong>. 
+</div>
+<div class="analysis-box">
+<h4 class="fw-bold mb-3">Insight 2: Object-Centricity is a Distributed Property</h4>
+<p class="text-justify mb-3">
+                            It is a common assumption that the strongest object representations exist exclusively in the final layer of a ViT. By characterizing every attention head across the network using our ensemble similarity matrix, we find that object-centric information is <strong>hierarchically distributed</strong>. 
                         </p>
-                        
-                        <div class="text-center my-4">
-                            <img src="./img/OD_fig2.png" class="img-fluid rounded-custom mb-2" alt="Analysis of the object-centric head distribution" onerror="this.src='https://via.placeholder.com/900x300?text=Figure+2:+Head+Distribution+Analysis'">
-                            <p class="text-muted small" style="text-align: left; max-width: 850px; margin: 0 auto;">
-                                <strong>Figure 2. Analysis of the object-centric head distribution.</strong> (a) The heatmap demonstrates that numerous heads in intermediate layers (e.g., Layers 8-10) are consistently selected as object-centric, proving it is a distributed phenomenon. (b) The final layer contribution plot reveals several "noisy" (non-object-centric) heads. (c) The histogram shows the number of strongly active heads per layer.
+<div class="text-center my-4">
+<img alt="Analysis of the object-centric head distribution" class="img-fluid rounded-custom mb-2 od-zoom" onerror="if(!this.dataset.retried){this.dataset.retried='1';this.src='https://samyakr99.github.io/Object_dino/img/OD_fig2.png';}else{this.onerror=null;this.alt=this.alt||'Project image unavailable';}" role="button" src="./img/OD_fig2.png" tabindex="0" title="Open figure full screen"/>
+<p class="text-muted small" style="text-align: left; max-width: 850px; margin: 0 auto;">
+<strong>Figure 2. Analysis of the object-centric head distribution.</strong> (a) The heatmap demonstrates that numerous heads in intermediate layers (e.g., Layers 8-10) are consistently selected as object-centric, showing it is a distributed phenomenon. (b) The final layer contribution plot reveals several "noisy" (non-object-centric) heads. (c) The histogram shows the number of strongly active heads per layer.
                             </p>
-                        </div>
-                        
-                        <p class="text-justify mb-0">
+</div>
+<p class="text-justify mb-0">
                             Our analysis of over 4,000 COCO images reveals that:
-                            <br>
-                            1. <strong>Not all final-layer heads are object-centric.</strong> Several heads in the final layer encode global context rather than objects. Naively aggregating them introduces significant noise. <br>
+                            <br/>
+                            1. <strong>Not all final-layer heads are object-centric.</strong> Several heads in the final layer encode global context rather than objects. Naively aggregating them introduces significant noise. <br/>
                             2. <strong>Intermediate layers matter.</strong> Numerous highly robust object-centric heads exist in intermediate layers. Ignoring them discards valuable localization data.
                         </p>
-                    </div>
-                </div>
-            </div>
-        </div>
-        
-        <div class="row justify-content-center">
-            <div class="col-lg-10">
-                <div class="content-section">
-                    <h3 class="fw-bold mb-4">The Object-DINO Method</h3>
-                    <p class="text-justify mb-4">
+</div><section class="od-lab" id="head-lab"><div class="od-eyebrow">02 / Inside the transformer · Supplementary Figure 12</div><h3>Not all heads see the same thing.</h3><p class="od-sub">Explore all 12 heads in the final layer of DINO-v3. Compare heads that miss object regions or respond to the background.</p><div class="od-head-layout"><div><div class="od-panel-title">Layer 11 · attention heads</div><div aria-label="Select an attention head" class="od-head-grid" id="head-grid"></div><div class="od-legend"><span><i class="od-dot good"></i> Other heads</span><span><i class="od-dot warn"></i> Failure examples described in supplement</span></div><div aria-live="polite" class="od-explain" id="head-note"></div><div class="od-tabs"><button id="head-prev">← Previous</button><button id="head-next">Next →</button></div></div><div><div class="od-panel-title" id="head-title">Head 0 · Ensemble similarity</div><div class="od-head-image"><img alt="Head 0 heatmap from supplementary Figure 12" id="head-image"/><div hidden="" id="head-error">Heatmap unavailable offline. <a id="head-link" rel="noopener" target="_blank">Open original image</a>.</div></div></div></div><div class="od-foot">Real heatmaps · Supplementary §11 · Labels follow the supplementary text, not inferred head scores.</div></section>
+<section class="od-lab"><div class="od-eyebrow">03 / Layer selection · Table 4</div><h3>What do intermediate layers add?</h3><p class="od-sub">Compare the three head-selection settings on DINO-v3.</p><div class="od-tabs" id="layer-tabs"><button aria-pressed="false" data-layer="0">VOC07</button><button aria-pressed="true" data-layer="1">VOC12</button><button aria-pressed="false" data-layer="2">COCO20K</button></div><div aria-live="polite" class="od-bars" id="layer-bars"></div><div class="od-explain" id="layer-note"></div><div class="od-foot">Reported CorLoc (%) · Table 4 · Bars start at zero.</div></section>
+</div>
+</div>
+</div>
+<div class="row justify-content-center">
+<div class="col-lg-10">
+<div class="content-section" id="method">
+<h3 class="fw-bold mb-4">The Object-DINO Method</h3>
+<p class="text-justify mb-4">
                         Motivated by our analysis, we introduce <strong>Object-DINO</strong>, an entirely training-free algorithm designed to automatically discover and extract the distributed set of object-centric heads. The process operates in two phases:
                     </p>
-                    <ul class="mb-4 text-justify">
-                        <li class="mb-3"><strong>Phase 1: Feature Extraction.</strong> For every attention head across all layers, we compute the patch similarity maps from its Q, K, and V representations. We ensemble and flatten these maps to create a feature vector that describes that specific head's localization behavior.</li>
-                        <li><strong>Phase 2: Head Clustering & Selection.</strong> We cluster all heads based on these behavioral features using k-means. Guided by the empirical observation that object-centric information concentrates heavily toward the end of the network, we automatically identify the "Object Cluster" as the one containing the highest prevalence of final-layer heads.</li>
-                    </ul>
-                    <p class="text-justify mb-4">
+<ul class="mb-4 text-justify">
+<li class="mb-3"><strong>Phase 1: Feature Extraction.</strong> For every attention head across all layers, we compute the patch similarity maps from its Q, K, and V representations. We ensemble and flatten these maps to create a feature vector that describes that specific head's localization behavior.</li>
+<li><strong>Phase 2: Head Clustering &amp; Selection.</strong> We cluster all heads based on these behavioral features using k-means. Guided by the empirical observation that object-centric information concentrates heavily toward the end of the network, we automatically identify the "Object Cluster" as the one containing the highest prevalence of final-layer heads.</li>
+</ul>
+<p class="text-justify mb-4">
                         By aggregating the similarity maps from <em>only</em> this specialized, distributed subset of heads, Object-DINO produces high-fidelity foreground-background separation while filtering out non-object noise.
                     </p>
-                    <div class="text-center mt-4">
-                        <img src="./img/OD_fig3.png" class="img-fluid rounded-custom mb-3" alt="Object-DINO Architecture" onerror="this.src='https://via.placeholder.com/900x300?text=Figure+3:+Object-DINO+Architecture'">
-                        <p class="text-muted small" style="text-align: left; max-width: 850px; margin: 0 auto;">
-                            <strong>Figure 3. Object-DINO Overview.</strong> Our training-free algorithm computes patch similarity maps from Query, Key, and Value representations, ensembles them, and clusters the heads to automatically identify the distributed object-centric cluster, filtering noise from non-object-centric heads.
+<section class="od-lab"><div class="od-eyebrow">04 / Algorithm walkthrough</div><h3>From patch similarity to object-centric heads.</h3><div class="od-steps" id="method-steps"><button aria-pressed="true" data-step="0"><span>01</span> Compute</button><button aria-pressed="false" data-step="1"><span>02</span> Ensemble</button><button aria-pressed="false" data-step="2"><span>03</span> Cluster</button><button aria-pressed="false" data-step="3"><span>04</span> Select</button><button aria-pressed="false" data-step="4"><span>05</span> Aggregate</button></div><div class="od-step-content"><div aria-hidden="true" class="od-step-art" id="step-art"></div><div><h4 id="step-title"></h4><p aria-live="polite" id="step-desc"></p><div class="od-tabs"><button id="step-prev">← Back</button><button id="step-next">Next →</button></div></div></div><div class="od-foot">Schematic walkthrough of Algorithm 1 · Not a live DINO inference.</div></section><div class="text-center mt-4">
+<img alt="Object-DINO Architecture" class="img-fluid rounded-custom mb-3 od-zoom" onerror="if(!this.dataset.retried){this.dataset.retried='1';this.src='https://samyakr99.github.io/Object_dino/img/OD_fig3.png';}else{this.onerror=null;this.alt=this.alt||'Project image unavailable';}" role="button" src="./img/OD_fig3.png" tabindex="0" title="Open figure full screen"/>
+<p class="text-muted small" style="text-align: left; max-width: 850px; margin: 0 auto;">
+<strong>Figure 3. Object-DINO Overview.</strong> Our training-free algorithm computes patch similarity maps from Query, Key, and Value representations, ensembles them, and clusters the heads to automatically identify the distributed object-centric cluster, filtering noise from non-object-centric heads.
                         </p>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="row justify-content-center">
-            <div class="col-lg-10">
-                <div class="content-section">
-                    <h3 class="fw-bold mb-4">Applications & Downstream Results</h3>
-                    
-                    <h4 class="fw-bold mt-4 mb-3">1. Unsupervised Object Discovery</h4>
-                    <p class="text-justify mb-4">
-                        We integrate Object-DINO into the graph-based TokenCut framework, replacing their naive final-layer Key aggregation with our automatically discovered distributed heads. This single, training-free swap yields massive performance gains across all benchmarks for both DINO-v2 and DINO-v3 models. Specifically, we observe <strong>CorLoc improvements ranging from +3.6 to +12.4 points</strong> on PASCAL VOC and COCO 20k.
+</div>
+</div>
+</div>
+</div>
+<div class="row justify-content-center">
+<div class="col-lg-10">
+<div class="content-section" id="applications">
+<h3 class="fw-bold mb-4">Applications &amp; Downstream Results</h3>
+<h4 class="fw-bold mt-4 mb-3">1. Unsupervised Object Discovery</h4>
+<p class="text-justify mb-4">
+                        We integrate Object-DINO into the graph-based TokenCut framework, replacing their naive final-layer Key aggregation with our automatically discovered distributed heads. This single, training-free swap yields consistent performance gains across all benchmarks for both DINO-v2 and DINO-v3 models. Specifically, we observe <strong>CorLoc improvements ranging from +3.6 to +12.4 points</strong> on PASCAL VOC and COCO 20k.
                     </p>
-                    <div class="text-center mb-5">
-                        <img src="./img/result_object_discovery.png" class="img-fluid rounded-custom" onerror="this.src='https://via.placeholder.com/800x250?text=Table/Chart:+Object+Discovery+Results'">
-                    </div>
-
-                    <h4 class="fw-bold mb-3">2. Mitigating Object Hallucinations in MLLMs</h4>
-                    <p class="text-justify mb-4">
-                        Multimodal Large Language Models (MLLMs) frequently hallucinate objects not present in the image. We leverage Object-DINO as an open-set visual grounder. We propose a training-free, dual-branch decoding strategy: a standard branch and a visual guidance branch steered by the Object-DINO saliency map. By amplifying tokens consistent with this explicit visual evidence, our method corrects hallucinations and achieves state-of-the-art Precision and F1 scores on the <strong>POPE</strong> and <strong>CHAIR</strong> benchmarks, without the heavy computational overhead of multi-pass diffusion methods.
+<div class="text-center mb-5">
+<img alt="Published result figure" class="img-fluid rounded-custom od-zoom" onerror="if(!this.dataset.retried){this.dataset.retried='1';this.src='https://samyakr99.github.io/Object_dino/img/result_object_discovery.png';}else{this.onerror=null;this.alt=this.alt||'Project image unavailable';}" role="button" src="./img/result_object_discovery.png" tabindex="0" title="Open figure full screen"/>
+</div>
+<section class="od-lab"><div class="od-eyebrow">05 / Object discovery · Table 1</div><h3>Training-free gains across backbones.</h3><div class="od-tabs" id="model-tabs"><button aria-pressed="true" data-model="v2">DINO-v2</button><button aria-pressed="false" data-model="v3">DINO-v3</button></div><div aria-live="polite" class="od-bars" id="discovery-bars"></div><div class="od-legend"><span><i class="od-dot base"></i> TokenCut</span><span><i class="od-dot good"></i> + Object-DINO</span></div><div class="od-foot">CorLoc (%) · Table 1 · Bars start at zero.</div></section><h4 class="fw-bold mb-3">2. Mitigating Object Hallucinations in MLLMs</h4>
+<p class="text-justify mb-4">
+                        Multimodal Large Language Models (MLLMs) frequently hallucinate objects not present in the image. We leverage Object-DINO as an open-set visual grounder. We propose a training-free, dual-branch decoding strategy: a standard branch and a visual guidance branch steered by the Object-DINO saliency map. By amplifying tokens consistent with this explicit visual evidence, our method corrects hallucinations and improves hallucination metrics on the <strong>POPE</strong> and <strong>CHAIR</strong> benchmarks, without the heavy computational overhead of multi-pass diffusion methods.
                     </p>
-                    <div class="text-center">
-                        <img src="./img/result_mllm_hallucination.png" class="img-fluid rounded-custom" onerror="this.src='https://via.placeholder.com/800x300?text=Diagram:+MLLM+Hallucination+Mitigation'">
-                    </div>
-                </div>
-            </div>
-        </div>
-       
-        <div class="row justify-content-center">
-            <div class="col-lg-10">
-                <div class="content-section">
-                    <h3 class="fw-bold mb-3">Citation</h3>
-                    <textarea id="bibtex" class="form-control p-3" rows="7" readonly>
+<div class="text-center">
+<img alt="Published result figure" class="img-fluid rounded-custom od-zoom" onerror="if(!this.dataset.retried){this.dataset.retried='1';this.src='https://samyakr99.github.io/Object_dino/img/result_mllm_hallucination.png';}else{this.onerror=null;this.alt=this.alt||'Project image unavailable';}" role="button" src="./img/result_mllm_hallucination.png" tabindex="0" title="Open figure full screen"/>
+</div>
+<section class="od-lab"><div class="od-eyebrow">06 / Visual grounding · Figure 4</div><h3>Can visual evidence correct a hallucination?</h3><p class="od-sub">Replay the paper's next-token example: how many dogs are in the image?</p><div class="od-grounding"><div class="od-crop" id="ground-crop"><img alt="Rider and dogs from Figure 1" data-fallback="https://samyakr99.github.io/Object_dino/img/OD_fig1.png" src="./img/OD_fig1.png"/></div><div><div class="od-tabs" id="ground-tabs"><button aria-pressed="true" data-ground="0">Regular decoding</button><button aria-pressed="false" data-ground="1">+ Visual guidance</button></div><div aria-live="polite" class="od-caption-output" id="ground-caption"></div><p class="od-sub" id="ground-note"></p></div></div><div class="od-foot">Illustrative replay of the published Figure 4 example; not live caption generation.</div></section><section class="od-lab"><div class="od-eyebrow">07 / Hallucination benchmarks · Tables 2–3</div><h3>Explore the reported results.</h3><div class="od-toolbar"><div class="od-tabs" id="bench-tabs"><button aria-pressed="true" data-bench="pope">POPE</button><button aria-pressed="false" data-bench="chair">CHAIR</button></div><label class="od-select-label">Model <select id="mllm-model"></select></label><label class="od-select-label">Metric <select id="mllm-metric"></select></label></div><div aria-live="polite" class="od-bars" id="mllm-bars"></div><div class="od-foot" id="mllm-foot"></div></section></div>
+</div>
+</div>
+<div class="row justify-content-center">
+<div class="col-lg-10">
+<div class="content-section" id="citation">
+<h3 class="fw-bold mb-3">Citation</h3>
+<button class="od-copy" id="copy-bib" type="button">Copy BibTeX</button><textarea class="form-control p-3" id="bibtex" readonly="" rows="7">
 @article{rawlekar2026finding,
   title={Finding Distributed Object-Centric Properties in Self-Supervised Transformers},
   author={Rawlekar, Samyak and Swain, Amitabh and Cai, Yujun and Wang, Yiwei and Yang, Ming-Hsuan and Ahuja, Narendra},
   journal={arXiv preprint arXiv:2603.26127},
   year={2026}
 }</textarea>
-                </div>
-            </div>
-        </div>
-
-        <div class="row mt-5">
-            <div class="col-12 text-center">
-                <p class="text-muted small">
-                    The website template was inspired by <a href="http://mgharbi.com/" class="text-muted text-decoration-underline">Michaël Gharbi</a> and <a href="https://dorverbin.github.io/refnerf" class="text-muted text-decoration-underline">Ref-NeRF</a>.
+</div>
+</div>
+</div>
+<div class="row mt-5">
+<div class="col-12 text-center">
+<p class="text-muted small">
+                    The website template was inspired by <a class="text-muted text-decoration-underline" href="http://mgharbi.com/">Michaël Gharbi</a> and <a class="text-muted text-decoration-underline" href="https://dorverbin.github.io/refnerf">Ref-NeRF</a>.
                 </p>
-            </div>
-        </div>
-    </div>
-
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-</body>
+</div>
+</div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<button aria-label="Back to top" class="od-top" id="od-top">↑</button><dialog id="od-lightbox"><button aria-label="Close figure" id="od-close">×</button><img alt="Expanded figure" id="od-full-image"/></dialog><script>
+(()=>{const $=x=>document.querySelector(x), $$=x=>Array.from(document.querySelectorAll(x)); const pressed=(id,key,val)=>$$('#'+id+' button').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset[key]===String(val))));const bind=(id,key,fn)=>$$('#'+id+' button').forEach(b=>b.addEventListener('click',()=>fn(b.dataset[key])));
+$$('img[data-fallback]').forEach(i=>{const fallback=()=>{if(!i.dataset.retried){i.dataset.retried='1';i.src=i.dataset.fallback}else{i.style.position='static';i.style.width='100%';i.style.height='auto';i.style.left='0';i.style.top='0';}};i.addEventListener('error',fallback);if(i.complete&&!i.naturalWidth)fallback()});
+// Source image is 1000 x 293, each panel approximately 195 x 131. Crop actual paper pixels.
+const xs=[4,203,403,603,803],ys=[22,161];function crop(id,row,col){const i=$('#'+id+' img');i.style.left=(-xs[col]/195*100)+'%';i.style.top=(-ys[row]/131*100)+'%';}let scene=0,signal=4;const labels=['Input','Query similarity (Q)','Key similarity (K)','Value similarity (V)','Ensemble similarity'];const notes=[['Q highlights many foreground regions, but also responds to the sky.','K gives strong localization but misses part of the rider.','V emphasizes foreground content but also activates background areas.','Combining Q, K and V gives a cleaner view of the rider and dogs.'],['Q highlights the lighthouse and boat, with additional responses along the horizon.','K localizes the lighthouse and boat.','V highlights both objects but also responds to their surroundings.','The ensemble combines complementary signals to localize the lighthouse and boat.']];function signalUpdate(){crop('input-crop',scene,0);crop('signal-crop',scene,signal);$('#signal-label').textContent=labels[signal];$('#signal-note').textContent=notes[scene][signal-1];pressed('scene-tabs','scene',scene);pressed('signal-tabs','signal',signal)}bind('scene-tabs','scene',v=>{scene=+v;signalUpdate()});bind('signal-tabs','signal',v=>{signal=+v;signalUpdate()});signalUpdate();
+let head=0;const bad=[5,6,7,11],headBase='https://arxiv.org/html/2603.26127v1/figs/inverse_heatmaps_supp/Head_';const headGrid=$('#head-grid');for(let n=0;n<12;n++){const b=document.createElement('button');b.textContent=n;b.className=bad.includes(n)?'warn':'';b.setAttribute('aria-label','Head '+n);b.addEventListener('click',()=>showHead(n));headGrid.append(b)}function showHead(n){head=(n+12)%12;Array.from(headGrid.children).forEach((b,i)=>b.setAttribute('aria-pressed',String(i===head)));const img=$('#head-image'),url=headBase+head+'.png';$('#head-title').textContent='Head '+head+' · Ensemble similarity';$('#head-note').textContent=[5,6].includes(head)?'The supplementary analysis notes that this head misses parts of the man.':[7,11].includes(head)?'The supplementary analysis notes strong background activation for this head.':'Inspect the head’s localization pattern. The supplementary figure shows considerable variation even within the final layer.';$('#head-error').hidden=true;img.hidden=false;img.alt='Ensemble similarity map for head '+head;$('#head-link').href=url;img.onerror=()=>{img.hidden=true;$('#head-error').hidden=false};img.src=url;}$('#head-prev').onclick=()=>showHead(head-1);$('#head-next').onclick=()=>showHead(head+1);headGrid.addEventListener('keydown',e=>{if(['ArrowLeft','ArrowRight','ArrowUp','ArrowDown'].includes(e.key)){e.preventDefault();showHead(head+({ArrowLeft:-1,ArrowRight:1,ArrowUp:-6,ArrowDown:6}[e.key]));headGrid.children[head].focus()}});showHead(0);
+const bar=(name,val,cls='',max=40)=>`<div class="od-bar-row"><span>${name}</span><div class="od-track"><div class="od-fill ${cls}" style="width:${Math.min(100,val/max*100)}%"></div></div><span class="od-num">${val.toFixed(1)}</span></div>`;const layerData=[[26,27.5,30.8],[30.3,31.4,36],[19.8,20.5,23.4]];function layerUpdate(i){pressed('layer-tabs','layer',i);let [a,b,c]=layerData[i];$('#layer-bars').innerHTML=bar('TokenCut',a)+bar('Selected final layer',b,'mid')+bar('Selected all layers',c,'good');$('#layer-note').textContent=`+${(b-a).toFixed(1)} points from final-layer selection; +${(c-b).toFixed(1)} additional points from distributed selection.`}bind('layer-tabs','layer',v=>layerUpdate(+v));layerUpdate(1);
+const steps=[['Compute patch similarities','For every head in every layer, compute normalized Q, K and V self-similarity matrices.'],['Combine complementary signals','Average the three similarity matrices with equal weights, then flatten the ensemble for each head.'],['Cluster head behavior','Use k-means (K = 5) to group heads by their flattened ensemble maps for each image.'],['Identify the object cluster','Select the cluster containing the most final-layer heads. Keep every head in this cluster, including intermediate-layer heads.'],['Aggregate selected heads','Combine the ensemble similarity maps from the selected heads to obtain object-centric affinities for downstream tasks.']];let st=0;function stepArt(n){const accent='var(--od-accent)', muted='var(--od-base)';let a='';if(n===0||n===1){for(let k=0;k<3;k++)for(let r=0;r<4;r++)for(let c=0;c<4;c++)a+=`<rect x="${15+k*67+c*12}" y="${22+r*12}" width="10" height="10" rx="1" fill="${accent}" opacity="${.18+((r===c?5:(r+c+k)%4)/7)}"/>`;a+=['Q','K','V'].map((x,i)=>`<text x="${33+i*67}" y="87" text-anchor="middle" fill="currentColor" font-size="12">${x}</text>`).join('');if(n===1)a+='<text x="110" y="112" text-anchor="middle" fill="currentColor" font-size="11">Q + K + V → ensemble</text>'}else if(n===2||n===3){const centers=[[45,40],[105,30],[170,40],[75,90],[150,90]];centers.forEach(([x,y],k)=>{if(n===3&&k===2)a+=`<circle cx="${x}" cy="${y}" r="24" fill="none" stroke="${accent}" stroke-width="2"/>`;for(let j=0;j<8;j++)a+=`<circle cx="${x+Math.cos(j*2.4)*((j%3+1)*5)}" cy="${y+Math.sin(j*2.4)*((j%3+1)*5)}" r="3" fill="${k===2?accent:muted}" opacity="${n===3&&k!==2?.35:1}"/>`});}else{for(let r=0;r<5;r++)for(let c=0;c<8;c++)a+=`<rect x="${25+c*21}" y="${12+r*20}" width="17" height="16" rx="3" fill="${(r>=1&&r<=3&&c>=2&&c<=5)?accent:muted}" opacity="${(r>=1&&r<=3&&c>=2&&c<=5)?.9:.22}"/>`;}return `<svg viewBox="0 0 220 120" xmlns="http://www.w3.org/2000/svg">${a}</svg>`}function stepUpdate(n){st=Math.max(0,Math.min(4,n));pressed('method-steps','step',st);$('#step-title').textContent=steps[st][0];$('#step-desc').textContent=steps[st][1];$('#step-art').innerHTML=stepArt(st);$('#step-prev').disabled=st===0;$('#step-next').disabled=st===4;}bind('method-steps','step',v=>stepUpdate(+v));$('#step-prev').onclick=()=>stepUpdate(st-1);$('#step-next').onclick=()=>stepUpdate(st+1);stepUpdate(0);
+const disc={v2:[[16.2,25.7,9.5],[18.3,30.7,12.4],[11.9,19.7,7.8]],v3:[[26,30.8,4.8],[30.3,36,5.7],[19.8,23.4,3.6]]};function discovery(m){pressed('model-tabs','model',m);$('#discovery-bars').innerHTML=disc[m].map(([a,b,g],i)=>`<div class="od-group"><div class="od-group-title"><span>${['VOC07','VOC12','COCO20K'][i]}</span><span class="od-gain">+${g.toFixed(1)} pts</span></div>${bar('TokenCut',a)}${bar('+ Object-DINO',b,'good')}</div>`).join('')}bind('model-tabs','model',discovery);discovery('v2');
+function ground(v){v=+v;pressed('ground-tabs','ground',v);crop('ground-crop',0,v?4:0);$('#ground-caption').innerHTML='The image contains <mark class="'+(v?'correct':'')+'">'+(v?'three':'two')+'</mark> dogs.';$('#ground-note').textContent=v?'The object-centric map provides additional visual evidence for the next-token prediction.':'The standard branch uses the original image and can undercount the dogs.'}bind('ground-tabs','ground',ground);ground(0);
+const pope={'Regular':[[77.4,73.3,79.2],[74.6,71.2,76.4],[79.8,80.1,79.7]],'VCD':[[77.1,72.1,79.4],[77.2,74.2,78.4],[81.3,80.6,81.5]],'M3ID':[[78.2,73.5,80.2],[77.4,73.6,79.1],[82,81.4,82.1]],'RITUAL':[[78.8,74.4,80.5],[78.7,74.5,80.3],[82.8,83.1,82.7]],'MARINE':[[83.9,null,82.7],[79.13,null,77.1],[null,null,null]],'DeGF':[[81.6,80.5,81.9],[80.3,80.9,80.1],[83.4,84.4,82.9]],'Object-DINO':[[83.6,87.4,82.7],[82.7,87.7,81.6],[86.6,89.2,86.1]]};const chair={'Regular':[[26.2,9.4],[31.2,11.1]],'VCD':[[24.4,7.9],[30,10.1]],'M3ID':[[21.4,6.3],[30.8,10.4]],'RITUAL':[[22.4,6.9],[26.6,8.9]],'Woodpecker':[[24.9,7.5],[31.2,10.8]],'HALC':[[21.7,7.1],[24.5,8]],'MARINE':[[20.8,6],[27.5,8.8]],'DeGF':[[18.4,6.1],[24,7.7]],'Object-DINO':[[18.4,5.9],[21.4,8.8]]};let bench='pope';function mllmRender(){let m=+$('#mllm-model').value,i=+$('#mllm-metric').value, data=bench==='pope'?pope:chair;$('#mllm-bars').innerHTML=Object.entries(data).map(([k,a])=>a[m][i]===null?`<div class="od-bar-row"><span>${k}</span><span>Not reported</span><span>—</span></div>`:bar(k,a[m][i],k==='Object-DINO'?'good':'',bench==='pope'?100:35)).join('');$('#mllm-foot').textContent=bench==='pope'?'Table 2 · Higher is better · Bars start at zero.':'Table 3 · Lower is better · Maximum 64 new tokens · Bars start at zero.'}function setBench(b){bench=b;pressed('bench-tabs','bench',b);let models=b==='pope'?['LLaVA-1.5','Instruct-BLIP','Qwen-VL']:['LLaVA-1.5','Instruct-BLIP'];let metrics=b==='pope'?['Accuracy','Precision','F1']:['CHAIRs','CHAIRi'];$('#mllm-model').innerHTML=models.map((x,i)=>`<option value="${i}">${x}</option>`).join('');$('#mllm-metric').innerHTML=metrics.map((x,i)=>`<option value="${i}">${x}</option>`).join('');mllmRender()}bind('bench-tabs','bench',setBench);$('#mllm-model').onchange=mllmRender;$('#mllm-metric').onchange=mllmRender;setBench('pope');
+const light=$('#od-lightbox');function zoom(i){$('#od-full-image').src=i.currentSrc||i.src;$('#od-full-image').alt=i.alt||'Expanded paper figure';light.showModal()}$$('.od-zoom').forEach(i=>{i.onclick=()=>zoom(i);i.onkeydown=e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();zoom(i)}}});$('#od-close').onclick=()=>light.close();light.addEventListener('click',e=>{if(e.target===light)light.close()});$('#copy-bib').onclick=async()=>{const b=$('#copy-bib'),t=$('#bibtex');try{if(navigator.clipboard&&window.isSecureContext)await navigator.clipboard.writeText(t.value.trim());else{t.select();if(!document.execCommand('copy'))throw Error('copy failed')}b.textContent='Copied!'}catch{t.select();b.textContent='Select and copy'}setTimeout(()=>b.textContent='Copy BibTeX',1800)};$('#od-top').onclick=()=>window.scrollTo({top:0,behavior:'smooth'});function scroll(){const h=document.documentElement;$('#od-progress').style.width=(h.scrollTop/Math.max(1,h.scrollHeight-h.clientHeight)*100)+'%';$('#od-top').hidden=h.scrollTop<500;let active='';['abstract','findings','method','applications','citation'].forEach(id=>{if($('#'+id).getBoundingClientRect().top<140)active=id});$$('.od-navlinks a').forEach(a=>a.classList.toggle('active',a.hash==='#'+active))}window.addEventListener('scroll',scroll,{passive:true});scroll();
+})();
+</script></body>
 </html>
